@@ -1,0 +1,16 @@
+/* Detail / marketplace stitch pages — hide misplaced auth blocks */
+body > header > #as-header-actions,
+body > nav.sticky > #as-header-actions,
+body > header > #auth-guest,
+body > header > #auth-user,
+body > nav.sticky > #auth-guest,
+body > nav.sticky > #auth-user {
+  display: none !important;
+}
+
+main aside[data-as-filter-sidebar="true"],
+main > aside:has(.filter-scroll) {
+  display: block !important;
+  width: 280px;
+  flex-shrink: 0;
+}

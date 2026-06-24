@@ -20,9 +20,10 @@ $steps = @(
 
 $baseInjection = @"
 
+<link rel="stylesheet" href="../css/garage-shell.css">
 <link rel="stylesheet" href="../css/flow-nav.css">
 <link rel="stylesheet" href="../../assets/css/avatar-menu.css">
-<script>window.GARAGE_STEP_ID = '__STEP_ID__';</script>
+<script>window.GARAGE_STEP_ID = '__STEP_ID__'; document.documentElement.classList.add('as-garage-app');</script>
 <script src="../../assets/js/app-center-config.js"></script>
 <script src="../../assets/js/auth.js"></script>
 <script src="../../assets/js/avatar-menu.js"></script>
@@ -31,7 +32,6 @@ $baseInjection = @"
 "@
 
 $flowScripts = @"
-<script src="../../assets/js/logo-link.js"></script>
 <script src="../js/flow-config.js"></script>
 <script src="../js/garage-nav.js"></script>
 <script src="../js/flow-nav.js"></script>
@@ -47,6 +47,10 @@ foreach ($step in $steps) {
   }
 
   $html = Get-Content -Path $srcPath -Raw -Encoding UTF8
+
+  if ($html -notmatch 'garage-shell\.css') {
+    $html = $html -replace '(<head>)', "`$1`n<link rel=`"stylesheet`" href=`"../css/garage-shell.css`">"
+  }
 
   $inject = $baseInjection.Replace('__STEP_ID__', $step.id) + $flowScripts
 

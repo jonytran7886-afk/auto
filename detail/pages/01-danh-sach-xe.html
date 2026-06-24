@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutoSphere | Thị trường xe hơi hiện đại</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "secondary-container": "#57dffe",
+                    "on-primary-fixed": "#00174b",
+                    "tertiary-fixed": "#ffdbcd",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "surface-tint": "#0053db",
+                    "on-primary-container": "#eeefff",
+                    "surface-container-high": "#dce9ff",
+                    "secondary-fixed": "#acedff",
+                    "surface-bright": "#f8f9ff",
+                    "outline-variant": "#c3c6d7",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-tertiary-container": "#ffede6",
+                    "on-tertiary-fixed": "#360f00",
+                    "error": "#ba1a1a",
+                    "on-background": "#0b1c30",
+                    "background": "#f8f9ff",
+                    "surface-container-low": "#eff4ff",
+                    "inverse-surface": "#213145",
+                    "on-secondary-container": "#006172",
+                    "surface-container": "#e5eeff",
+                    "secondary": "#00687a",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "error-container": "#ffdad6",
+                    "inverse-primary": "#b4c5ff",
+                    "on-secondary": "#ffffff",
+                    "on-surface-variant": "#434655",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "tertiary": "#943700",
+                    "primary-container": "#2563eb",
+                    "surface-dim": "#cbdbf5",
+                    "surface": "#f8f9ff",
+                    "surface-variant": "#d3e4fe",
+                    "inverse-on-surface": "#eaf1ff",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-surface": "#0b1c30",
+                    "on-tertiary": "#ffffff",
+                    "primary": "#004ac6",
+                    "outline": "#737686",
+                    "primary-fixed": "#dbe1ff",
+                    "on-primary": "#ffffff",
+                    "tertiary-container": "#bc4800",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#001f26",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin_mobile": "16px",
+                    "sidebar_width": "260px",
+                    "gutter": "24px",
+                    "stack_gap": "12px",
+                    "container_max_width": "1200px",
+                    "section_gap": "32px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filter-scroll::-webkit-scrollbar { width: 4px; }
+        .filter-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .card-shadow { box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05); }
+        .glass-effect { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(8px); }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopNavBar -->
+<header class="w-full sticky top-0 z-40 bg-surface border-b border-outline-variant shadow-sm">
+<div class="flex items-center justify-between px-gutter h-16 w-full max-w-container_max_width mx-auto">
+<div class="flex items-center gap-8">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">AutoSphere</h1>
+<nav class="hidden md:flex gap-6">
+<a class="font-body-md text-body-md text-primary font-bold border-b-2 border-primary pb-1" href="#">Thị trường</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Dịch vụ</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Hỗ trợ</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-200 cursor-pointer active:scale-95">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-200 cursor-pointer active:scale-95">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md text-label-md hover:bg-primary-container transition-all active:scale-95">
+                    Đăng tin
+                </button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant cursor-pointer active:scale-95">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of a professional modern user, clean studio lighting, high-end commercial photography style, neutral soft background, soft shadows, professional headshot for a premium automotive platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWmuqmCgi5UlbDf3XqBiug275gmur5mqvKmk5nOGlwaLfrjfPDz94SoCOiVdr--TPVqAeA5FhX1KeqOFLJgwfCanUJQ3oL-PApgc59WDQw4mukemgCu3l6-_fTpP_uIZrXhdPza3NV9A4yJiUMFH-o0p6uZIsb4J09Wh4KkrhlHPXbuG1tO_hdPUpe4O4PIxoC1vVZfVYk8cxV1UVDjrXkXB9uJF7OuefFbhFJQ3-ZjIO-u_OwX6DpXqowTKFT8Tb3TmQWcl3cvg"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-container_max_width mx-auto px-gutter py-8 flex gap-8">
+<!-- Sidebar Filter (280px) -->
+<aside data-as-filter-sidebar="true" class="w-[280px] flex-shrink-0">
+<div class="bg-surface-container-lowest rounded-xl card-shadow p-5 sticky top-24 border border-outline-variant">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+                        Bộ lọc
+                    </h2>
+<button class="text-primary font-label-md text-label-md hover:underline">Xóa bộ lọc</button>
+</div>
+<div class="space-y-6 filter-scroll max-h-[calc(100vh-200px)] overflow-y-auto pr-2">
+<!-- Keyword -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Từ khóa</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container rounded-lg border-none focus:ring-2 focus:ring-primary text-body-md" placeholder="Tìm tên xe, đời xe..." type="text"/>
+</div>
+</div>
+<!-- Selects -->
+<div class="grid gap-4">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Hãng xe</label>
+<select class="w-full bg-surface-container rounded-lg border-none focus:ring-2 focus:ring-primary text-body-md py-2 px-3">
+<option>Tất cả hãng</option>
+<option>Toyota</option>
+<option>Honda</option>
+<option>Mazda</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Dòng xe</label>
+<select class="w-full bg-surface-container rounded-lg border-none focus:ring-2 focus:ring-primary text-body-md py-2 px-3">
+<option>Tất cả dòng</option>
+<option>Sedan</option>
+<option>SUV</option>
+<option>MPV</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Phiên bản</label>
+<select class="w-full bg-surface-container rounded-lg border-none focus:ring-2 focus:ring-primary text-body-md py-2 px-3">
+<option>Tất cả phiên bản</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Năm sản xuất</label>
+<select class="w-full bg-surface-container rounded-lg border-none focus:ring-2 focus:ring-primary text-body-md py-2 px-3">
+<option>Tất cả năm</option>
+<option>2025</option>
+<option>2024</option>
+<option>2023</option>
+</select>
+</div>
+</div>
+<!-- Price Slider -->
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-on-surface-variant">Khoảng giá (VNĐ)</label>
+</div>
+<input class="w-full h-1.5 bg-outline-variant rounded-lg appearance-none cursor-pointer accent-primary" type="range"/>
+<div class="flex justify-between text-label-sm font-label-sm text-outline">
+<span>0đ</span>
+<span>10 tỷ+</span>
+</div>
+</div>
+<!-- Checkboxes -->
+<div class="space-y-3 pt-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Xe mới</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Xe đã qua sử dụng</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Đang ưu đãi</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Sẵn xe giao ngay</span>
+</label>
+</div>
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-label-md text-label-md shadow-md hover:bg-primary-container transition-all active:scale-95 mt-4">
+                        Áp dụng
+                    </button>
+</div>
+</div>
+</aside>
+<!-- Right Body Section -->
+<section class="flex-1 space-y-6">
+<!-- Toolbar -->
+<div class="bg-surface-container-lowest rounded-xl card-shadow px-6 py-4 border border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-6">
+<h3 class="font-headline-md text-headline-md text-on-surface">642 kết quả</h3>
+<div class="h-6 w-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Sắp xếp:</span>
+<select class="bg-transparent border-none focus:ring-0 font-label-md text-label-md text-primary cursor-pointer">
+<option>Giá: Thấp đến Cao</option>
+<option>Giá: Cao đến Thấp</option>
+<option>Năm: Mới nhất</option>
+</select>
+</div>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-low p-1 rounded-lg">
+<button class="p-2 bg-surface-container-highest rounded-md shadow-sm text-primary">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-md transition-colors">
+<span class="material-symbols-outlined" data-icon="format_list_bulleted">format_list_bulleted</span>
+</button>
+</div>
+</div>
+<!-- Grid: 3-column Vehicle Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter">
+<!-- Vehicle Card Template (Toyota Camry example) -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden card-shadow border border-outline-variant hover:border-primary transition-all duration-300 group">
+<div class="relative aspect-[16/9] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A luxurious white 2026 Toyota Camry 2.5Q parked in a high-end minimalist architectural environment. The car is showcased under clean, dramatic studio lighting that emphasizes its sleek lines and modern curves. The aesthetic is premium and professional, with a bright, high-key atmosphere and soft shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCT3mDoa3pks0dO67RVzUpFhxby3EctbTk56xDSJjLmP8Q8E0LiewyTMhf873baTCg5UFAJRYfRgvAuG-THa1Y7hFzlnNuTinFwME-lcRqb_mKT_wDlb3jxrXauQ8FvSICFWJqyb_RjGgBegvUBhQVdBmiPWLQ1aduGompCh3NmA3FjTfTQU1UwRCw60p-lPScgTllUBUwIajQIxXvFNTG2XfIVnOoqP9LcAFVSsGyhnxy7xYHQB33lcosB6VAmviQi2XYnBSQYHQ"/>
+<div class="absolute top-3 left-3 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-label-sm font-label-sm shadow-sm">
+                            Xe mới
+                        </div>
+<button class="absolute top-3 right-3 w-10 h-10 bg-white/80 backdrop-blur rounded-full flex items-center justify-center text-error hover:bg-white transition-colors active:scale-90">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="p-5 space-y-4">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="font-headline-md text-headline-md text-on-surface">Toyota Camry</h4>
+<div class="flex items-center gap-1 text-[#FACC15]">
+<span class="material-symbols-outlined text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-label-sm text-on-surface">4.8</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">2.5Q 2026</p>
+</div>
+<div class="space-y-1">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md text-primary">1.249.000.000 đ</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm text-outline line-through">1.299.000.000 đ</span>
+<span class="text-label-sm font-label-sm text-error bg-error-container px-2 py-0.5 rounded-full">-50.000.000 đ</span>
+</div>
+</div>
+<div class="pt-4 border-t border-outline-variant flex flex-col gap-2">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]" data-icon="store">store</span>
+<span class="font-body-md text-body-md">Toyota Đông Sài Gòn</span>
+</div>
+<div class="flex items-center gap-2 text-outline">
+<span class="material-symbols-outlined text-[20px]" data-icon="near_me">near_me</span>
+<span class="font-label-sm text-label-sm">Cách đây 4.2 km</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3 pt-2">
+<button class="w-full py-2.5 px-4 bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary-container transition-all active:scale-95 text-center">
+                                Xem chi tiết
+                            </button>
+<button class="w-full py-2.5 px-4 bg-surface-container text-on-surface-variant rounded-lg font-label-md text-label-md hover:bg-surface-container-high transition-all active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="chat">chat</span>
+                                Liên hệ
+                            </button>
+</div>
+</div>
+</div>
+<!-- Card 2: Honda CR-V -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden card-shadow border border-outline-variant hover:border-primary transition-all duration-300 group">
+<div class="relative aspect-[16/9] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A modern silver Honda CR-V 2025 hybrid parked on a clean asphalt road with a soft-focus city skyline in the background. Sunset lighting creates a warm, premium glow on the car's metallic finish. The scene is shot with a professional telephoto lens, emphasizing the car's bold front grille and LED headlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoqIa3LeBxojQzGf-bopvE1-mv42mkOx5aLJ1959qPtYAK1pU1fCwFrz06mnq08TIbsZSxBy-xWid1cXLc94gdr-NbcUL4s2XMPrY0TV5CHGcxUbKnOK1B6uUeCSj1SGaHRb4bbHd6tmrbdDh777US3AWvADg_ll2Jbhm2ohwDk3A7hcNx6EHMomzqjAcdvC4tGRJAsEtn2E7wITPI_SOBvHIEeCDoUS6X8G2NqTpH55DHu_tSm_3Wv7CAzvMD2249GH_udBdbCQ"/>
+<div class="absolute top-3 left-3 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-label-sm font-label-sm shadow-sm">
+                            Xe mới
+                        </div>
+<button class="absolute top-3 right-3 w-10 h-10 bg-white/80 backdrop-blur rounded-full flex items-center justify-center text-outline hover:text-error transition-colors active:scale-90">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="p-5 space-y-4">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="font-headline-md text-headline-md text-on-surface">Honda CR-V</h4>
+<div class="flex items-center gap-1 text-[#FACC15]">
+<span class="material-symbols-outlined text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-label-sm text-on-surface">4.9</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">e:HEV RS 2025</p>
+</div>
+<div class="space-y-1">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md text-primary">1.259.000.000 đ</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm text-outline line-through">1.280.000.000 đ</span>
+<span class="text-label-sm font-label-sm text-error bg-error-container px-2 py-0.5 rounded-full">-21.000.000 đ</span>
+</div>
+</div>
+<div class="pt-4 border-t border-outline-variant flex flex-col gap-2">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]" data-icon="store">store</span>
+<span class="font-body-md text-body-md">Honda Kim Thanh</span>
+</div>
+<div class="flex items-center gap-2 text-outline">
+<span class="material-symbols-outlined text-[20px]" data-icon="near_me">near_me</span>
+<span class="font-label-sm text-label-sm">Cách đây 2.8 km</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3 pt-2">
+<button class="w-full py-2.5 px-4 bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary-container transition-all active:scale-95 text-center">
+                                Xem chi tiết
+                            </button>
+<button class="w-full py-2.5 px-4 bg-surface-container text-on-surface-variant rounded-lg font-label-md text-label-md hover:bg-surface-container-high transition-all active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="chat">chat</span>
+                                Liên hệ
+                            </button>
+</div>
+</div>
+</div>
+<!-- Card 3: Mazda CX-5 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden card-shadow border border-outline-variant hover:border-primary transition-all duration-300 group">
+<div class="relative aspect-[16/9] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A vibrant red Mazda CX-5 2.0 Premium driving through a modern urban bridge at dawn. The motion blur in the background conveys speed and performance, while the car is perfectly sharp. Elegant morning light reflects off the deep Soul Red Crystal paint. High-end automotive commercial style with professional color grading." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYuBel1I1MYImHPD68vOzOr06OFVqSnOFu4eoih1kqU1_zO22Wr2sW52WccYgudQlJckv62Sg9YHo2-OwSTy8nWf2KkwiqnUc6HENyp2tSF7t24SHOh33eDzM_A3EVj14XLGlImnee3MMkifc4vULOS9yrVPnJF0THgvhM78C2Lyj-CWTReYPGU7gn8cZJDQ_EIKt_sQEsNM_6Mju6tXDVFq380aBTQbIBZskM1MZynHZclj2H9GBpFtinGmYVbxznK4C7PNF4_Q"/>
+<div class="absolute top-3 left-3 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-label-sm font-label-sm shadow-sm">
+                            Xe mới
+                        </div>
+<button class="absolute top-3 right-3 w-10 h-10 bg-white/80 backdrop-blur rounded-full flex items-center justify-center text-outline hover:text-error transition-colors active:scale-90">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="p-5 space-y-4">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="font-headline-md text-headline-md text-on-surface">Mazda CX-5</h4>
+<div class="flex items-center gap-1 text-[#FACC15]">
+<span class="material-symbols-outlined text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-label-sm text-on-surface">4.7</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">2.0 Premium 2025</p>
+</div>
+<div class="space-y-1">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md text-primary">829.000.000 đ</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm text-outline line-through">859.000.000 đ</span>
+<span class="text-label-sm font-label-sm text-error bg-error-container px-2 py-0.5 rounded-full">-30.000.000 đ</span>
+</div>
+</div>
+<div class="pt-4 border-t border-outline-variant flex flex-col gap-2">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]" data-icon="store">store</span>
+<span class="font-body-md text-body-md">Mazda Bình Tân</span>
+</div>
+<div class="flex items-center gap-2 text-outline">
+<span class="material-symbols-outlined text-[20px]" data-icon="near_me">near_me</span>
+<span class="font-label-sm text-label-sm">Cách đây 1.5 km</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3 pt-2">
+<button class="w-full py-2.5 px-4 bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary-container transition-all active:scale-95 text-center">
+                                Xem chi tiết
+                            </button>
+<button class="w-full py-2.5 px-4 bg-surface-container text-on-surface-variant rounded-lg font-label-md text-label-md hover:bg-surface-container-high transition-all active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="chat">chat</span>
+                                Liên hệ
+                            </button>
+</div>
+</div>
+</div>
+<!-- Additional grid items would follow the same pattern... -->
+</div>
+<!-- Pagination -->
+<div class="flex justify-center items-center gap-2 py-8">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-on-primary font-label-md text-label-md">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors font-label-md text-label-md">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors font-label-md text-label-md">3</button>
+<span class="px-2 text-outline">...</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors font-label-md text-label-md">24</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Simple Footer (Briefly) -->
+<footer class="bg-surface-container-low border-t border-outline-variant py-12 mt-section_gap">
+<div class="max-w-container_max_width mx-auto px-gutter text-center space-y-4">
+<h2 class="font-headline-md text-headline-md text-primary">AutoSphere</h2>
+<p class="text-on-surface-variant font-body-md text-body-md max-w-2xl mx-auto">Nền tảng mua bán và dịch vụ ô tô hàng đầu Việt Nam. Minh bạch thông tin, tối ưu giá trị.</p>
+<div class="flex justify-center gap-6 text-outline pt-4">
+<a class="hover:text-primary transition-colors" href="#">Về chúng tôi</a>
+<a class="hover:text-primary transition-colors" href="#">Điều khoản</a>
+<a class="hover:text-primary transition-colors" href="#">Bảo mật</a>
+<a class="hover:text-primary transition-colors" href="#">Liên hệ</a>
+</div>
+<p class="text-label-sm font-label-sm text-outline pt-8">© 2025 AutoSphere. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('button, select, input[type="checkbox"]').forEach(el => {
+            el.addEventListener('click', function() {
+                // Potential ripples or specific state logic
+            });
+        });
+
+        // Price slider update (Visual only)
+        const range = document.querySelector('input[type="range"]');
+        if (range) {
+            range.addEventListener('input', (e) => {
+                const val = e.target.value;
+                // Update label logic if needed
+            });
+        }
+    </script>
+
+<link rel="stylesheet" href="../../assets/css/avatar-menu.css">
+<link rel="stylesheet" href="../css/detail-shell.css">
+<script>window.DETAIL_STEP_ID = '01-danh-sach-xe';</script>
+<script src="../../assets/js/app-center-config.js"></script>
+<script src="../../assets/js/auth.js"></script>
+<script src="../../assets/js/logo-link.js"></script>
+<script src="../../assets/js/avatar-menu.js"></script>
+<script src="../../assets/js/app-auth-header.js"></script>
+<script src="../../assets/js/auth-header.js"></script>
+<script src="../js/flow-config.js"></script>
+<script src="../js/detail-nav.js"></script>
+</body></html>

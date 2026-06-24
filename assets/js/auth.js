@@ -273,8 +273,8 @@ const AutoSphereAuth = (function () {
 
   function rootPrefix() {
     const path = window.location.pathname.replace(/\\/g, '/');
-    if (path.includes('/garage/pages/') || path.includes('/account/pages/') || path.includes('/khampha/pages/')) return '../../';
-    if (path.includes('/garage/') || path.includes('/account/') || path.includes('/khampha/') || path.includes('/apps/')) return '../';
+    if (path.includes('/garage/pages/') || path.includes('/account/pages/') || path.includes('/khampha/pages/') || path.includes('/detail/pages/')) return '../../';
+    if (path.includes('/garage/') || path.includes('/account/') || path.includes('/khampha/') || path.includes('/detail/') || path.includes('/apps/')) return '../';
     return '';
   }
 

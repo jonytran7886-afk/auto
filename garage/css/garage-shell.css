@@ -1,0 +1,109 @@
+/* Ẩn profile/avatar cũ trong sidebar — chỉ giữ nav cho đến khi shell thay thế */
+aside:not([data-shell-normalized="true"]) > *:not(nav) {
+  display: none !important;
+}
+
+aside:not([data-shell-normalized="true"]) img.rounded-full,
+aside:not([data-shell-normalized="true"]) .rounded-full img {
+  display: none !important;
+}
+
+body.as-garage-shell {
+  padding-top: 0;
+}
+
+.as-garage-sidebar {
+  position: fixed;
+  left: 0;
+  top: 64px;
+  width: 260px;
+  height: calc(100vh - 64px);
+  z-index: 40;
+  background: #f8f9ff;
+  border-right: 1px solid #c3c6d7;
+  padding: 16px 12px;
+  display: flex !important;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.as-garage-sidebar__nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow-y: auto;
+}
+
+.as-garage-sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #434655;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1.25;
+}
+
+.as-garage-sidebar__link .material-symbols-outlined {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.as-garage-sidebar__link:hover {
+  background: #eff4ff;
+  color: #004ac6;
+}
+
+.as-garage-sidebar__link.is-active {
+  background: #d3e4fe;
+  color: #004ac6;
+  font-weight: 600;
+}
+
+.as-garage-sidebar__link.is-active .material-symbols-outlined {
+  font-variation-settings: 'FILL' 1;
+}
+
+.as-garage-sidebar__footer {
+  flex-shrink: 0;
+  padding-top: 12px;
+  margin-top: 8px;
+  border-top: 1px solid #e5eeff;
+}
+
+.as-garage-sidebar__back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #737686;
+  text-decoration: none;
+}
+
+.as-garage-sidebar__back:hover {
+  background: #eff4ff;
+  color: #004ac6;
+}
+
+body.as-garage-shell main,
+body.as-garage-shell .flex-1.lg\:ml-sidebar_width {
+  margin-left: 260px !important;
+}
+
+@media (max-width: 1023px) {
+  .as-garage-sidebar {
+    display: none !important;
+  }
+  body.as-garage-shell main,
+  body.as-garage-shell .flex-1.lg\:ml-sidebar_width {
+    margin-left: 0 !important;
+  }
+}

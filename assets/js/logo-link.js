@@ -7,11 +7,11 @@
   function landingHref() {
     if (typeof AutoSphereAuth !== 'undefined') return AutoSphereAuth.landingUrl();
     const path = window.location.pathname.replace(/\\/g, '/');
-    if (path.includes('/khampha/pages/') || path.includes('/garage/pages/') || path.includes('/account/pages/')) {
+    if (path.includes('/khampha/pages/') || path.includes('/garage/pages/') || path.includes('/account/pages/') || path.includes('/detail/pages/')) {
       return '../../index.html';
     }
     if (path.includes('/pages/')) return '../../index.html';
-    if (path.includes('/khampha/') || path.includes('/garage/') || path.includes('/account/') || path.includes('/apps/')) {
+    if (path.includes('/khampha/') || path.includes('/garage/') || path.includes('/account/') || path.includes('/detail/') || path.includes('/apps/')) {
       return '../index.html';
     }
     return 'index.html';

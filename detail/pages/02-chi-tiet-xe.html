@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutoSphere - Chi tiết xe</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "secondary-container": "#57dffe",
+                        "on-primary-fixed": "#00174b",
+                        "tertiary-fixed": "#ffdbcd",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "surface-tint": "#0053db",
+                        "on-primary-container": "#eeefff",
+                        "surface-container-high": "#dce9ff",
+                        "secondary-fixed": "#acedff",
+                        "surface-bright": "#f8f9ff",
+                        "outline-variant": "#c3c6d7",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-tertiary-container": "#ffede6",
+                        "on-tertiary-fixed": "#360f00",
+                        "error": "#ba1a1a",
+                        "on-background": "#0b1c30",
+                        "background": "#f8f9ff",
+                        "surface-container-low": "#eff4ff",
+                        "inverse-surface": "#213145",
+                        "on-secondary-container": "#006172",
+                        "surface-container": "#e5eeff",
+                        "secondary": "#00687a",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "error-container": "#ffdad6",
+                        "inverse-primary": "#b4c5ff",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#434655",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "tertiary": "#943700",
+                        "primary-container": "#2563eb",
+                        "surface-dim": "#cbdbf5",
+                        "surface": "#f8f9ff",
+                        "surface-variant": "#d3e4fe",
+                        "inverse-on-surface": "#eaf1ff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-surface": "#0b1c30",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#004ac6",
+                        "outline": "#737686",
+                        "primary-fixed": "#dbe1ff",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#bc4800",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#001f26",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin_mobile": "16px",
+                        "sidebar_width": "260px",
+                        "gutter": "24px",
+                        "stack_gap": "12px",
+                        "container_max_width": "1200px",
+                        "section_gap": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .soft-shadow {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+        }
+        .premium-card {
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+            border: 1px solid #e5eeff;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed-dim">
+<!-- TopNavBar -->
+<nav class="bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline shadow-sm w-full sticky top-0 z-40">
+<div class="flex items-center justify-between px-gutter h-16 w-full max-w-container_max_width mx-auto">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">AutoSphere</span>
+<div class="hidden md:flex gap-6">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md" href="#">Thị trường</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Dịch vụ</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Hỗ trợ</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex gap-4 mr-4 border-r border-outline-variant pr-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-all">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-all">favorite</span>
+</div>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-md text-label-md cursor-pointer active:scale-95 transition-all">Đăng tin</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="A clean professional studio portrait of a modern Vietnamese male executive in his 30s wearing a high-end navy blue suit against a soft gray background. The lighting is flattering and high-key, suitable for a premium automotive platform user profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsdmxV9ye1UdFnoPIdw7diId5rkyiHuOsCD4Hi582wRba1_1bp4v13-VjOjK36PNOvEMvtvwb9Tp6M1UYYFh3Tyabnd6eTTjJD8S4IT2gzwYkCiPvgEQxBKnCZH-1aBkxtLPc9NbFyBgr7Ys-m1Pclr14OkJ80pKw2DkRnFRsJvVPf9C_ihiWwlV4JDMCYCdeAYatBM16dONrk48Hq2lR096ledjCMUaL5k9T-tk7NOW4JVH3iP5_tcVOmaigTzPwW-Poe1AGVug"/>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-container_max_width mx-auto px-gutter py-8">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 mb-6 text-on-surface-variant font-label-sm">
+<span>Trang chủ</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span>Thị trường xe</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-primary">VinFast VF 8 Plus</span>
+</div>
+<div class="flex flex-col lg:flex-row gap-gutter">
+<!-- Left Column (70%) -->
+<div class="lg:w-[70%] space-y-section_gap">
+<!-- Hero Gallery -->
+<section class="premium-card overflow-hidden">
+<div class="relative h-[480px]">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A high-performance luxury electric SUV, VinFast VF 8, in a sophisticated sunset gold color, parked in a minimalist architectural driveway with glass walls and professional lighting. The image captured from a 3/4 front angle showcases the sleek aerodynamic lines and the signature V-shaped lighting of the vehicle in a premium lifestyle setting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBdAndPQ3tR-3FIV5a8SsIGHHBVEG3uxhh7rcdjXtb2pXI1XnWMQTtdtWrcxICtLfeEtVPeCwQTpnF1USwzs1llP8t1y_L3zcRi7F8RfWvVjnqwFEoxKypnkC3DSFmrmFQpwcybwc43dSdHDrAhnzZCeVL_q7xEBGbHSnW5xqbbSrDXuOK8Y4bBvAsm4Hp4He3iXua-tmlDbW9rS_tBp_Ptr6WTgcSSmPngQUPWKDqOLBKtxK2-VRalEKehE75W0aN9dc6DYwGn_Q')"></div>
+<!-- Floating Badges -->
+<div class="absolute top-4 left-4 flex flex-wrap gap-2">
+<span class="bg-primary/90 text-on-primary backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-1.5 font-label-md">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                                Đã xác thực
+                            </span>
+<span class="bg-secondary-container/90 text-on-secondary-container backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-1.5 font-label-md">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+                                Vehicle Passport
+                            </span>
+<span class="bg-surface-container-highest/90 text-on-surface backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-1.5 font-label-md">
+<span class="material-symbols-outlined text-[18px]">hub</span>
+                                Vehicle Digital Twin
+                            </span>
+</div>
+<!-- Media Controls -->
+<div class="absolute bottom-4 right-4 flex gap-2">
+<button class="bg-surface/80 backdrop-blur hover:bg-surface text-on-surface p-2 rounded-lg transition-all active:scale-95">
+<span class="material-symbols-outlined">360</span>
+</button>
+<button class="bg-surface/80 backdrop-blur hover:bg-surface text-on-surface p-2 rounded-lg transition-all active:scale-95">
+<span class="material-symbols-outlined">play_circle</span>
+</button>
+</div>
+</div>
+<!-- Thumbnail Strip -->
+<div class="p-4 grid grid-cols-6 gap-3">
+<div class="aspect-video rounded-lg overflow-hidden cursor-pointer border-2 border-primary">
+<img class="w-full h-full object-cover" data-alt="A close-up high-resolution shot of the luxury SUV's front grille and signature LED daytime running lights, highlighting the detailed chrome accents and premium build quality of the vehicle's face." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzQTwECu-kV8TXCUE2FNr3kS1o98WDdhNgbKFKLa1A1Y9fVCYBZVV5FFr7QL9WSrbOf6Ay3Kf8XEU8y-u6u4dlvbtT4dqwtFfPYUDYc3gPvbyWubuM5Cf2oQqghmib5urHRTdOZWlyOzSsle-Twdteiv-gtXrlgd2yAnVzf5GQ5RNRNI-PnqRH7FebhExn7eh1JeIcV1yLGwv16rKplUszirD4MapoMhqk-NwihPL67VJHC-IoDSYBNPf_PLDd64xfMZFltgMxCg"/>
+</div>
+<div class="aspect-video rounded-lg overflow-hidden cursor-pointer hover:opacity-80 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="The spacious and luxurious interior of a modern SUV, featuring premium vegan leather seats in a creamy beige color, a large central touchscreen, and ambient lighting that glows softly in the evening." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHc1Qv70wjGcACOLL-hDDMpUH4U2SF7K8EEVQkDFZJZ7h-7nIq4xKtFeGbwHrXr0lH0J5TxvQ1HTXOJp6dDv0kWRxc06CIin-bb2SB5F9ZMZq3BuI_2PTvCytYJX1h0tkqBjXiByG8iOJ-482xK75McGXXTt7hCpP2_Zybc8T-0Zsjz8UfJi4UoAG16NXtIW-1KJZpuQGKhZihPqhCGs6QbkxunWbZKtQqrkAyES3UZA6OhGjPyLpeeFXQ5b7NJK0zpUHlBiP8Fw"/>
+</div>
+<div class="aspect-video rounded-lg overflow-hidden cursor-pointer hover:opacity-80 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="Detailed side profile of a sunset gold SUV showing the aerodynamic alloy wheels and the sleek glass roofline against a modern city skyline." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi9lcXR69TeWNv-M47sh13UkrpETIEtPoOHdS1kkeZL1yQ9s5dhLuzfeIhXp3C6FQgX-qxaiO5FdhMZOnnYYA_-nWcvo2S1YsoNu7Xi_ra6txui22TIfq2bJScEoY259a7seIVhVGBjz5zg2qgfgywW6D-auPLILPOMnlhLijXqzJl_E7z5_PSVpFdb5-TeMaRne1Bcv7s-PxoZvtl4_w-MB2XX3angOnA1juGIRyP7yugMDUVHTJh4YRkE8Hm2LTuEgoaRnvhvQ"/>
+</div>
+<div class="aspect-video rounded-lg overflow-hidden cursor-pointer hover:opacity-80 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="A cinematic rear view of the vehicle showing the continuous LED light bar across the tailgate and the modern badging during the golden hour." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeqz2EH5Af5xbXegu3nlbYgkLBe_Aa587fpSOAAaE3Vl1dEh1FNwaVio-kOMVmFgN_dJXGdJEOklwpiCPHPP8bbpKNaBeQFZQT5GhMMlpU12C-uvSpDC4p-gC7lvood5iki1zO9PukztKP2s6uXYPNCYb7CUdxEpqnbiar-bL52NYcY4bwyJDCrXI9kzYxD7R9FBboR1iTt0cur0iJnmvCo1Ou03tXMcfQFyyksbo4fRujYR9w1AomZiJPU_kpG6Wv31UTmW7RNw"/>
+</div>
+<div class="aspect-video rounded-lg overflow-hidden cursor-pointer hover:opacity-80 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="View from the driver's seat looking through the panoramic sunroof toward the sky, showing the premium headliner materials and the expansive feel of the cabin." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0RhX6peVVo3c2bu_ZAqYHyejudxc-G1rjYnWAeUyKn7wQ2-SbNougv5vVt-gzBCXNGBrJF-AYdsPOij0XVGsH72l22K2sfhc-1PwrWiTKZZKj4lrgDOMhvvxBPHRCFyXyszWyvgwAAgIDtMP7jj6hiPAkjpV6-u954SZQ4ikA8CfhIgKuC-lLzV1tmCRsw5n8ihh82f-WvvTLyOkjWD557DseaFAKy039w5f2bUPbJ0GLnhBUZpoY5uCaZcSry2kDBkDXwpUZcQ"/>
+</div>
+<div class="relative aspect-video rounded-lg overflow-hidden cursor-pointer">
+<img class="w-full h-full object-cover blur-[2px]" data-alt="A collection of the vehicle's advanced camera system views on the digital infotainment screen." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBISJFnGvsDYZYDcrUd7PdUDT-qLfxKFYRgg1mAa4Lq4HDolNdzfJXrg6cUi1Uj3HLYNaLHCAavIMS3Luc2JW8aL0J1oMNC4PW5tVGtyOYNFsQ6vT610PX_5vLUrkSkb1FgSxzoxV4rd90UTwxL0o3DILGW9FA4fnySvCoVpiri3JxfSO1hUt-5V1fh0npLJQdQqg6SzFC0Ysb7Tknll3z7f9Wm0FUQN47hMlQf2sA_6HgLCnWj3_GYTf7NKn5CXxCMOs1sZ_T9Tw"/>
+<div class="absolute inset-0 bg-on-surface/40 flex items-center justify-center text-on-primary font-bold">+12</div>
+</div>
+</div>
+</section>
+<!-- Identify Card -->
+<section class="premium-card p-6">
+<h2 class="font-headline-md text-headline-md mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">info</span>
+                        Thông tin định danh
+                    </h2>
+<div class="grid grid-cols-2 gap-y-4 gap-x-12">
+<div class="flex justify-between items-center border-b border-surface-container-high pb-2">
+<span class="text-on-surface-variant">Thương hiệu</span>
+<span class="font-bold">VinFast</span>
+</div>
+<div class="flex justify-between items-center border-b border-surface-container-high pb-2">
+<span class="text-on-surface-variant">Dòng xe</span>
+<span class="font-bold">VF 8</span>
+</div>
+<div class="flex justify-between items-center border-b border-surface-container-high pb-2">
+<span class="text-on-surface-variant">Phiên bản</span>
+<span class="font-bold">Plus</span>
+</div>
+<div class="flex justify-between items-center border-b border-surface-container-high pb-2">
+<span class="text-on-surface-variant">Năm sản xuất</span>
+<span class="font-bold">2024</span>
+</div>
+<div class="flex justify-between items-center border-b border-surface-container-high pb-2">
+<span class="text-on-surface-variant">Số VIN</span>
+<span class="font-bold font-mono tracking-wider">VF8PH2024...892</span>
+</div>
+<div class="flex justify-between items-center border-b border-surface-container-high pb-2">
+<span class="text-on-surface-variant">Xuất xứ</span>
+<span class="font-bold">Việt Nam</span>
+</div>
+<div class="flex justify-between items-center border-b border-surface-container-high pb-2">
+<span class="text-on-surface-variant">Màu sắc</span>
+<span class="font-bold">Sunset Orange</span>
+</div>
+<div class="flex justify-between items-center border-b border-surface-container-high pb-2">
+<span class="text-on-surface-variant">Trạng thái</span>
+<span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded text-[12px] font-bold">Mới 100%</span>
+</div>
+</div>
+</section>
+<!-- Technical Specs Card -->
+<section class="premium-card p-6">
+<h2 class="font-headline-md text-headline-md mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">settings_input_component</span>
+                        Thông số kỹ thuật
+                    </h2>
+<div class="grid grid-cols-2 gap-y-4 gap-x-12">
+<div class="flex justify-between items-center border-b border-surface-container-high pb-2">
+<span class="text-on-surface-variant">Động cơ</span>
+<span class="font-bold">Dual Motor Electric</span>
+</div>
+<div class="flex justify-between items-center border-b border-surface-container-high pb-2">
+<span class="text-on-surface-variant">Công suất tối đa</span>
+<span class="font-bold">402 hp</span>
+</div>
+<div class="flex justify-between items-center border-b border-surface-container-high pb-2">
+<span class="text-on-surface-variant">Mô-men xoắn</span>
+<span class="font-bold">620 Nm</span>
+</div>
+<div class="flex justify-between items-center border-b border-surface-container-high pb-2">
+<span class="text-on-surface-variant">Hộp số</span>
+<span class="font-bold">Tự động 1 cấp</span>
+</div>
+<div class="flex justify-between items-center border-b border-surface-container-high pb-2">
+<span class="text-on-surface-variant">Hệ dẫn động</span>
+<span class="font-bold">AWD (4 bánh toàn thời gian)</span>
+</div>
+<div class="flex justify-between items-center border-b border-surface-container-high pb-2">
+<span class="text-on-surface-variant">Tăng tốc 0-100km/h</span>
+<span class="font-bold">5.5 giây</span>
+</div>
+<div class="flex justify-between items-center border-b border-surface-container-high pb-2">
+<span class="text-on-surface-variant">Quãng đường (WLTP)</span>
+<span class="font-bold">400 km</span>
+</div>
+<div class="flex justify-between items-center border-b border-surface-container-high pb-2">
+<span class="text-on-surface-variant">Dung lượng pin</span>
+<span class="font-bold">88.8 kWh</span>
+</div>
+</div>
+</section>
+<!-- Equipment Chips -->
+<section class="premium-card p-6">
+<h2 class="font-headline-md text-headline-md mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">feature_search</span>
+                        Trang bị nổi bật
+                    </h2>
+<div class="flex flex-wrap gap-3">
+<span class="bg-surface-container-low border border-outline-variant px-4 py-2 rounded-full font-label-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">smartphone</span> Apple Carplay
+                        </span>
+<span class="bg-surface-container-low border border-outline-variant px-4 py-2 rounded-full font-label-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">android</span> Android Auto
+                        </span>
+<span class="bg-surface-container-low border border-outline-variant px-4 py-2 rounded-full font-label-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">visibility</span> HUD
+                        </span>
+<span class="bg-secondary-container/30 border border-secondary px-4 py-2 rounded-full font-label-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-secondary">security</span> ADAS 2.0
+                        </span>
+<span class="bg-surface-container-low border border-outline-variant px-4 py-2 rounded-full font-label-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">videocam</span> 360 Camera
+                        </span>
+<span class="bg-surface-container-low border border-outline-variant px-4 py-2 rounded-full font-label-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">speaker</span> JBL Premium Sound
+                        </span>
+<span class="bg-surface-container-low border border-outline-variant px-4 py-2 rounded-full font-label-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">wb_sunny</span> Panoramic Sunroof
+                        </span>
+<span class="bg-surface-container-low border border-outline-variant px-4 py-2 rounded-full font-label-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">chair</span> Ghế Massage
+                        </span>
+</div>
+</section>
+<div class="grid grid-cols-2 gap-6">
+<!-- Vehicle Passport Card -->
+<section class="premium-card p-6">
+<h2 class="font-headline-md text-headline-md mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">assignment_ind</span>
+                            Vehicle Passport
+                        </h2>
+<div class="space-y-3">
+<div class="flex justify-between items-center text-body-md">
+<span class="text-on-surface-variant">Hộ chiếu số</span>
+<span class="font-bold">PAS-88291-VN</span>
+</div>
+<div class="flex justify-between items-center text-body-md">
+<span class="text-on-surface-variant">Ngày xuất xưởng</span>
+<span class="font-bold">12/03/2024</span>
+</div>
+<div class="flex justify-between items-center text-body-md">
+<span class="text-on-surface-variant">Bảo hành đến</span>
+<span class="font-bold">2034 (10 năm)</span>
+</div>
+<div class="flex justify-between items-center text-body-md">
+<span class="text-on-surface-variant">Số đời chủ</span>
+<span class="font-bold">0 (Xe mới)</span>
+</div>
+</div>
+</section>
+<!-- Vehicle Health Card -->
+<section class="premium-card p-6">
+<div class="flex justify-between items-start mb-4">
+<h2 class="font-headline-md text-headline-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">health_and_safety</span>
+                                Sức khỏe xe
+                            </h2>
+<div class="text-right">
+<div class="text-[24px] font-bold text-secondary">92<span class="text-sm font-normal text-on-surface-variant">/100</span></div>
+<div class="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant">Excellent</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<div class="bg-surface-container p-3 rounded-lg text-center">
+<span class="material-symbols-outlined text-secondary block mb-1">battery_charging_full</span>
+<div class="text-[12px] font-bold">100%</div>
+<div class="text-[10px] text-on-surface-variant">Pin</div>
+</div>
+<div class="bg-surface-container p-3 rounded-lg text-center">
+<span class="material-symbols-outlined text-secondary block mb-1">tire_repair</span>
+<div class="text-[12px] font-bold">95%</div>
+<div class="text-[10px] text-on-surface-variant">Lốp</div>
+</div>
+<div class="bg-surface-container p-3 rounded-lg text-center">
+<span class="material-symbols-outlined text-secondary block mb-1">settings_backup_restore</span>
+<div class="text-[12px] font-bold">98%</div>
+<div class="text-[10px] text-on-surface-variant">Phanh</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Right Column (30%) -->
+<div class="lg:w-[30%] space-y-6">
+<!-- Pricing & Finance Card -->
+<section class="premium-card p-6 bg-primary-container text-on-primary-container border-none sticky top-24">
+<div class="mb-6">
+<div class="text-on-primary-container/80 font-label-md mb-1">Giá ưu đãi đặc biệt</div>
+<div class="text-[32px] font-bold leading-tight">1.250.000.000 ₫</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="line-through text-on-primary-container/60 text-sm">1.470.000.000 ₫</span>
+<span class="bg-on-primary-container text-primary text-[10px] font-bold px-1.5 py-0.5 rounded">-15%</span>
+</div>
+</div>
+<div class="space-y-4 mb-6">
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-primary-container/80">Giá lăn bánh dự kiến</span>
+<span class="font-bold">1.312.500.000 ₫</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-primary-container/80">Trả góp từ (6.9%)</span>
+<span class="font-bold">12.500.000 ₫/tháng</span>
+</div>
+<div class="border-t border-on-primary-container/20 pt-4">
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-primary-container/80">Chi phí sở hữu (5 năm)</span>
+<span class="font-bold">245.000.000 ₫</span>
+</div>
+<p class="text-[10px] text-on-primary-container/60 mt-1">*Bao gồm bảo hiểm, bảo trì, năng lượng</p>
+</div>
+</div>
+<button class="w-full bg-on-primary text-primary font-bold py-4 rounded-xl hover:shadow-lg transition-all active:scale-95 mb-3 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">payments</span> Giữ chỗ ngay (10tr)
+                    </button>
+<button class="w-full border border-on-primary/30 text-on-primary font-bold py-3 rounded-xl hover:bg-on-primary/10 transition-all active:scale-95">
+                        Tải bảng dự toán chi tiết
+                    </button>
+</section>
+<!-- Vehicle Economy Card -->
+<section class="premium-card p-6">
+<div class="flex justify-between items-center mb-4">
+<h2 class="font-headline-md text-headline-md">Kinh tế &amp; Thị trường</h2>
+<span class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded-full font-bold text-sm">89/100</span>
+</div>
+<div class="space-y-4">
+<div class="grid grid-cols-3 gap-2 text-center">
+<div class="space-y-1">
+<div class="text-[16px] font-bold">Cao</div>
+<div class="text-[10px] text-on-surface-variant uppercase">Thanh khoản</div>
+</div>
+<div class="space-y-1">
+<div class="text-[16px] font-bold">Tốt</div>
+<div class="text-[10px] text-on-surface-variant uppercase">Nhu cầu</div>
+</div>
+<div class="space-y-1">
+<div class="text-[16px] font-bold">Thấp</div>
+<div class="text-[10px] text-on-surface-variant uppercase">Rủi ro</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg space-y-2">
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Khấu hao 12 tháng</span>
+<span class="text-error font-bold">-8.5%</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Giá trị thị trường</span>
+<span class="font-bold">1.21-1.29 Tỷ</span>
+</div>
+</div>
+</div>
+</section>
+<!-- AI Agent Card -->
+<section class="premium-card p-6 border-2 border-secondary/30 relative overflow-hidden">
+<div class="absolute -right-4 -top-4 opacity-10">
+<span class="material-symbols-outlined text-[100px] text-secondary">psychology</span>
+</div>
+<div class="flex items-center gap-2 mb-4">
+<div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-on-secondary">
+<span class="material-symbols-outlined text-[18px]">smart_toy</span>
+</div>
+<h2 class="font-label-md text-secondary">AutoSphere AI Advice</h2>
+</div>
+<div class="space-y-4 relative z-10">
+<div class="p-3 bg-secondary-container/20 rounded-lg">
+<p class="text-sm italic text-on-surface-variant">"Mẫu xe lý tưởng cho gia đình 5 người, chi phí vận hành cực thấp chỉ 500đ/km. Nên mua ngay vì đang có chính sách giá tốt nhất trong năm."</p>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm font-bold">Đề xuất mua:</span>
+<span class="text-secondary font-black flex items-center gap-1">CÓ (94%) <span class="material-symbols-outlined text-[18px]">check_circle</span></span>
+</div>
+</div>
+</section>
+<!-- Contact Box -->
+<section class="premium-card p-6">
+<div class="flex items-center gap-4 mb-4">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="A professional headshot of a female car consultant, in her late 20s, with a warm friendly smile, wearing a professional gray polo shirt with the AutoSphere logo. She is standing in a brightly lit, modern automotive showroom with soft background blur." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfmQkx_-prtF2RZLQeKxOe5qyPrQRrNecTfcXuimNyFkTsw9BrgQwUWIXNNUA_pIEOQORBUBVFeXCg8MhRmXK83KcLtnLt4DMGM5A5aLiIwByBeqd9FlgB5JEqpvnqUR3tPT_WD65dNyAQFjceQoEQIq-a_j0s34uQAU4zZm6PWbJX0ut8yowTn1ancImeQah80RfR64VNmaIlzeMVvi8Q0Bok627KyfEIu6wnrPJK7bk535XfixP62cF09RYJcydoLGk8UpUGjQ"/>
+<div>
+<div class="font-bold">Trần Thu Thủy</div>
+<div class="text-[12px] text-on-surface-variant">Chuyên viên tư vấn cao cấp</div>
+</div>
+</div>
+<button class="w-full bg-surface-container-high text-on-surface font-bold py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-surface-container-highest transition-all">
+<span class="material-symbols-outlined">chat_bubble</span> Chat ngay
+                    </button>
+</section>
+</div>
+</div>
+<!-- Bottom Grid Actions -->
+<div class="mt-section_gap grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+<button class="premium-card p-4 flex flex-col items-center justify-center gap-2 hover:bg-primary-fixed-dim transition-all group active:scale-95">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">request_quote</span>
+<span class="font-label-md">Yêu cầu báo giá</span>
+</button>
+<button class="premium-card p-4 flex flex-col items-center justify-center gap-2 hover:bg-primary-fixed-dim transition-all group active:scale-95">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">steering_wheel_heat</span>
+<span class="font-label-md">Đăng ký lái thử</span>
+</button>
+<button class="premium-card p-4 flex flex-col items-center justify-center gap-2 hover:bg-primary-fixed-dim transition-all group active:scale-95">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">support_agent</span>
+<span class="font-label-md">Nhận tư vấn</span>
+</button>
+<button class="premium-card p-4 flex flex-col items-center justify-center gap-2 hover:bg-primary-fixed-dim transition-all group active:scale-95">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">bookmark_manager</span>
+<span class="font-label-md">Giữ chỗ</span>
+</button>
+<button class="premium-card p-4 flex flex-col items-center justify-center gap-2 hover:bg-primary-fixed-dim transition-all group active:scale-95">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">compare_arrows</span>
+<span class="font-label-md">So sánh xe</span>
+</button>
+<button class="premium-card p-4 flex flex-col items-center justify-center gap-2 hover:bg-primary-fixed-dim transition-all group active:scale-95">
+<span class="material-symbols-outlined text-error group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-label-md">Yêu thích</span>
+</button>
+</div>
+</main>
+<footer class="bg-surface-container-low border-t border-outline-variant mt-section_gap py-12">
+<div class="max-w-container_max_width mx-auto px-gutter grid grid-cols-4 gap-8">
+<div class="col-span-2">
+<div class="font-headline-md text-primary mb-4">AutoSphere</div>
+<p class="text-on-surface-variant max-w-sm mb-6">Hệ sinh thái giao dịch ô tô số hóa hàng đầu Việt Nam, minh bạch hóa mọi thông tin xe qua công nghệ Vehicle Digital Twin.</p>
+<div class="flex gap-4">
+<span class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center material-symbols-outlined cursor-pointer hover:bg-primary hover:text-on-primary transition-all">language</span>
+<span class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center material-symbols-outlined cursor-pointer hover:bg-primary hover:text-on-primary transition-all">public</span>
+<span class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center material-symbols-outlined cursor-pointer hover:bg-primary hover:text-on-primary transition-all">mail</span>
+</div>
+</div>
+<div>
+<div class="font-bold mb-4">Khám phá</div>
+<ul class="space-y-2 text-on-surface-variant text-sm">
+<li class="hover:text-primary cursor-pointer">Bảng giá xe mới</li>
+<li class="hover:text-primary cursor-pointer">Xe cũ chính hãng</li>
+<li class="hover:text-primary cursor-pointer">So sánh thông số</li>
+<li class="hover:text-primary cursor-pointer">Tính toán trả góp</li>
+</ul>
+</div>
+<div>
+<div class="font-bold mb-4">AutoSphere</div>
+<ul class="space-y-2 text-on-surface-variant text-sm">
+<li class="hover:text-primary cursor-pointer">Về chúng tôi</li>
+<li class="hover:text-primary cursor-pointer">Liên hệ báo chí</li>
+<li class="hover:text-primary cursor-pointer">Chính sách bảo mật</li>
+<li class="hover:text-primary cursor-pointer">Điều khoản sử dụng</li>
+</ul>
+</div>
+</div>
+<div class="max-w-container_max_width mx-auto px-gutter mt-12 pt-8 border-t border-outline-variant text-center text-[12px] text-on-surface-variant">
+            © 2024 AutoSphere Joint Stock Company. All rights reserved.
+        </div>
+</footer>
+<script>
+        // Simple micro-interaction for thumbnail gallery
+        const thumbnails = document.querySelectorAll('.aspect-video.cursor-pointer');
+        const heroImage = document.querySelector('.lg\\:w-\\[70\\%\\] .relative.h-\\[480px\\] .absolute.inset-0');
+        
+        thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                // Reset all thumbnails
+                thumbnails.forEach(t => t.classList.remove('border-2', 'border-primary'));
+                // Active thumb
+                thumb.classList.add('border-2', 'border-primary');
+                // Change hero image src/background
+                const img = thumb.querySelector('img');
+                if(img) {
+                    heroImage.style.backgroundImage = `url('${img.src}')`;
+                }
+            });
+        });
+
+        // Add some hover parallax effects to cards
+        document.querySelectorAll('.premium-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+
+<link rel="stylesheet" href="../../assets/css/avatar-menu.css">
+<link rel="stylesheet" href="../css/detail-shell.css">
+<script>window.DETAIL_STEP_ID = '02-chi-tiet-xe';</script>
+<script src="../../assets/js/app-center-config.js"></script>
+<script src="../../assets/js/auth.js"></script>
+<script src="../../assets/js/logo-link.js"></script>
+<script src="../../assets/js/avatar-menu.js"></script>
+<script src="../../assets/js/app-auth-header.js"></script>
+<script src="../../assets/js/auth-header.js"></script>
+<script src="../js/flow-config.js"></script>
+<script src="../js/detail-nav.js"></script>
+</body></html>

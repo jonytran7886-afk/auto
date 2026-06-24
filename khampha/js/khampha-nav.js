@@ -140,7 +140,13 @@
         el.href = pageUrl('03-so-sanh-xe');
       }
       if (t.includes('xem chi tiết') || t.includes('hồ sơ xe') || t.includes('xem hồ sơ')) {
-        if (el.tagName === 'A') el.href = pageUrl('02-ho-so-xe');
+        if (el.tagName === 'A') el.href = '../../detail/pages/02-chi-tiet-xe.html';
+        else if (el.tagName === 'BUTTON') {
+          el.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.assign('../../detail/pages/02-chi-tiet-xe.html');
+          });
+        }
       }
       if (t.includes('tư vấn') && (t.includes('ai') || t.includes('chat'))) {
         if (el.tagName === 'A') el.href = pageUrl('10-tu-van-ai');

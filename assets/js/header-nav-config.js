@@ -23,15 +23,16 @@ const HEADER_NAV = {
         title: 'Mua xe',
         items: [
           { label: 'Mua xe', href: 'marketplace.html' },
-          { label: 'Tìm kiếm xe mới', href: 'khampha/pages/01-kham-pha-xe.html' },
-          { label: 'Tìm kiếm xe cũ', href: 'khampha/pages/01-kham-pha-xe.html' },
+          { label: 'Tìm kiếm xe mới', href: 'detail/pages/01-danh-sach-xe.html' },
+          { label: 'Tìm kiếm xe cũ', href: 'detail/pages/01-danh-sach-xe.html' },
+          { label: 'Chi tiết xe', href: 'detail/pages/02-chi-tiet-xe.html' },
           { label: 'So sánh xe', href: 'khampha/pages/03-so-sanh-xe.html' },
         ],
       },
       {
         title: 'Giá & ưu đãi',
         items: [
-          { label: 'Xem giá niêm yết', href: 'khampha/pages/02-ho-so-xe.html' },
+          { label: 'Xem giá niêm yết', href: 'detail/pages/02-chi-tiet-xe.html' },
           { label: 'Xem ưu đãi đại lý', href: 'khampha/pages/08-u-dai-dai-ly.html' },
           { label: 'Yêu cầu báo giá', href: 'khampha/pages/05-yeu-cau-bao-gia.html', auth: true },
           { label: 'Nhận tư vấn mua xe', href: 'khampha/pages/10-tu-van-ai.html' },

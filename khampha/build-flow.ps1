@@ -50,6 +50,11 @@ foreach ($step in $steps) {
     $html += $inject
   }
 
+  if ($step.id -eq '09-hanh-trinh-mua-xe' -and $html -match 'md:ml-sidebar_width min-h-screen p-gutter max-w-\[1400px\]') {
+    $html = $html -replace '<main class="md:ml-sidebar_width min-h-screen p-gutter max-w-\[1400px\]">', '<main class="min-h-screen p-gutter md:pl-sidebar_width w-full"><div class="max-w-container_max_width mx-auto w-full">'
+    $html = $html -replace '(?s)(</aside>\s*</div>)\s*</main>(\s*<!-- BottomNavBar)', '$1</div></main>$2'
+  }
+
   [System.IO.File]::WriteAllText($destPath, $html, [System.Text.UTF8Encoding]::new($false))
   Write-Host "Built: $($step.id).html"
 }

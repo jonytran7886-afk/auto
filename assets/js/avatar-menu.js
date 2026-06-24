@@ -8,7 +8,7 @@
     const path = window.location.pathname.replace(/\\/g, '/');
     let root = '';
     if (path.includes('/pages/') || path.includes('/apps/')) root = '../../';
-    else if (path.includes('/garage/') || path.includes('/account/') || path.includes('/khampha/')) root = '../';
+    else if (path.includes('/garage/') || path.includes('/account/') || path.includes('/khampha/') || path.includes('/detail/')) root = '../';
     return {
       profileUrl: `${root}account/pages/05-ho-so-ca-nhan.html`,
       notificationsUrl: `${root}apps/notifications.html`,

@@ -5,6 +5,8 @@
   'use strict';
 
   function initAuthHeader() {
+    if (typeof GarageNav !== 'undefined') GarageNav.init();
+
     if (typeof AppAuthHeader !== 'undefined') {
       AppAuthHeader.mountAppAuthHeader();
     }

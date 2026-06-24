@@ -34,18 +34,18 @@ const GARAGE_APP_NAV = [
   {
     title: 'GARA CÁ NHÂN',
     items: [
-      { label: 'Gara cá nhân', href: 'garage/pages/01-danh-sach-phuong-tien.html' },
-      { label: 'Phương tiện của tôi', href: 'garage/pages/01-danh-sach-phuong-tien.html' },
-      { label: 'Giấy tờ xe', href: 'garage/pages/05-giay-to-xe.html' },
-      { label: 'Lịch sử sở hữu', href: 'garage/pages/06-lich-su-so-huu.html' },
+      { label: 'Gara cá nhân', href: 'garage/pages/01-danh-sach-phuong-tien.html', icon: 'garage' },
+      { label: 'Phương tiện của tôi', href: 'garage/pages/01-danh-sach-phuong-tien.html', icon: 'directions_car' },
+      { label: 'Giấy tờ xe', href: 'garage/pages/05-giay-to-xe.html', icon: 'description' },
+      { label: 'Lịch sử sở hữu', href: 'garage/pages/06-lich-su-so-huu.html', icon: 'manage_history' },
     ],
   },
   {
     title: 'THEO DÕI & KINH TẾ',
     items: [
-      { label: 'Theo dõi tình trạng xe', href: 'garage/pages/07-tinh-trang-xe.html' },
-      { label: 'Theo dõi giá trị xe', href: 'garage/pages/08-gia-tri-xe.html' },
-      { label: 'Hồ sơ kinh tế số của xe', href: 'garage/pages/09-ho-so-kinh-te-so.html' },
+      { label: 'Theo dõi tình trạng xe', href: 'garage/pages/07-tinh-trang-xe.html', icon: 'speed' },
+      { label: 'Theo dõi giá trị xe', href: 'garage/pages/08-gia-tri-xe.html', icon: 'payments' },
+      { label: 'Hồ sơ kinh tế số của xe', href: 'garage/pages/09-ho-so-kinh-te-so.html', icon: 'account_balance_wallet' },
     ],
   },
 ];

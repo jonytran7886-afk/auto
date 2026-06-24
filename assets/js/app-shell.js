@@ -32,6 +32,10 @@
     return current.endsWith(target.split('/').pop());
   }
 
+  function navIcon(item) {
+    return item.icon || 'chevron_right';
+  }
+
   function renderSidebar(sections, sidebarId) {
     const el = document.getElementById(sidebarId);
     if (!el) return;
@@ -44,7 +48,11 @@
           ${section.items
             .map((item) => {
               const active = isActive(item.href) ? ' is-active' : '';
-              return `<a href="${hrefForItem(item)}" class="as-app-sidebar__link${active}" ${item.auth ? 'data-auth="true" data-href="' + item.href + '"' : ''}>${item.label}</a>`;
+              const auth = item.auth ? ' data-auth="true" data-href="' + item.href + '"' : '';
+              return `<a href="${hrefForItem(item)}" class="as-app-sidebar__link${active}"${auth}>
+                <span class="material-symbols-outlined as-app-sidebar__icon" aria-hidden="true">${navIcon(item)}</span>
+                <span class="as-app-sidebar__label">${item.label}</span>
+              </a>`;
             })
             .join('')}
         </div>`
@@ -56,11 +64,23 @@
     const el = document.getElementById(containerId);
     if (!el) return;
 
-    const items = sections.flatMap((s) => s.items).slice(0, 6);
+    const seen = new Set();
+    const items = sections
+      .flatMap((s) => s.items)
+      .filter((item) => {
+        if (seen.has(item.href)) return false;
+        seen.add(item.href);
+        return true;
+      })
+      .slice(0, 6);
+
     el.innerHTML = items
       .map(
         (item) =>
-          `<a href="${hrefForItem(item)}"><span class="material-symbols-outlined">arrow_forward</span>${item.label}</a>`
+          `<a href="${hrefForItem(item)}"${item.auth ? ' data-auth="true" data-href="' + item.href + '"' : ''}>
+            <span class="as-app-quick-links__icon"><span class="material-symbols-outlined" aria-hidden="true">${navIcon(item)}</span></span>
+            <span class="as-app-quick-links__label">${item.label}</span>
+          </a>`
       )
       .join('');
   }

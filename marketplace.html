@@ -11,7 +11,9 @@
 <body class="as-app-shell">
   <header class="as-app-topbar">
     <div class="as-app-topbar__brand">
-      <a href="index.html" class="as-app-topbar__logo">AutoSphere</a>
+      <a href="index.html" class="as-app-topbar__logo as-brand-logo" aria-label="AutoSphere — Về trang chủ" data-brand-logo="true">
+        <img class="as-brand-logo__img" src="assets/logo/autosphere-logo-header.png" alt="AutoSphere" width="1039" height="160" decoding="async">
+      </a>
       <span class="as-app-topbar__app">Marketplace</span>
     </div>
     <div class="as-app-topbar__actions">
@@ -22,7 +24,7 @@
   </header>
   <div class="as-app-layout">
     <aside class="as-app-sidebar" id="app-sidebar"></aside>
-    <main class="as-app-main">
+    <main class="as-app-main" data-workspace-content>
       <div class="as-app-welcome">
         <h1>Marketplace</h1>
         <p>Mua, bán và theo dõi giao dịch xe trên hạ tầng đa kênh AutoSphere — từ tìm kiếm đến giữ chỗ và hành trình mua xe.</p>
@@ -31,6 +33,7 @@
     </main>
   </div>
   <script>window.APP_SHELL = 'marketplace';</script>
+  <script src="assets/js/brand-logo.js"></script>
   <script src="assets/js/auth.js"></script>
   <script src="assets/js/app-center-config.js"></script>
   <script src="assets/js/app-shell.js"></script>

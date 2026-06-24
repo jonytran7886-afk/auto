@@ -6,12 +6,13 @@
   <title>AutoSphere — Khám phá & Giao dịch xe</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/brand-logo.css">
   <style>
     :root { --primary: #004ac6; --surface: #f8f9ff; --on-surface: #0b1c30; --muted: #434655; --border: #c3c6d7; --card: #fff; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: Inter, system-ui, sans-serif; background: var(--surface); color: var(--on-surface); min-height: 100vh; }
     .header { background: #fff; border-bottom: 1px solid var(--border); padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 10; }
-    .logo { font-weight: 800; color: var(--primary); font-size: 18px; text-decoration: none; }
+    .logo { text-decoration: none; display: inline-flex; align-items: center; }
     .back { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; }
     .back:hover { color: var(--primary); }
     .container { max-width: 900px; margin: 0 auto; padding: 32px 24px 48px; }
@@ -28,7 +29,9 @@
 </head>
 <body>
   <header class="header">
-    <a href="../index.html" class="logo">AutoSphere</a>
+    <a href="../index.html" class="logo as-brand-logo" aria-label="AutoSphere — Về trang chủ" data-brand-logo="true">
+      <img class="as-brand-logo__img" src="../assets/logo/autosphere-logo-header.png" alt="AutoSphere" width="1039" height="160" decoding="async">
+    </a>
     <a href="../index.html" class="back">← Về trang chủ</a>
   </header>
   <div class="container">

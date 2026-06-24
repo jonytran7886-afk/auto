@@ -68,7 +68,7 @@
     return `
       <div id="auth-guest" class="flex items-center gap-2 ml-1">
         <a href="${login}" class="px-3 py-2 rounded-xl font-label-md text-label-md text-primary border border-primary/20 hover:bg-primary/5 transition-all whitespace-nowrap">Đăng nhập</a>
-        <a href="${register}" class="px-3 py-2 rounded-xl font-label-md text-label-md bg-primary text-on-primary hover:bg-primary/90 transition-all shadow-sm whitespace-nowrap">Đăng ký</a>
+        <a href="${register}" class="px-3 py-2 rounded-xl font-label-md text-label-md bg-primary text-on-primary hover:bg-primary/90 transition-all shadow-sm whitespace-nowrap">Bắt đầu ngay</a>
       </div>
       <div id="auth-user" class="hidden items-center gap-2 ml-1">
         <div id="avatar-menu-wrap" class="relative">

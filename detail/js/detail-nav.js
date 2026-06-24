@@ -1,10 +1,11 @@
 /**
- * Thị trường xe — wire links & auth gate
+ * Thị trường xe — wire links, cards & dealer CTA
  */
 (function () {
   'use strict';
 
   const KHAMPHA_AUTH = new Set(['05-yeu-cau-bao-gia', '06-dang-ky-lai-thu', '07-giu-cho-xe', '09-hanh-trinh-mua-xe']);
+  const DEALER_ROLES = new Set(['dealer', 'oem']);
 
   function inPagesDir() {
     return /\/pages\//.test(window.location.pathname.replace(/\\/g, '/'));
@@ -15,8 +16,7 @@
   }
 
   function detailUrl(stepId) {
-    const base = inPagesDir() ? `${stepId}.html` : `pages/${stepId}.html`;
-    return base;
+    return inPagesDir() ? `${stepId}.html` : `pages/${stepId}.html`;
   }
 
   function khamphaUrl(stepId) {
@@ -35,129 +35,45 @@
     return typeof AutoSphereAuth !== 'undefined' ? AutoSphereAuth.landingUrl() : `${root()}index.html`;
   }
 
-  function wireLogoLinks() {
-    if (document.querySelector('[data-logo-linked="true"]')) return;
-    const href = landingUrl();
-
-    function linkBrand(el) {
-      if (!el || el.dataset.logoLinked === 'true' || el.closest('footer')) return;
-      el.dataset.logoLinked = 'true';
-      if (el.tagName === 'A') {
-        el.href = href;
-        return;
-      }
-      const a = document.createElement('a');
-      a.href = href;
-      a.className = `${el.className} no-underline hover:opacity-90 transition-opacity`.trim();
-      a.innerHTML = el.innerHTML;
-      a.setAttribute('aria-label', 'Về trang chủ AutoSphere');
-      a.dataset.logoLinked = 'true';
-      el.replaceWith(a);
-    }
-
-    document.querySelectorAll('header, body > nav.sticky').forEach((bar) => {
-      bar.querySelectorAll('h1, span.font-headline-md, span.font-bold').forEach((el) => {
-        if ((el.textContent || '').trim() === 'AutoSphere') linkBrand(el);
-      });
-    });
-  }
-
-  function wireTopNav() {
-    document.querySelectorAll('header nav a, body > nav.sticky a').forEach((a) => {
-      const t = (a.textContent || '').trim().toLowerCase();
-      if (t === 'thị trường') a.href = detailUrl('01-danh-sach-xe');
-      else if (t === 'dịch vụ') a.href = `${root()}marketplace.html`;
-      else if (t === 'hỗ trợ') a.href = khamphaUrl('10-tu-van-ai');
-    });
-  }
-
-  function wirePostListing() {
-    document.querySelectorAll('header button, body > nav.sticky button').forEach((btn) => {
-      const t = (btn.textContent || '').toLowerCase();
-      if (!t.includes('đăng tin')) return;
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.location.assign(appUrl('dang-ban-xe.html'));
-      });
-    });
-  }
-
-  function wireListCards() {
-    if (window.DETAIL_STEP_ID !== '01-danh-sach-xe') return;
-
-    document.querySelectorAll('main .grid > div').forEach((card) => {
-      if (!card.querySelector('h4')) return;
-
-      const detailBtn = [...card.querySelectorAll('button')].find((b) =>
-        (b.textContent || '').toLowerCase().includes('xem chi tiết')
-      );
-      if (detailBtn && !detailBtn.dataset.detailLinked) {
-        detailBtn.dataset.detailLinked = 'true';
-        detailBtn.addEventListener('click', () => window.location.assign(detailUrl('02-chi-tiet-xe')));
-      }
-
-      const imgWrap = card.querySelector('[class*="aspect-"]');
-      if (imgWrap && !imgWrap.dataset.detailLinked) {
-        imgWrap.dataset.detailLinked = 'true';
-        imgWrap.style.cursor = 'pointer';
-        imgWrap.addEventListener('click', () => window.location.assign(detailUrl('02-chi-tiet-xe')));
-      }
-    });
-  }
-
   const LISTING_CARDS = [
-    { name: 'Toyota Camry', variant: '2.5Q 2026', price: '1.249.000.000 đ', oldPrice: '1.299.000.000 đ', discount: '-50.000.000 đ', dealer: 'Toyota Đông Sài Gòn', distance: '4.2 km', rating: '4.8', badge: 'Xe mới' },
-    { name: 'Honda CR-V', variant: 'e:HEV RS 2025', price: '1.259.000.000 đ', oldPrice: '1.280.000.000 đ', discount: '-21.000.000 đ', dealer: 'Honda Kim Thanh', distance: '2.8 km', rating: '4.9', badge: 'Xe mới' },
-    { name: 'Mazda CX-5', variant: '2.0 Premium 2025', price: '829.000.000 đ', oldPrice: '859.000.000 đ', discount: '-30.000.000 đ', dealer: 'Mazda Bình Tân', distance: '1.5 km', rating: '4.7', badge: 'Xe mới' },
-    { name: 'VinFast VF 8', variant: 'Plus 2024', price: '1.250.000.000 đ', oldPrice: '1.470.000.000 đ', discount: '-220.000.000 đ', dealer: 'VinFast Hà Nội', distance: '3.1 km', rating: '4.8', badge: 'Ưu đãi' },
-    { name: 'Hyundai Tucson', variant: '2.0 Premium 2025', price: '899.000.000 đ', oldPrice: '929.000.000 đ', discount: '-30.000.000 đ', dealer: 'Hyundai Miền Nam', distance: '5.0 km', rating: '4.6', badge: 'Xe mới' },
-    { name: 'KIA Sportage', variant: '2.0GT-Line 2025', price: '949.000.000 đ', oldPrice: '979.000.000 đ', discount: '-30.000.000 đ', dealer: 'KIA Thảo Điền', distance: '2.2 km', rating: '4.7', badge: 'Xe mới' },
-    { name: 'Ford Territory', variant: 'Trend 2025', price: '799.000.000 đ', oldPrice: '829.000.000 đ', discount: '-30.000.000 đ', dealer: 'Ford Giai Phong', distance: '6.4 km', rating: '4.5', badge: 'Xe mới' },
-    { name: 'Mercedes-Benz GLC', variant: '200 2024', price: '2.150.000.000 đ', oldPrice: '2.199.000.000 đ', discount: '-49.000.000 đ', dealer: 'Mercedes Star', distance: '7.8 km', rating: '4.9', badge: 'Cao cấp' },
-    { name: 'BMW X3', variant: 'xDrive20i 2024', price: '2.289.000.000 đ', oldPrice: '2.350.000.000 đ', discount: '-61.000.000 đ', dealer: 'BMW Euro Auto', distance: '8.1 km', rating: '4.8', badge: 'Cao cấp' },
-    { name: 'Toyota Vios', variant: '1.5G CVT 2025', price: '558.000.000 đ', oldPrice: '578.000.000 đ', discount: '-20.000.000 đ', dealer: 'Toyota An Sương', distance: '1.1 km', rating: '4.6', badge: 'Xe mới' },
-    { name: 'Hyundai Creta', variant: '1.5 Premium 2025', price: '689.000.000 đ', oldPrice: '709.000.000 đ', discount: '-20.000.000 đ', dealer: 'Hyundai Trường Chinh', distance: '3.6 km', rating: '4.7', badge: 'Xe mới' },
-    { name: 'Mitsubishi Xforce', variant: 'Premium 2025', price: '599.000.000 đ', oldPrice: '619.000.000 đ', discount: '-20.000.000 đ', dealer: 'Mitsubishi Vĩnh Phú', distance: '4.9 km', rating: '4.5', badge: 'Xe mới' },
+    { name: 'Toyota Camry', variant: '2.5Q 2026', price: '1.249.000.000 đ', oldPrice: '1.299.000.000 đ', discount: '-50.000.000 đ', dealer: 'Toyota Đông Sài Gòn', distance: 'Cách đây 4.2 km', badge: 'Xe mới' },
+    { name: 'Honda CR-V', variant: 'e:HEV RS 2025', price: '1.259.000.000 đ', oldPrice: '1.280.000.000 đ', discount: '-21.000.000 đ', dealer: 'Honda Kim Thanh', distance: 'Cách đây 2.8 km', badge: 'Xe mới' },
+    { name: 'Mazda CX-5', variant: '2.0 Premium 2025', price: '829.000.000 đ', oldPrice: '859.000.000 đ', discount: '-30.000.000 đ', dealer: 'Mazda Bình Tân', distance: 'Cách đây 1.5 km', badge: 'Xe mới' },
+    { name: 'VinFast VF 8', variant: 'Plus 2024', price: '1.250.000.000 đ', oldPrice: '1.470.000.000 đ', discount: '-220.000.000 đ', dealer: 'VinFast Hà Nội', distance: 'Cách đây 3.1 km', badge: 'Ưu đãi' },
+    { name: 'Hyundai Tucson', variant: '2.0 Premium 2025', price: '899.000.000 đ', oldPrice: '929.000.000 đ', discount: '-30.000.000 đ', dealer: 'Hyundai Miền Nam', distance: 'Cách đây 5.0 km', badge: 'Xe mới' },
+    { name: 'KIA Sportage', variant: '2.0GT-Line 2025', price: '949.000.000 đ', oldPrice: '979.000.000 đ', discount: '-30.000.000 đ', dealer: 'KIA Thảo Điền', distance: 'Cách đây 2.2 km', badge: 'Xe mới' },
+    { name: 'Ford Territory', variant: 'Trend 2025', price: '799.000.000 đ', oldPrice: '829.000.000 đ', discount: '-30.000.000 đ', dealer: 'Ford Giai Phong', distance: 'Cách đây 6.4 km', badge: 'Xe mới' },
+    { name: 'Mercedes-Benz GLC', variant: '200 2024', price: '2.150.000.000 đ', oldPrice: '2.199.000.000 đ', discount: '-49.000.000 đ', dealer: 'Mercedes Star', distance: 'Cách đây 7.8 km', badge: 'Cao cấp' },
+    { name: 'BMW X3', variant: 'xDrive20i 2024', price: '2.289.000.000 đ', oldPrice: '2.350.000.000 đ', discount: '-61.000.000 đ', dealer: 'BMW Euro Auto', distance: 'Cách đây 8.1 km', badge: 'Cao cấp' },
+    { name: 'Toyota Vios', variant: '1.5G CVT 2025', price: '558.000.000 đ', oldPrice: '578.000.000 đ', discount: '-20.000.000 đ', dealer: 'Toyota An Sương', distance: 'Cách đây 1.1 km', badge: 'Xe mới' },
+    { name: 'Hyundai Creta', variant: '1.5 Premium 2025', price: '689.000.000 đ', oldPrice: '709.000.000 đ', discount: '-20.000.000 đ', dealer: 'Hyundai Trường Chinh', distance: 'Cách đây 3.6 km', badge: 'Xe mới' },
+    { name: 'Mitsubishi Xforce', variant: 'Premium 2025', price: '599.000.000 đ', oldPrice: '619.000.000 đ', discount: '-20.000.000 đ', dealer: 'Mitsubishi Vĩnh Phú', distance: 'Cách đây 4.9 km', badge: 'Xe mới' },
   ];
 
   function applyCardData(card, data) {
-    const h4 = card.querySelector('h4');
-    if (h4) h4.textContent = data.name;
-
-    card.querySelectorAll('p.font-body-md.text-on-surface-variant').forEach((p, i) => {
-      if (i === 0) p.textContent = data.variant;
+    const map = {
+      name: data.name,
+      variant: data.variant,
+      price: data.price,
+      oldPrice: data.oldPrice,
+      discount: data.discount,
+      dealer: data.dealer,
+      distance: data.distance,
+      badge: data.badge,
+    };
+    Object.entries(map).forEach(([key, val]) => {
+      const el = card.querySelector(`[data-field="${key}"]`);
+      if (el) el.textContent = val;
     });
-
-    const priceEl = card.querySelector('span.font-headline-md.text-primary');
-    if (priceEl) priceEl.textContent = data.price;
-
-    const oldPrice = card.querySelector('span.line-through');
-    if (oldPrice) oldPrice.textContent = data.oldPrice;
-
-    const discount = card.querySelector('span.text-error.bg-error-container, span.bg-error-container');
-    if (discount) discount.textContent = data.discount;
-
-    card.querySelectorAll('.material-symbols-outlined').forEach((icon) => {
-      const label = (icon.textContent || '').trim();
-      const row = icon.parentElement;
-      if (!row) return;
-      const textEl = row.querySelector('span:not(.material-symbols-outlined)');
-      if (label === 'store' && textEl) textEl.textContent = data.dealer;
-      if (label === 'near_me' && textEl) textEl.textContent = `Cách đây ${data.distance}`;
-      if (label === 'star' && textEl) textEl.textContent = data.rating;
-    });
-
-    const badge = card.querySelector('.absolute.top-3.left-3, .absolute.top-3.left-3.bg-secondary-container');
-    if (badge) badge.textContent = data.badge;
   }
 
   function expandVehicleCards() {
     if (window.DETAIL_STEP_ID !== '01-danh-sach-xe') return;
 
-    const grid = document.querySelector('main section .grid, main .grid.grid-cols-1');
+    const grid = document.getElementById('dl-vehicle-grid');
     if (!grid || grid.dataset.expanded === '1') return;
 
-    const template = grid.querySelector(':scope > div');
+    const template = grid.querySelector('[data-vehicle-card]');
     if (!template) return;
 
     const fragment = document.createDocumentFragment();
@@ -172,11 +88,41 @@
     grid.dataset.expanded = '1';
   }
 
-  function markFilterSidebar() {
-    document.querySelectorAll('main aside, aside[class*="280px"]').forEach((aside) => {
-      if (aside.querySelector('.filter-scroll') || /bộ lọc/i.test(aside.textContent || '')) {
-        aside.dataset.asFilterSidebar = 'true';
-      }
+  function wireListCards() {
+    if (window.DETAIL_STEP_ID !== '01-danh-sach-xe') return;
+
+    document.querySelectorAll('[data-vehicle-card]').forEach((card) => {
+      const goDetail = () => window.location.assign(detailUrl('02-chi-tiet-xe'));
+
+      card.querySelector('[data-detail-btn]')?.addEventListener('click', goDetail);
+      card.querySelector('[data-detail-link]')?.addEventListener('click', (e) => {
+        if (e.target.closest('.dl-card__fav')) return;
+        goDetail();
+      });
+    });
+  }
+
+  function initDealerPostBtn() {
+    const btn = document.getElementById('as-dealer-post');
+    if (!btn) return;
+
+    const role = typeof AutoSphereAuth !== 'undefined' ? AutoSphereAuth.getCurrentRole()?.id : null;
+    const ws = document.body.dataset.veiWorkspace;
+    const show = (role && DEALER_ROLES.has(role)) || ws === 'dealer' || ws === 'oem';
+    btn.classList.toggle('hidden', !show);
+  }
+
+  function initViewToggle() {
+    const group = document.querySelector('.dl-results__view');
+    if (!group) return;
+
+    group.addEventListener('click', (e) => {
+      const btn = e.target.closest('.dl-results__view-btn');
+      if (!btn) return;
+      group.querySelectorAll('.dl-results__view-btn').forEach((b) => {
+        b.classList.toggle('is-active', b === btn);
+        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+      });
     });
   }
 
@@ -277,19 +223,6 @@
     });
   }
 
-  function markActiveTopNav() {
-    const stepId = window.DETAIL_STEP_ID;
-    if (!stepId) return;
-
-    document.querySelectorAll('header nav a, body > nav.sticky a').forEach((a) => {
-      const t = (a.textContent || '').trim().toLowerCase();
-      if (t === 'thị trường') {
-        a.classList.add('text-primary', 'font-bold', 'border-b-2', 'border-primary', 'pb-1');
-        a.classList.remove('text-on-surface-variant');
-      }
-    });
-  }
-
   function wireBadges() {
     if (window.DETAIL_STEP_ID !== '02-chi-tiet-xe') return;
 
@@ -311,20 +244,19 @@
 
   function init() {
     if (!window.DETAIL_STEP_ID) return;
-    markFilterSidebar();
-    wireLogoLinks();
-    wireTopNav();
-    wirePostListing();
     expandVehicleCards();
     wireListCards();
+    initDealerPostBtn();
+    initViewToggle();
     wireBreadcrumbs();
     wireBadges();
     wireCtaButtons();
-    markActiveTopNav();
   }
 
   document.addEventListener('DOMContentLoaded', init);
   if (document.readyState !== 'loading') init();
+
+  document.addEventListener('vei:workspace-change', initDealerPostBtn);
 
   window.DetailNav = { init, detailUrl, khamphaUrl };
 })();

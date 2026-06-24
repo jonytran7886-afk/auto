@@ -30,25 +30,35 @@ const APP_ROLES = [
   { id: 'admin', label: 'Quản trị viên AutoSphere' },
 ];
 
-const GARAGE_APP_NAV = [
+const GARAGE_IDENTITY_NAV = [
   {
-    title: 'GARA CÁ NHÂN',
+    title: 'HỒ SƠ PHƯƠNG TIỆN',
     items: [
-      { label: 'Gara cá nhân', href: 'garage/pages/01-danh-sach-phuong-tien.html', icon: 'garage' },
-      { label: 'Phương tiện của tôi', href: 'garage/pages/01-danh-sach-phuong-tien.html', icon: 'directions_car' },
-      { label: 'Giấy tờ xe', href: 'garage/pages/05-giay-to-xe.html', icon: 'description' },
-      { label: 'Lịch sử sở hữu', href: 'garage/pages/06-lich-su-so-huu.html', icon: 'manage_history' },
+      { label: 'Garage của tôi', href: 'garage.html', icon: 'garage' },
+      { label: 'Danh sách xe', href: 'garage/pages/01-danh-sach-phuong-tien.html', icon: 'directions_car', auth: true },
+      { label: 'Hồ sơ xe', href: 'garage/pages/04-chi-tiet-phuong-tien.html', icon: 'badge', auth: true },
+      { label: 'Vehicle Timeline', href: 'garage/pages/06-lich-su-so-huu.html', icon: 'timeline', auth: true },
     ],
   },
   {
-    title: 'THEO DÕI & KINH TẾ',
+    title: 'SỐ HÓA & KẾT NỐI',
     items: [
-      { label: 'Theo dõi tình trạng xe', href: 'garage/pages/07-tinh-trang-xe.html', icon: 'speed' },
-      { label: 'Theo dõi giá trị xe', href: 'garage/pages/08-gia-tri-xe.html', icon: 'payments' },
-      { label: 'Hồ sơ kinh tế số của xe', href: 'garage/pages/09-ho-so-kinh-te-so.html', icon: 'account_balance_wallet' },
+      { label: 'Connected Vehicle', href: 'apps/vehicle-twin.html', icon: 'sensors' },
+      { label: 'Vehicle Digital Twin', href: 'apps/vehicle-twin.html', icon: 'hub' },
+    ],
+  },
+  {
+    title: 'TÀI CHÍNH & PHÁP LÝ',
+    items: [
+      { label: 'Bảo hành', href: 'garage/pages/05-giay-to-xe.html', icon: 'verified', auth: true },
+      { label: 'Bảo hiểm', href: 'apps/insurance.html', icon: 'security' },
+      { label: 'Tài liệu xe', href: 'garage/pages/05-giay-to-xe.html', icon: 'description', auth: true },
+      { label: 'Chi phí vận hành', href: 'garage/pages/09-ho-so-kinh-te-so.html', icon: 'payments', auth: true },
     ],
   },
 ];
+
+const GARAGE_APP_NAV = GARAGE_IDENTITY_NAV;
 
 const MARKETPLACE_APP_NAV = [
   {
@@ -73,6 +83,39 @@ const MARKETPLACE_APP_NAV = [
       { label: 'Đăng bán xe', href: 'apps/dang-ban-xe.html' },
       { label: 'Quản lý xe đang bán', href: 'apps/quan-ly-ban-xe.html' },
       { label: 'Lịch sử giao dịch', href: 'apps/lich-su-giao-dich.html' },
+    ],
+  },
+];
+
+const WORKSPACE_DEALER_NAV = [
+  {
+    title: 'ĐẠI LÝ',
+    items: [
+      { label: 'Tồn kho xe', href: 'detail/pages/01-danh-sach-xe.html', icon: 'inventory_2' },
+      { label: 'Đơn hàng', href: 'khampha/pages/09-hanh-trinh-mua-xe.html', icon: 'receipt_long' },
+      { label: 'Báo giá khách', href: 'khampha/pages/05-yeu-cau-bao-gia.html', icon: 'request_quote' },
+    ],
+  },
+];
+
+const WORKSPACE_GARAGE_NAV = [
+  {
+    title: 'GARA DỊCH VỤ',
+    items: [
+      { label: 'Lịch hẹn', href: 'apps/garage-service.html', icon: 'calendar_today' },
+      { label: 'Xe đang sửa', href: 'garage/pages/07-tinh-trang-xe.html', icon: 'build' },
+      { label: 'Phụ tùng', href: 'apps/accessories.html', icon: 'handyman' },
+    ],
+  },
+];
+
+const WORKSPACE_DEVELOPER_NAV = [
+  {
+    title: 'DEVELOPER',
+    items: [
+      { label: 'Developer Center', href: 'apps/dev-hub.html', icon: 'code' },
+      { label: 'Sandbox', href: 'apps/dev-hub.html', icon: 'science' },
+      { label: 'API & SDK', href: 'apps/dev-hub.html', icon: 'api' },
     ],
   },
 ];

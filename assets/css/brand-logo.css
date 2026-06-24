@@ -1,0 +1,57 @@
+/* AutoSphere brand logo — thay chữ AutoSphere */
+.as-brand-logo {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+  text-decoration: none;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.as-brand-logo:hover {
+  opacity: 0.9;
+}
+
+.as-brand-logo__img {
+  display: block;
+  height: 36px;
+  width: auto;
+  max-width: min(240px, 42vw);
+  object-fit: contain;
+}
+
+.as-vei-header__logo.as-brand-logo .as-brand-logo__img {
+  display: block;
+  height: auto;
+  max-height: 24px;
+  max-width: 150px;
+  width: auto;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.as-app-topbar__logo.as-brand-logo .as-brand-logo__img {
+  height: 26px;
+}
+
+header .logo.as-brand-logo .as-brand-logo__img,
+a.logo.as-brand-logo .as-brand-logo__img {
+  height: 28px;
+}
+
+.as-mobile-drawer-panel .as-brand-logo .as-brand-logo__img {
+  height: 24px;
+}
+
+@media (max-width: 640px) {
+  .as-brand-logo__img {
+    height: 26px;
+    max-width: min(180px, 52vw);
+  }
+
+  .as-vei-header__logo.as-brand-logo .as-brand-logo__img {
+    height: auto;
+    max-height: 22px;
+    max-width: min(140px, 44vw);
+  }
+}

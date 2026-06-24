@@ -106,79 +106,38 @@
 </head>
 <body class="bg-background text-on-background selection:bg-primary-container selection:text-on-primary-container">
 
-<!-- Header -->
-<header class="fixed top-0 left-0 w-full h-[72px] z-[100] bg-surface/80 backdrop-blur-md border-b border-outline-variant shadow-sm flex items-center px-gutter transition-all">
-  <div class="max-w-[1440px] w-full mx-auto flex items-center justify-between gap-4">
-    <div class="flex items-center gap-6 min-w-0">
-      <a href="index.html" class="font-headline-md text-headline-md font-extrabold text-primary tracking-tight shrink-0">AutoSphere</a>
-      <nav id="as-desktop-nav" class="as-header-nav hidden xl:flex" aria-label="Menu chính"></nav>
-    </div>
-    <div class="flex items-center gap-2 shrink-0">
-      <button id="mobile-menu-toggle" class="xl:hidden p-2 text-on-surface-variant hover:bg-surface-variant/20 rounded-full transition-colors" aria-label="Menu" aria-controls="as-mobile-drawer">
+<!-- Header VEI v1.0 -->
+<header class="as-vei-header fixed top-0 left-0 w-full z-[100] bg-surface/90 backdrop-blur-md border-b border-outline-variant shadow-sm">
+  <div class="as-vei-header__inner">
+    <a href="index.html" class="as-vei-header__logo as-brand-logo" aria-label="AutoSphere — Về trang chủ" data-brand-logo="true">
+      <img class="as-brand-logo__img" src="assets/logo/autosphere-logo-header.png" alt="AutoSphere" width="1039" height="160" decoding="async">
+    </a>
+    <nav id="as-desktop-nav" class="as-header-nav hidden xl:flex" aria-label="VEI Navigation"></nav>
+    <div class="as-vei-header__actions">
+      <button id="mobile-menu-toggle" class="xl:hidden as-vei-btn-ghost" aria-label="Menu" aria-controls="as-mobile-drawer">
         <span class="material-symbols-outlined">menu</span>
       </button>
-      <div class="hidden sm:flex items-center gap-1">
-        <button class="p-2 text-on-surface-variant hover:bg-surface-variant/20 rounded-full transition-colors" aria-label="Tìm kiếm">
-          <span class="material-symbols-outlined">search</span>
-        </button>
-        <div class="relative">
-          <button id="as-lang-btn" type="button" class="p-2 text-on-surface-variant hover:bg-surface-variant/20 rounded-full transition-colors" aria-label="Ngôn ngữ" aria-haspopup="true">
-            <span class="material-symbols-outlined">language</span>
+      <a href="apps/dang-ban-xe.html" id="as-dealer-post" data-dealer-only class="hidden as-vei-btn-dealer">Đăng tin</a>
+      <div id="as-workspace-wrap" data-auth-only class="hidden"></div>
+      <div class="as-vei-divider hidden sm:block" data-auth-only></div>
+      <button data-auth-only class="hidden relative as-vei-btn-ghost" type="button" aria-label="Thông báo" onclick="location.href='apps/notifications.html'">
+        <span class="material-symbols-outlined">notifications</span>
+        <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span>
+      </button>
+      <div id="auth-guest" class="flex items-center gap-2">
+        <a href="account/pages/02-dang-nhap.html" class="as-vei-btn-login">Đăng nhập</a>
+        <a href="account/pages/01-dang-ky.html" class="as-vei-btn-cta">Bắt đầu ngay</a>
+      </div>
+      <div id="auth-user" class="hidden items-center gap-2">
+        <div id="avatar-menu-wrap" class="relative">
+          <button id="avatar-menu-toggle" type="button" class="w-9 h-9 rounded-full overflow-hidden border-2 border-primary-fixed-dim ring-2 ring-surface cursor-pointer shrink-0 p-0 bg-transparent" aria-label="Menu tài khoản" aria-haspopup="true">
+            <img data-asset="profile" class="w-full h-full object-cover" src="assets/images/profile-avatar.jpg" alt="Avatar" width="36" height="36">
           </button>
-          <div id="as-lang-dropdown" class="as-lang-dropdown" role="menu">
-            <button type="button" class="is-active">Tiếng Việt</button>
-            <button type="button">English</button>
-          </div>
-        </div>
-        <div class="h-6 w-[1px] bg-outline-variant mx-1 hidden sm:block"></div>
-        <button data-auth-only class="hidden relative p-2 text-on-surface-variant hover:bg-surface-variant/20 rounded-full transition-colors" aria-label="Thông báo">
-          <span class="material-symbols-outlined">notifications</span>
-          <span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
-        </button>
-        <button id="app-switcher-toggle" data-auth-only class="hidden p-2 text-on-surface-variant hover:bg-surface-variant/20 rounded-full transition-colors" aria-label="Trung tâm ứng dụng" title="Trung tâm ứng dụng">
-          <span class="material-symbols-outlined">apps</span>
-        </button>
-        <div id="auth-guest" class="flex items-center gap-2 ml-1">
-          <a href="account/pages/02-dang-nhap.html" class="px-3 py-2 rounded-xl font-label-md text-label-md text-primary border border-primary/20 hover:bg-primary/5 transition-all whitespace-nowrap">Đăng nhập</a>
-          <a href="account/pages/01-dang-ky.html" class="px-3 py-2 rounded-xl font-label-md text-label-md bg-primary text-on-primary hover:bg-primary/90 transition-all shadow-sm whitespace-nowrap">Đăng ký</a>
-        </div>
-        <div id="auth-user" class="hidden items-center gap-2 ml-1">
-          <span id="auth-user-name" class="hidden lg:inline font-label-md text-label-md text-on-surface max-w-[140px] truncate"></span>
-          <button id="auth-logout-btn" type="button" class="hidden md:inline-flex px-3 py-2 rounded-xl font-label-md text-label-md text-on-surface-variant border border-outline-variant hover:bg-surface-container-low transition-all whitespace-nowrap">Đăng xuất</button>
-          <div id="avatar-menu-wrap" class="relative">
-            <button id="avatar-menu-toggle" type="button" class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed-dim ring-2 ring-surface cursor-pointer shrink-0 p-0 bg-transparent" aria-label="Menu tài khoản" aria-haspopup="true">
-              <img data-asset="profile" class="w-full h-full object-cover" src="assets/images/profile-avatar.jpg" alt="Avatar" width="40" height="40">
-            </button>
-          </div>
         </div>
       </div>
     </div>
   </div>
 </header>
-
-<!-- Mobile Drawer -->
-<div id="as-mobile-drawer" class="as-mobile-drawer xl:hidden" aria-hidden="true">
-  <div class="as-mobile-drawer-backdrop"></div>
-  <div class="as-mobile-drawer-panel" role="dialog" aria-label="Menu điều hướng">
-    <div class="flex items-center justify-between p-4 border-b border-outline-variant">
-      <span class="font-headline-md text-headline-md font-bold text-primary">AutoSphere</span>
-      <button id="as-mobile-close" type="button" class="p-2 rounded-full hover:bg-surface-container-low" aria-label="Đóng menu">
-        <span class="material-symbols-outlined">close</span>
-      </button>
-    </div>
-    <div id="as-mobile-nav" class="flex-1"></div>
-    <div class="p-4 border-t border-outline-variant mt-auto">
-      <div id="mobile-auth-guest" class="flex flex-col gap-2">
-        <a href="account/pages/02-dang-nhap.html" class="px-4 py-3 rounded-xl font-label-md text-center text-primary border border-primary/20">Đăng nhập</a>
-        <a href="account/pages/01-dang-ky.html" class="px-4 py-3 bg-primary text-on-primary rounded-xl font-label-md text-center">Đăng ký</a>
-      </div>
-      <div id="mobile-auth-user" class="hidden flex-col gap-2">
-        <p class="px-2 py-2 font-label-md text-on-surface-variant">Xin chào, <span data-auth-name class="text-on-surface font-semibold"></span></p>
-        <button id="mobile-auth-logout" type="button" class="px-4 py-3 rounded-xl font-label-md text-center text-error border border-error/30">Đăng xuất</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- App Switcher -->
 <div id="app-switcher" class="hidden fixed top-20 right-gutter z-[110] w-[min(480px,calc(100vw-32px))] bg-surface-container-lowest rounded-3xl shadow-2xl border border-outline-variant p-6">
@@ -186,7 +145,7 @@
   <div id="app-center-grid" class="grid grid-cols-4 gap-4"></div>
 </div>
 
-<main class="pt-[72px]">
+<main class="pt-[72px]" data-vei-main data-workspace-content>
 
 <!-- Hero -->
 <section id="hero" class="min-h-[90vh] flex items-center px-gutter py-20 relative overflow-hidden">
@@ -677,6 +636,32 @@
   <span class="absolute right-full mr-4 px-4 py-2 bg-inverse-surface text-white text-label-md rounded-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Hỏi AI Agent</span>
 </button>
 
+<!-- Mobile Drawer (cuối body để luôn nổi trên nội dung trang) -->
+<div id="as-mobile-drawer" class="as-mobile-drawer xl:hidden" aria-hidden="true">
+  <div class="as-mobile-drawer-backdrop"></div>
+  <div class="as-mobile-drawer-panel" role="dialog" aria-label="Menu điều hướng">
+    <div class="as-mobile-drawer-head">
+      <a href="index.html" class="as-brand-logo" aria-label="AutoSphere — Về trang chủ" data-brand-logo="true">
+        <img class="as-brand-logo__img" src="assets/logo/autosphere-logo-header.png" alt="AutoSphere" width="1039" height="160" decoding="async">
+      </a>
+      <button id="as-mobile-close" type="button" class="as-vei-btn-ghost" aria-label="Đóng menu">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div id="as-mobile-nav" class="flex-1"></div>
+    <div class="as-mobile-drawer-foot p-4 border-t border-outline-variant mt-auto">
+      <div id="mobile-auth-guest" class="flex flex-col gap-2">
+        <a href="account/pages/02-dang-nhap.html" class="px-4 py-3 rounded-xl font-label-md text-center text-primary border border-primary/20">Đăng nhập</a>
+        <a href="account/pages/01-dang-ky.html" class="px-4 py-3 bg-primary text-on-primary rounded-xl font-label-md text-center">Bắt đầu ngay</a>
+      </div>
+      <div id="mobile-auth-user" class="hidden flex-col gap-2">
+        <p class="px-2 py-2 font-label-md text-on-surface-variant">Xin chào, <span data-auth-name class="text-on-surface font-semibold"></span></p>
+        <button id="mobile-auth-logout" type="button" class="px-4 py-3 rounded-xl font-label-md text-center text-error border border-error/30">Đăng xuất</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   // 14 Persona cards
   const PERSONAS = [
@@ -719,9 +704,11 @@
 <script src="assets/js/auth.js"></script>
 <script src="assets/js/app-center-config.js"></script>
 <script src="assets/js/header-nav-config.js"></script>
+<script src="assets/js/workspace-switcher.js"></script>
 <script src="assets/js/header-nav.js"></script>
 <script src="assets/js/app-center.js"></script>
 <script src="assets/js/avatar-menu.js"></script>
+<script src="assets/js/brand-logo.js" data-as-brand-logo="1"></script>
 <script src="assets/js/auth-header.js"></script>
 <script src="assets/js/images.js"></script>
 <script src="assets/js/landing.js"></script>

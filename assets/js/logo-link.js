@@ -20,6 +20,8 @@
   function linkBrand(el) {
     if (!el || el.dataset.logoLinked === 'true') return;
     if (el.closest('footer')) return;
+    if (el.closest('.as-brand-logo') || el.dataset.brandLogo === 'true') return;
+    if (el.querySelector('img, svg')) return;
 
     el.dataset.logoLinked = 'true';
 
@@ -56,4 +58,15 @@
 
   document.addEventListener('DOMContentLoaded', initLogoLinks);
   if (document.readyState !== 'loading') initLogoLinks();
+
+  if (!document.querySelector('script[data-as-brand-logo]')) {
+    const path = window.location.pathname.replace(/\\/g, '/');
+    let prefix = '';
+    if (path.includes('/pages/')) prefix = '../../';
+    else if (path.includes('/khampha/') || path.includes('/garage/') || path.includes('/account/') || path.includes('/detail/')) prefix = '../';
+    const s = document.createElement('script');
+    s.src = `${prefix}assets/js/brand-logo.js`;
+    s.dataset.asBrandLogo = '1';
+    document.head.appendChild(s);
+  }
 })();

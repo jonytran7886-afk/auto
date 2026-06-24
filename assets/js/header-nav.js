@@ -1,17 +1,20 @@
 /**
- * AutoSphere Header Navigation — mega menus, drawer, auth gating
+ * AutoSphere VEI Header Navigation
  */
 const AutoSphereHeaderNav = (function () {
   let openMega = null;
-  let openDropdown = null;
 
   function prefix() {
     if (typeof AutoSphereAuth !== 'undefined' && AutoSphereAuth.rootPrefix) {
       return AutoSphereAuth.rootPrefix();
     }
     const path = window.location.pathname.replace(/\\/g, '/');
-    if (path.includes('/garage/pages/') || path.includes('/account/pages/') || path.includes('/khampha/pages/')) return '../../';
-    if (path.includes('/garage/') || path.includes('/account/')) return '../';
+    if (path.includes('/garage/pages/') || path.includes('/account/pages/') || path.includes('/khampha/pages/') || path.includes('/detail/pages/')) {
+      return '../../';
+    }
+    if (path.includes('/garage/') || path.includes('/account/') || path.includes('/khampha/') || path.includes('/detail/') || path.includes('/apps/')) {
+      return '../';
+    }
     return '';
   }
 
@@ -24,17 +27,29 @@ const AutoSphereHeaderNav = (function () {
   function loginWithRedirect(targetHref) {
     const auth = window.AutoSphereAuth;
     if (!auth) return targetHref;
-    const resolved = resolveHref(targetHref);
-    const rel = resolved.replace(/^\.\.\//g, '').replace(/^\.\//, '');
+    const rel = String(targetHref).replace(/^\.\.\//g, '').replace(/^\.\//, '');
     return auth.loginUrl(rel);
   }
 
   function hrefForItem(item) {
-    const resolved = resolveHref(item.href);
     if (item.auth && typeof AutoSphereAuth !== 'undefined' && !AutoSphereAuth.isLoggedIn()) {
       return loginWithRedirect(item.href);
     }
-    return resolved;
+    return resolveHref(item.href);
+  }
+
+  function isLoggedIn() {
+    return typeof AutoSphereAuth !== 'undefined' && AutoSphereAuth.isLoggedIn();
+  }
+
+  function navKeys() {
+    return isLoggedIn() ? HEADER_AUTH_ITEMS : HEADER_GUEST_ITEMS;
+  }
+
+  function resolveSmartHref(nav) {
+    if (nav.type !== 'smart-link') return resolveHref(nav.href);
+    const href = isLoggedIn() ? nav.userHref : nav.guestHref;
+    return resolveHref(href);
   }
 
   function isActive(href) {
@@ -51,11 +66,14 @@ const AutoSphereHeaderNav = (function () {
     return current.endsWith(target) || current.includes('/' + target);
   }
 
-  function itemActive(item) {
-    if (item.href) return isActive(item.href);
+  function itemActive(nav) {
+    if (nav.type === 'smart-link') {
+      return isActive(nav.guestHref) || isActive(nav.userHref);
+    }
+    if (nav.href) return isActive(nav.href);
     const all = [];
-    if (item.items) all.push(...item.items);
-    if (item.columns) item.columns.forEach((c) => all.push(...c.items));
+    if (nav.items) all.push(...nav.items);
+    if (nav.columns) nav.columns.forEach((c) => all.push(...c.items));
     return all.some((i) => isActive(i.href));
   }
 
@@ -76,27 +94,83 @@ const AutoSphereHeaderNav = (function () {
       </div>`;
   }
 
-  function renderMega(nav, key) {
-    const cols = nav.columns
-      .map(
-        (col) => `
-        <div class="as-nav-mega-col">
-          <h4>${col.title}</h4>
-          ${col.items
-            .map(
-              (item) =>
-                `<a href="${hrefForItem(item)}" data-href="${item.href || ''}" ${item.auth ? 'data-auth="true"' : ''}>${item.label}</a>`
-            )
-            .join('')}
-        </div>`
-      )
-      .join('');
+  function renderMegaTrigger(nav, key) {
     return `
-      <div class="as-nav-item" data-nav="${key}" ${nav.auth ? 'data-auth-only="true"' : ''}>
+      <div class="as-nav-item" data-nav="${key}" ${nav.authOnly ? 'data-auth-only-nav="true"' : ''}>
         <button type="button" class="as-nav-trigger" aria-expanded="false" aria-haspopup="true" data-mega="${key}">
           ${nav.label}
           <span class="material-symbols-outlined as-nav-chevron">expand_more</span>
         </button>
+      </div>`;
+  }
+
+  function renderSmartLink(nav, key) {
+    const href = resolveSmartHref(nav);
+    const highlight = nav.highlight ? ' as-nav-item--identity' : '';
+    const icon = nav.icon
+      ? `<span class="material-symbols-outlined as-nav-icon" style="font-variation-settings:'FILL' 1">${nav.icon}</span>`
+      : '';
+    const badge = nav.badge && isLoggedIn()
+      ? `<span class="as-nav-badge" aria-label="${nav.badge} xe">${nav.badge}</span>`
+      : '';
+
+    return `
+      <div class="as-nav-item${highlight}" data-nav="${key}">
+        <a href="${href}" class="as-nav-link as-nav-link--smart">
+          ${icon}
+          <span>${nav.label}</span>
+          ${badge}
+        </a>
+      </div>`;
+  }
+
+  function megaItems(nav) {
+    if (nav.items) return nav.items;
+    if (nav.columns) return nav.columns.flatMap((c) => c.items);
+    return [];
+  }
+
+  function positionMegaPanel(panel, trigger) {
+    if (!panel || !trigger) return;
+    const rect = trigger.getBoundingClientRect();
+    const panelW = panel.offsetWidth || 360;
+    const margin = 12;
+    let left = rect.left + rect.width / 2 - panelW / 2;
+    left = Math.max(margin, Math.min(left, window.innerWidth - panelW - margin));
+    panel.style.left = `${left}px`;
+    panel.dataset.positioned = 'true';
+  }
+
+  function renderMegaLink(item) {
+    const icon = item.icon || 'chevron_right';
+    return `<a href="${hrefForItem(item)}" class="as-mega-link" data-href="${item.href || ''}" ${item.auth ? 'data-auth="true"' : ''}>
+      <span class="material-symbols-outlined as-mega-link__icon" aria-hidden="true">${icon}</span>
+      <span class="as-mega-link__text">${item.label}</span>
+    </a>`;
+  }
+
+  function renderMegaPanel(nav, key) {
+    const items = megaItems(nav).map(renderMegaLink).join('');
+
+    const icon = nav.icon || 'category';
+    const desc = nav.description || '';
+    const cta = nav.cta
+      ? `<a href="${hrefForItem(nav.cta)}" class="as-mega-cta" data-href="${nav.cta.href || ''}" ${nav.cta.auth ? 'data-auth="true"' : ''}>${nav.cta.label}</a>`
+      : '';
+    const footer = desc || cta
+      ? `<div class="as-mega-footer">${desc ? `<p class="as-mega-desc">${desc}</p>` : ''}${cta}</div>`
+      : '';
+
+    return `
+      <div class="as-nav-mega" id="as-mega-${key}" data-mega-panel="${key}" role="menu">
+        <div class="as-mega-card">
+          <div class="as-mega-title">
+            <span class="material-symbols-outlined as-mega-title__icon" aria-hidden="true">${icon}</span>
+            <span class="as-mega-title__text">${nav.label}</span>
+          </div>
+          <nav class="as-mega-links" aria-label="${nav.label}">${items}</nav>
+          ${footer}
+        </div>
       </div>`;
   }
 
@@ -111,94 +185,91 @@ const AutoSphereHeaderNav = (function () {
   function renderNavItem(key) {
     const nav = HEADER_NAV[key];
     if (!nav) return '';
+    if (nav.type === 'smart-link') return renderSmartLink(nav, key);
     if (nav.type === 'dropdown') return renderDropdown(nav, key);
-    if (nav.type === 'mega') return renderMega(nav, key);
+    if (nav.type === 'mega') return renderMegaTrigger(nav, key);
     return renderLink(nav, key);
   }
 
   function renderDesktopNav() {
     const el = document.getElementById('as-desktop-nav');
     if (!el) return;
-    const loggedIn = typeof AutoSphereAuth !== 'undefined' && AutoSphereAuth.isLoggedIn();
-    const keys = loggedIn ? HEADER_AUTH_ITEMS : HEADER_GUEST_ITEMS;
-    el.innerHTML = keys.map(renderNavItem).join('');
-    renderMegaPanels(keys);
+    el.innerHTML = navKeys().map(renderNavItem).join('');
+    renderMegaPanels();
     markActiveStates();
   }
 
-  function renderMegaPanels(keys) {
+  function renderMegaPanels() {
     let container = document.getElementById('as-mega-container');
     if (!container) {
       container = document.createElement('div');
       container.id = 'as-mega-container';
       document.body.appendChild(container);
     }
-    container.innerHTML = keys
+    container.innerHTML = navKeys()
       .filter((k) => HEADER_NAV[k]?.type === 'mega')
-      .map((key) => {
-        const nav = HEADER_NAV[key];
-        const cols = nav.columns
-          .map(
-            (col) => `
-            <div class="as-nav-mega-col">
-              <h4>${col.title}</h4>
-              ${col.items
-                .map(
-                  (item) =>
-                    `<a href="${hrefForItem(item)}" data-href="${item.href || ''}" ${item.auth ? 'data-auth="true"' : ''}>${item.label}</a>`
-                )
-                .join('')}
-            </div>`
-          )
-          .join('');
-        return `<div class="as-nav-mega" id="as-mega-${key}" data-mega-panel="${key}" role="menu"><div class="as-nav-mega-grid">${cols}</div></div>`;
-      })
+      .map((key) => renderMegaPanel(HEADER_NAV[key], key))
       .join('');
   }
 
   function renderMobileDrawer() {
     const el = document.getElementById('as-mobile-nav');
     if (!el) return;
-    const loggedIn = typeof AutoSphereAuth !== 'undefined' && AutoSphereAuth.isLoggedIn();
-    const keys = loggedIn ? HEADER_AUTH_ITEMS : HEADER_GUEST_ITEMS;
+    const keys = navKeys();
 
-    el.innerHTML = keys
-      .map((key) => {
-        const nav = HEADER_NAV[key];
-        if (nav.type === 'dropdown') {
-          const links = nav.items
-            .map(
-              (item) =>
-                `<a href="${hrefForItem(item)}" data-href="${item.href || ''}" ${item.auth ? 'data-auth="true"' : ''}>${item.label}</a>`
-            )
-            .join('');
-          return `
+    const workspaceBlock =
+      isLoggedIn() && typeof VEIWorkspace !== 'undefined'
+        ? `<div class="as-mobile-workspace" id="as-mobile-workspace-slot"></div>`
+        : '';
+
+    el.innerHTML =
+      workspaceBlock +
+      keys
+        .map((key) => {
+          const nav = HEADER_NAV[key];
+          if (nav.type === 'smart-link') {
+            const href = resolveSmartHref(nav);
+            return `
+            <div class="as-mobile-section" data-section="${key}">
+              <a href="${href}" class="as-mobile-section-btn as-mobile-link">${nav.label}</a>
+            </div>`;
+          }
+          if (nav.type === 'dropdown') {
+            const links = nav.items
+              .map(
+                (item) =>
+                  `<a href="${hrefForItem(item)}" data-href="${item.href || ''}" ${item.auth ? 'data-auth="true"' : ''}>${item.label}</a>`
+              )
+              .join('');
+            return `
             <div class="as-mobile-section" data-section="${key}">
               <button type="button" class="as-mobile-section-btn">${nav.label}<span class="material-symbols-outlined">expand_more</span></button>
               <div class="as-mobile-section-body">${links}</div>
             </div>`;
-        }
-        if (nav.type === 'mega') {
-          const links = nav.columns
-            .flatMap((c) => c.items)
-            .map(
-              (item) =>
-                `<a href="${hrefForItem(item)}" data-href="${item.href || ''}" ${item.auth ? 'data-auth="true"' : ''}>${item.label}</a>`
-            )
-            .join('');
-          return `
-            <div class="as-mobile-section" data-section="${key}" ${nav.auth ? 'data-auth-only="true"' : ''}>
+          }
+          if (nav.type === 'mega') {
+            const links = megaItems(nav).map(renderMegaLink).join('');
+            const cta = nav.cta
+              ? `<a href="${hrefForItem(nav.cta)}" class="as-mobile-mega-cta" data-href="${nav.cta.href || ''}">${nav.cta.label}</a>`
+              : '';
+            const desc = nav.description ? `<p class="as-mobile-mega-desc">${nav.description}</p>` : '';
+            return `
+            <div class="as-mobile-section" data-section="${key}">
               <button type="button" class="as-mobile-section-btn">${nav.label}<span class="material-symbols-outlined">expand_more</span></button>
-              <div class="as-mobile-section-body">${links}</div>
+              <div class="as-mobile-section-body">${links}${desc}${cta}</div>
             </div>`;
-        }
-        const href = resolveHref(nav.href);
-        return `
+          }
+          const href = resolveHref(nav.href);
+          return `
           <div class="as-mobile-section" data-section="${key}">
             <a href="${href}" class="as-mobile-section-btn as-mobile-link">${nav.label}</a>
           </div>`;
-      })
-      .join('');
+        })
+        .join('');
+
+    if (isLoggedIn() && typeof VEIWorkspace !== 'undefined') {
+      VEIWorkspace.renderMobile(document.getElementById('as-mobile-workspace-slot'));
+    }
 
     markActiveStates();
   }
@@ -206,11 +277,16 @@ const AutoSphereHeaderNav = (function () {
   function closeAllMenus() {
     document.querySelectorAll('.as-nav-item.is-open').forEach((el) => el.classList.remove('is-open'));
     document.querySelectorAll('.as-nav-mega.is-open').forEach((el) => el.classList.remove('is-open'));
+    document.querySelectorAll('.as-nav-mega').forEach((el) => {
+      el.style.left = '';
+      delete el.dataset.positioned;
+    });
+    document.querySelectorAll('.as-nav-trigger[aria-expanded="true"]').forEach((el) => el.setAttribute('aria-expanded', 'false'));
     if (openMega) openMega.classList.remove('is-open');
     openMega = null;
-    openDropdown = null;
     const lang = document.getElementById('as-lang-dropdown');
     if (lang) lang.classList.remove('is-open');
+    if (typeof VEIWorkspace !== 'undefined') VEIWorkspace.closePanel();
   }
 
   function openMegaMenu(key) {
@@ -220,6 +296,9 @@ const AutoSphereHeaderNav = (function () {
     if (panel) {
       panel.classList.add('is-open');
       openMega = panel;
+      if (trigger) {
+        requestAnimationFrame(() => positionMegaPanel(panel, trigger));
+      }
     }
     if (trigger) {
       trigger.closest('.as-nav-item')?.classList.add('is-open');
@@ -254,23 +333,27 @@ const AutoSphereHeaderNav = (function () {
 
   function initMobileDrawer() {
     const drawer = document.getElementById('as-mobile-drawer');
+    if (drawer && drawer.parentElement !== document.body) {
+      document.body.appendChild(drawer);
+    }
     const openBtn = document.getElementById('mobile-menu-toggle');
     const closeBtn = document.getElementById('as-mobile-close');
     const backdrop = drawer?.querySelector('.as-mobile-drawer-backdrop');
 
     function open() {
+      closeAllMenus();
       drawer?.classList.add('is-open');
       drawer?.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('as-mobile-drawer-open');
+      document.documentElement.classList.add('as-mobile-drawer-open');
       document.body.style.overflow = 'hidden';
-      const icon = openBtn?.querySelector('.material-symbols-outlined');
-      if (icon) icon.textContent = 'close';
     }
     function close() {
       drawer?.classList.remove('is-open');
       drawer?.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('as-mobile-drawer-open');
+      document.documentElement.classList.remove('as-mobile-drawer-open');
       document.body.style.overflow = '';
-      const icon = openBtn?.querySelector('.material-symbols-outlined');
-      if (icon) icon.textContent = 'menu';
     }
 
     openBtn?.addEventListener('click', () => {
@@ -281,6 +364,9 @@ const AutoSphereHeaderNav = (function () {
     backdrop?.addEventListener('click', close);
 
     document.getElementById('as-mobile-nav')?.addEventListener('click', (e) => {
+      const link = e.target.closest('a');
+      if (link) close();
+
       const btn = e.target.closest('.as-mobile-section-btn:not(.as-mobile-link)');
       if (!btn) return;
       e.preventDefault();
@@ -313,7 +399,7 @@ const AutoSphereHeaderNav = (function () {
     document.addEventListener('click', (e) => {
       const link = e.target.closest('a[data-auth="true"]');
       if (!link) return;
-      if (typeof AutoSphereAuth !== 'undefined' && AutoSphereAuth.isLoggedIn()) return;
+      if (isLoggedIn()) return;
       e.preventDefault();
       const target = link.dataset.href || link.getAttribute('href');
       window.location.href = loginWithRedirect(target);
@@ -334,7 +420,7 @@ const AutoSphereHeaderNav = (function () {
 
     document.querySelectorAll('#as-desktop-nav a, #as-mega-container a, #as-mobile-nav a').forEach((a) => {
       const href = a.dataset.href || a.getAttribute('href');
-      if (href && isActive(href)) a.classList.add('is-active');
+      a.classList.toggle('is-active', !!(href && isActive(href)));
     });
   }
 
@@ -344,7 +430,8 @@ const AutoSphereHeaderNav = (function () {
         !e.target.closest('.as-nav-item') &&
         !e.target.closest('.as-nav-mega') &&
         !e.target.closest('#as-lang-btn') &&
-        !e.target.closest('#as-lang-dropdown')
+        !e.target.closest('#as-lang-dropdown') &&
+        !e.target.closest('.as-workspace-wrap')
       ) {
         closeAllMenus();
       }
@@ -354,9 +441,20 @@ const AutoSphereHeaderNav = (function () {
     });
   }
 
+  function updateHeaderHeight() {
+    const header = document.querySelector('.as-vei-header');
+    if (!header) return;
+    const h = header.offsetHeight;
+    document.documentElement.style.setProperty('--vei-header-h', `${h}px`);
+    const main = document.querySelector('main.pt-\\[72px\\], main[data-vei-main]');
+    if (main) main.style.paddingTop = `${h}px`;
+  }
+
   function refresh() {
     renderDesktopNav();
     renderMobileDrawer();
+    if (typeof VEIWorkspace !== 'undefined') VEIWorkspace.refresh();
+    updateHeaderHeight();
   }
 
   function init() {
@@ -367,9 +465,14 @@ const AutoSphereHeaderNav = (function () {
     initLanguageDropdown();
     initAuthGate();
     initGlobalClose();
+    updateHeaderHeight();
+    window.addEventListener('resize', updateHeaderHeight);
+    window.addEventListener('load', updateHeaderHeight);
+    document.querySelector('.as-vei-header__logo img')?.addEventListener('load', updateHeaderHeight, { once: true });
+    if (typeof VEIWorkspace !== 'undefined') VEIWorkspace.init();
   }
 
-  return { init, refresh, closeAllMenus };
+  return { init, refresh, closeAllMenus, updateHeaderHeight };
 })();
 
 document.addEventListener('DOMContentLoaded', () => {

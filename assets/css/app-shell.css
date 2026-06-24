@@ -1,4 +1,5 @@
 /* AutoSphere App Shell — Garage & Marketplace */
+@import url('brand-logo.css');
 .as-app-shell {
   min-height: 100vh;
   background: #f8f9ff;
@@ -29,9 +30,6 @@
 }
 
 .as-app-topbar__logo {
-  font-size: 18px;
-  font-weight: 800;
-  color: #004ac6;
   text-decoration: none;
 }
 

@@ -95,17 +95,42 @@
     });
   }
 
+  function getSidebarSections() {
+    const ws = typeof VEIWorkspace !== 'undefined' ? VEIWorkspace.getCurrent() : null;
+    const wsId = ws?.id || 'consumer';
+
+    if (window.APP_SHELL === 'garage') {
+      if (wsId === 'garage' && typeof WORKSPACE_GARAGE_NAV !== 'undefined') return WORKSPACE_GARAGE_NAV;
+      return typeof GARAGE_IDENTITY_NAV !== 'undefined' ? GARAGE_IDENTITY_NAV : GARAGE_APP_NAV;
+    }
+    if (window.APP_SHELL === 'marketplace') {
+      if (wsId === 'dealer' && typeof WORKSPACE_DEALER_NAV !== 'undefined') return WORKSPACE_DEALER_NAV;
+      if (wsId === 'developer' && typeof WORKSPACE_DEVELOPER_NAV !== 'undefined') return WORKSPACE_DEVELOPER_NAV;
+      return typeof MARKETPLACE_APP_NAV !== 'undefined' ? MARKETPLACE_APP_NAV : [];
+    }
+    return [];
+  }
+
+  function refreshShell() {
+    const sections = getSidebarSections();
+    if (!sections.length) return;
+    renderSidebar(sections, 'app-sidebar');
+    renderQuickLinks(sections, 'app-quick-links');
+  }
+
   function initGarage() {
-    if (typeof GARAGE_APP_NAV === 'undefined') return;
-    renderSidebar(GARAGE_APP_NAV, 'app-sidebar');
-    renderQuickLinks(GARAGE_APP_NAV, 'app-quick-links');
+    refreshShell();
   }
 
   function initMarketplace() {
-    if (typeof MARKETPLACE_APP_NAV === 'undefined') return;
-    renderSidebar(MARKETPLACE_APP_NAV, 'app-sidebar');
-    renderQuickLinks(MARKETPLACE_APP_NAV, 'app-quick-links');
+    refreshShell();
   }
+
+  window.addEventListener('vei:workspace-change', () => {
+    if (window.APP_SHELL === 'garage' || window.APP_SHELL === 'marketplace') {
+      refreshShell();
+    }
+  });
 
   document.addEventListener('DOMContentLoaded', () => {
     initAuthGate();
@@ -113,5 +138,5 @@
     if (window.APP_SHELL === 'marketplace') initMarketplace();
   });
 
-  window.AppShell = { renderSidebar, hrefForItem, resolveHref };
+  window.AppShell = { renderSidebar, hrefForItem, resolveHref, refreshShell };
 })();

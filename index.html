@@ -108,7 +108,7 @@
 <header class="fixed top-0 left-0 w-full h-[72px] z-[100] bg-surface/80 backdrop-blur-md border-b border-outline-variant shadow-sm flex items-center px-gutter transition-all">
   <div class="max-w-[1440px] w-full mx-auto flex items-center justify-between">
     <div class="flex items-center gap-8">
-      <a href="/" class="font-headline-md text-headline-md font-extrabold text-primary tracking-tight">AutoSphere</a>
+      <a href="index.html" class="font-headline-md text-headline-md font-extrabold text-primary tracking-tight">AutoSphere</a>
       <nav class="hidden xl:flex items-center gap-8">
         <a href="#ecosystem" class="font-label-md text-label-md text-on-surface hover:text-primary transition-colors">Khám phá</a>
         <a href="#lifecycle" class="font-label-md text-label-md text-on-surface hover:text-primary transition-colors">Giải pháp</a>
@@ -136,9 +136,17 @@
         <button id="app-switcher-toggle" class="p-2 text-on-surface-variant hover:bg-surface-variant/20 rounded-full transition-colors" aria-label="Ứng dụng">
           <span class="material-symbols-outlined">apps</span>
         </button>
-        <a href="account/index.html" class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed-dim ring-2 ring-surface cursor-pointer shrink-0" aria-label="Tài khoản">
-          <img data-asset="profile" class="w-full h-full object-cover" src="assets/images/profile-avatar.jpg" alt="Profile portrait" width="40" height="40">
-        </a>
+        <div id="auth-guest" class="flex items-center gap-2">
+          <a href="account/pages/01-dang-ky.html" class="px-4 py-2 rounded-xl font-label-md text-label-md text-primary border border-primary/20 hover:bg-primary/5 transition-all">Đăng ký</a>
+          <a href="account/pages/02-dang-nhap.html" class="px-4 py-2 rounded-xl font-label-md text-label-md bg-primary text-on-primary hover:bg-primary/90 transition-all shadow-sm">Đăng nhập</a>
+        </div>
+        <div id="auth-user" class="hidden items-center gap-3">
+          <span id="auth-user-name" class="font-label-md text-label-md text-on-surface hidden md:inline max-w-[120px] truncate"></span>
+          <button id="auth-logout-btn" type="button" class="px-3 py-2 rounded-xl font-label-sm text-label-sm text-on-surface-variant border border-outline-variant hover:bg-surface-container-low transition-all" title="Đăng xuất">Đăng xuất</button>
+          <a href="account/pages/05-ho-so-ca-nhan.html" class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed-dim ring-2 ring-surface cursor-pointer shrink-0" aria-label="Tài khoản">
+            <img data-asset="profile" class="w-full h-full object-cover" src="assets/images/profile-avatar.jpg" alt="Profile portrait" width="40" height="40">
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -152,7 +160,15 @@
     <a href="#personas" class="px-4 py-3 rounded-xl font-label-md hover:bg-surface-container-low transition-colors">Hệ sinh thái</a>
     <a href="#developer" class="px-4 py-3 rounded-xl font-label-md hover:bg-surface-container-low transition-colors">Nhà phát triển</a>
     <a href="#investor" class="px-4 py-3 rounded-xl font-label-md hover:bg-surface-container-low transition-colors">Nhà đầu tư</a>
-    <a href="account/index.html" class="mt-2 px-4 py-3 bg-primary text-on-primary rounded-xl font-label-md text-center">Đăng nhập</a>
+    <div id="mobile-auth-guest" class="flex flex-col gap-2 mt-2 pt-2 border-t border-outline-variant">
+      <a href="account/pages/01-dang-ky.html" class="px-4 py-3 rounded-xl font-label-md text-center text-primary border border-primary/20">Đăng ký</a>
+      <a href="account/pages/02-dang-nhap.html" class="px-4 py-3 bg-primary text-on-primary rounded-xl font-label-md text-center">Đăng nhập</a>
+    </div>
+    <div id="mobile-auth-user" class="hidden flex-col gap-2 mt-2 pt-2 border-t border-outline-variant">
+      <p class="px-4 py-2 font-label-md text-on-surface-variant">Xin chào, <span data-auth-name class="text-on-surface font-semibold"></span></p>
+      <a href="account/pages/05-ho-so-ca-nhan.html" class="px-4 py-3 rounded-xl font-label-md text-center border border-outline-variant">Tài khoản</a>
+      <button id="mobile-auth-logout" type="button" class="px-4 py-3 rounded-xl font-label-md text-center text-error border border-error/30">Đăng xuất</button>
+    </div>
   </nav>
 </div>
 
@@ -741,6 +757,8 @@
     </a>
   `).join('');
 </script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/auth-header.js"></script>
 <script src="assets/js/images.js"></script>
 <script src="assets/js/landing.js"></script>
 </body>

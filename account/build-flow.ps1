@@ -20,13 +20,39 @@ $steps = @(
   @{ id = "12-xoa-tai-khoan"; src = "x_a_t_i_kho_n_desktop\code.html" }
 )
 
-$injection = @"
+$baseInjection = @"
 
 <link rel="stylesheet" href="../css/flow-nav.css">
 <script>window.FLOW_STEP_ID = '__STEP_ID__';</script>
+"@
+
+$authInjection = @"
+<script src="../../assets/js/auth.js"></script>
+<script src="../js/auth-handlers.js"></script>
+"@
+
+$otpInjection = @"
+<script src="../../assets/js/auth.js"></script>
+<script src="../js/otp-handler.js"></script>
+"@
+
+$flowScripts = @"
 <script src="../js/flow-config.js"></script>
 <script src="../js/flow-nav.js"></script>
 "@
+
+$authSteps = @('01-dang-ky', '02-dang-nhap')
+$otpSteps = @('03-xac-thuc-otp')
+
+$profileInjection = @"
+<script src="../js/profile-nav.js"></script>
+"@
+
+$profileSteps = @(
+  '05-ho-so-ca-nhan', '06-giay-to-ca-nhan', '07-quan-ly-dia-chi',
+  '08-thiet-bi-dang-nhap', '09-xac-nhan-dang-xuat-thiet-bi', '10-bao-mat',
+  '11-khoa-tai-khoan', '12-xoa-tai-khoan'
+)
 
 foreach ($step in $steps) {
   $srcPath = Join-Path $docs $step.src
@@ -38,7 +64,16 @@ foreach ($step in $steps) {
   }
 
   $html = Get-Content -Path $srcPath -Raw -Encoding UTF8
-  $inject = $injection.Replace('__STEP_ID__', $step.id)
+  $inject = $baseInjection.Replace('__STEP_ID__', $step.id)
+  if ($authSteps -contains $step.id) {
+    $inject += $authInjection
+  } elseif ($otpSteps -contains $step.id) {
+    $inject += $otpInjection
+  }
+  $inject += $flowScripts
+  if ($profileSteps -contains $step.id) {
+    $inject += $profileInjection
+  }
 
   if ($html -match '</body>') {
     $html = $html -replace '</body>', "$inject`n</body>"

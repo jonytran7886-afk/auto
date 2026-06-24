@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Giá trị xe | AutoSphere</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#943700",
+                        "on-secondary": "#ffffff",
+                        "outline": "#737686",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-error": "#ffffff",
+                        "primary": "#004ac6",
+                        "secondary": "#00687a",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "error": "#ba1a1a",
+                        "on-background": "#0b1c30",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary-fixed": "#00174b",
+                        "secondary-container": "#57dffe",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#006172",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary-container": "#eeefff",
+                        "surface": "#f8f9ff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-tertiary-container": "#ffede6",
+                        "on-secondary-fixed": "#001f26",
+                        "surface-dim": "#cbdbf5",
+                        "primary-fixed": "#dbe1ff",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "surface-container": "#e5eeff",
+                        "outline-variant": "#c3c6d7",
+                        "inverse-on-surface": "#eaf1ff",
+                        "primary-container": "#2563eb",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "on-surface-variant": "#434655",
+                        "surface-tint": "#0053db",
+                        "tertiary-container": "#bc4800",
+                        "inverse-surface": "#213145",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-surface": "#0b1c30",
+                        "surface-variant": "#d3e4fe",
+                        "background": "#f8f9ff",
+                        "secondary-fixed": "#acedff",
+                        "surface-container-high": "#dce9ff",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#ffdbcd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack_gap": "12px",
+                        "sidebar_width": "260px",
+                        "gutter": "24px",
+                        "margin_mobile": "16px",
+                        "section_gap": "32px",
+                        "container_max_width": "1200px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .shadow-soft {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+        }
+        .shadow-overlay {
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        .chart-gradient {
+            background: linear-gradient(180deg, rgba(37, 99, 235, 0.1) 0%, rgba(37, 99, 235, 0) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-gutter h-16 bg-surface shadow-sm">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="garage">garage</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Gara cá nhân</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95 duration-200" data-icon="notifications">notifications</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed-dim">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a young Vietnamese male executive with a confident smile, wearing a sharp navy blue blazer against a minimalist soft gray office background. The lighting is clean and cinematic, reflecting a premium service aesthetic with high-quality digital photography standards." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsshZc28-GLThrvwZtW7n6wdHFKXWrFl4wjYael0jmDLurCcIlw_-78H6c4fCFqjxK9eGNI5XbedKeYOaNAA64Liw9-sj2g3N-bvho20xGsqi4aiCygrb5yfm6C466szUrMoWs2MeHUaPEc0XUNAtXrz0InoQYLmjpqz33zU06RD37ogLsEmbNHeFzzAj_xaTTHAk_2nS6uzV50Z09Az1riuIU64q0DDkBV6bFXV0dSh1gQYdyi98glyp2Ah9ZHTj8TtwbuLkJ5w"/>
+</div>
+</div>
+</header>
+<!-- Sidebar Navigation -->
+<aside class="hidden lg:flex fixed left-0 top-16 h-[calc(100vh-64px)] w-sidebar_width flex-col p-4 gap-stack_gap border-r border-outline-variant bg-surface">
+<div class="mb-6 px-4 py-2 bg-surface-container-low rounded-xl">
+<h2 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-1">Phương tiện active</h2>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="directions_car">directions_car</span>
+<span class="font-headline-md text-headline-md text-primary font-bold">BMW X5 2023</span>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="directions_car">directions_car</span>
+<span class="font-body-md text-body-md">Danh sách phương tiện</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-body-md text-body-md">Giấy tờ xe</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="manage_history">manage_history</span>
+<span class="font-body-md text-body-md">Lịch sử sở hữu</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="speed">speed</span>
+<span class="font-body-md text-body-md">Tình trạng xe</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-surface-container-highest text-primary font-semibold rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-body-md text-body-md">Giá trị xe</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-body-md text-body-md">Hồ sơ kinh tế số</span>
+</a>
+</nav>
+<div class="mt-auto p-4 bg-primary-container rounded-xl text-on-primary-container">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-sm" data-icon="verified">verified</span>
+<span class="font-label-sm text-label-sm">Premium Member</span>
+</div>
+<p class="font-label-sm text-label-sm opacity-90">AutoSphere ID: 8888</p>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="lg:ml-[260px] pt-24 pb-32 px-gutter min-h-screen">
+<div class="max-w-container_max_width mx-auto">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-section_gap gap-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-background">Phân tích giá trị xe</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Định giá dựa trên AI và dữ liệu thị trường thực tế</p>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-full font-label-md text-label-md flex items-center gap-2 transition-all active:scale-95 shadow-soft">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+                    Làm mới định giá
+                </button>
+</div>
+<!-- Bento Layout Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Main Valuation Card -->
+<div class="md:col-span-12 lg:col-span-8 bg-white p-6 rounded-xl shadow-soft">
+<div class="flex justify-between items-start mb-8">
+<div>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Giá trị ước tính hiện tại</span>
+<div class="flex items-baseline gap-4 mt-1">
+<h3 class="font-headline-lg text-[40px] text-primary font-extrabold">3.250.000.000 VNĐ</h3>
+<span class="bg-error-container text-error px-2 py-1 rounded-lg font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="trending_down">trending_down</span>
+                                    -2.4% tháng qua
+                                </span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Cập nhật lần cuối</span>
+<p class="font-label-md text-label-md font-bold">Hôm nay, 10:24 AM</p>
+</div>
+</div>
+<!-- Line Chart Placeholder -->
+<div class="w-full h-64 relative rounded-lg bg-surface-container-low overflow-hidden">
+<div class="chart-gradient absolute inset-0"></div>
+<!-- Simple SVG for Line Chart -->
+<svg class="absolute inset-0 w-full h-full px-4 pt-10" viewbox="0 0 800 200">
+<path class="drop-shadow-lg" d="M0,150 Q100,120 200,140 T400,80 T600,110 T800,40" fill="none" stroke="#2563EB" stroke-width="3"></path>
+<circle cx="800" cy="40" fill="#2563EB" r="4"></circle>
+</svg>
+<div class="absolute bottom-4 left-0 w-full px-6 flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>T1/2023</span>
+<span>T4/2023</span>
+<span>T7/2023</span>
+<span>T10/2023</span>
+<span>T1/2024</span>
+<span class="font-bold text-primary">Hiện tại</span>
+</div>
+</div>
+</div>
+<!-- Market Insight Column -->
+<div class="md:col-span-12 lg:col-span-4 flex flex-col gap-6">
+<!-- Market Pulse -->
+<div class="bg-surface-container-highest p-6 rounded-xl shadow-soft">
+<h4 class="font-label-md text-label-md font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="insights">insights</span>
+                            Insight thị trường
+                        </h4>
+<div class="space-y-4">
+<div class="p-3 bg-white/50 rounded-lg border border-outline-variant">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Cung/Cầu</p>
+<p class="font-body-md text-body-md font-semibold">Cầu đang tăng mạnh cho dòng BMW X5 đời 2023</p>
+</div>
+<div class="p-3 bg-white/50 rounded-lg border border-outline-variant">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Thời gian thanh khoản trung bình</p>
+<p class="font-body-md text-body-md font-semibold">18 ngày (Nhanh hơn 5 ngày so với mặt bằng)</p>
+</div>
+</div>
+<button class="w-full mt-4 text-primary font-label-md text-label-md hover:underline">Xem báo cáo chi tiết</button>
+</div>
+<!-- Comparison Card -->
+<div class="bg-white p-6 rounded-xl shadow-soft border border-outline-variant">
+<h4 class="font-label-md text-label-md font-bold mb-4">So sánh cùng phân khúc</h4>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface-variant">Giá của bạn</span>
+<span class="font-label-md text-label-md font-bold text-primary">3.25 tỷ</span>
+</div>
+<div class="w-full bg-surface-container-low h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 75%"></div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm">Thấp nhất (3.05 tỷ)</span>
+<span class="font-label-sm text-label-sm">Cao nhất (3.4 tỷ)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Analysis Grid -->
+<div class="md:col-span-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Factor: Year -->
+<div class="bg-white p-5 rounded-xl shadow-soft border-l-4 border-primary">
+<div class="flex items-center gap-3 mb-3">
+<div class="p-2 bg-primary-fixed rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="calendar_today">calendar_today</span>
+</div>
+<span class="font-label-md text-label-md font-bold">Năm sản xuất</span>
+</div>
+<p class="font-headline-md text-headline-md">2023</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-2">Dòng xe đời mới, khấu hao thấp</p>
+</div>
+<!-- Factor: ODO -->
+<div class="bg-white p-5 rounded-xl shadow-soft border-l-4 border-secondary">
+<div class="flex items-center gap-3 mb-3">
+<div class="p-2 bg-secondary-fixed rounded-lg">
+<span class="material-symbols-outlined text-secondary" data-icon="speed">speed</span>
+</div>
+<span class="font-label-md text-label-md font-bold">Odometer</span>
+</div>
+<p class="font-headline-md text-headline-md">8,500 km</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-2">Sử dụng ít so với độ tuổi xe</p>
+</div>
+<!-- Factor: Accidents -->
+<div class="bg-white p-5 rounded-xl shadow-soft border-l-4 border-success-container">
+<div class="flex items-center gap-3 mb-3">
+<div class="p-2 bg-surface-container-highest rounded-lg">
+<span class="material-symbols-outlined text-on-surface" data-icon="shield_check">shield_lock</span>
+</div>
+<span class="font-label-md text-label-md font-bold">Lịch sử va chạm</span>
+</div>
+<p class="font-headline-md text-headline-md text-on-surface">Không phát hiện</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-2">Đã kiểm định 120 điểm kỹ thuật</p>
+</div>
+<!-- Factor: Maintenance -->
+<div class="bg-white p-5 rounded-xl shadow-soft border-l-4 border-tertiary">
+<div class="flex items-center gap-3 mb-3">
+<div class="p-2 bg-tertiary-fixed rounded-lg">
+<span class="material-symbols-outlined text-tertiary" data-icon="build">build</span>
+</div>
+<span class="font-label-md text-label-md font-bold">Bảo dưỡng định kỳ</span>
+</div>
+<p class="font-headline-md text-headline-md">Chính hãng</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-2">Gần nhất: 5/1/2024 tại BMW Q7</p>
+</div>
+</div>
+<!-- Secondary Content Section -->
+<div class="md:col-span-8 bg-white p-8 rounded-xl shadow-soft">
+<h3 class="font-headline-md text-headline-md mb-6">Đề xuất tối ưu giá trị</h3>
+<div class="space-y-4">
+<div class="flex gap-4 items-start p-4 bg-surface-container-low rounded-xl border border-primary-fixed-dim">
+<span class="material-symbols-outlined text-primary mt-1" data-icon="auto_fix_high">auto_fix_high</span>
+<div>
+<h4 class="font-label-md text-label-md font-bold">Detailing chuyên sâu (Dọn nội/ngoại thất)</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Ước tính tăng +15,000,000 VNĐ vào giá trị bán lại nhờ cải thiện thẩm mỹ thị giác.</p>
+</div>
+</div>
+<div class="flex gap-4 items-start p-4 bg-surface-container-low rounded-xl border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant mt-1" data-icon="history_edu">history_edu</span>
+<div>
+<h4 class="font-label-md text-label-md font-bold">Hoàn thiện hồ sơ bảo hiểm năm tới</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Giúp xe giữ giá tốt hơn khi giao dịch trong thị trường thứ cấp.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Promo/Call to Action -->
+<div class="md:col-span-4 bg-primary p-8 rounded-xl text-white relative overflow-hidden flex flex-col justify-between">
+
+<div class="relative z-10">
+<h3 class="font-headline-md text-headline-md font-bold mb-2">Bạn muốn bán xe?</h3>
+<p class="font-body-md text-body-md opacity-80 mb-6">Chúng tôi có danh sách 500+ người mua đang tìm kiếm BMW X5 của bạn.</p>
+</div>
+<button class="relative z-10 w-full py-4 bg-white text-primary font-bold rounded-xl hover:bg-opacity-90 transition-all shadow-overlay">
+                        Đăng bán ngay
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Component -->
+<footer class="w-full py-8 px-gutter border-t border-outline-variant bg-surface-container-low">
+<div class="max-w-container_max_width mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="garage">garage</span>
+<span class="font-headline-md text-headline-md text-primary font-bold">AutoSphere</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant text-center md:text-left">
+                © 2024 AutoSphere. Bản quyền thuộc về hệ sinh thái quản lý phương tiện thông minh.
+            </p>
+<div class="flex gap-6">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary underline transition-all" href="#">Điều khoản</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary underline transition-all" href="#">Bảo mật</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary underline transition-all" href="#">Hỗ trợ</a>
+</div>
+</div>
+</footer>
+<!-- Mobile Navigation Bar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-surface shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
+<span class="material-symbols-outlined" data-icon="directions_car">directions_car</span>
+<span class="font-label-sm text-label-sm">Xe</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-sm text-label-sm">Giấy tờ</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-2xl px-3 py-1">
+<span class="material-symbols-outlined" data-icon="analytics" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-label-sm text-label-sm">Định giá</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-sm text-label-sm">Lịch sử</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm">Ví</span>
+</div>
+</nav>
+<script>
+        // Micro-interaction for refresh button
+        document.querySelector('button:has(.material-symbols-outlined[data-icon="refresh"])').addEventListener('click', function() {
+            const icon = this.querySelector('.material-symbols-outlined');
+            icon.classList.add('animate-spin');
+            setTimeout(() => {
+                icon.classList.remove('animate-spin');
+                alert('Dữ liệu định giá đã được cập nhật mới nhất!');
+            }, 1000);
+        });
+
+        // Hover animations for analysis cards
+        const cards = document.querySelectorAll('.grid > div');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.classList.add('scale-[1.02]');
+                card.classList.add('duration-300');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('scale-[1.02]');
+            });
+        });
+    </script>
+</body></html>

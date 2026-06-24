@@ -15,8 +15,21 @@
   const next = idx < ACCOUNT_FLOW.length - 1 ? ACCOUNT_FLOW[idx + 1] : null;
   const progress = Math.round(((idx + 1) / ACCOUNT_FLOW.length) * 100);
 
+  const AUTH_GATE_STEPS = ['01-dang-ky', '02-dang-nhap', '03-xac-thuc-otp'];
+
+  const inPagesDir = /\/pages\//.test(window.location.pathname.replace(/\\/g, '/'));
+
   function pageUrl(step) {
-    return `pages/${step.id}.html`;
+    return inPagesDir ? `${step.id}.html` : `pages/${step.id}.html`;
+  }
+
+  function flowIndexUrl() {
+    return inPagesDir ? '../index.html' : 'index.html';
+  }
+
+  function landingUrl() {
+    if (typeof AutoSphereAuth !== 'undefined') return AutoSphereAuth.landingUrl();
+    return inPagesDir ? '../../index.html' : '../index.html';
   }
 
   function injectNav() {
@@ -30,7 +43,7 @@
           <div class="flow-bar"><div class="flow-bar-fill" style="width:${progress}%"></div></div>
         </div>
         <div class="flow-actions">
-          <a href="index.html" class="flow-btn flow-btn-map">Luồng</a>
+          <a href="${flowIndexUrl()}" class="flow-btn flow-btn-map">Luồng</a>
           ${prev ? `<a href="${pageUrl(prev)}" class="flow-btn flow-btn-prev">← Trước</a>` : '<button class="flow-btn flow-btn-prev" disabled>← Trước</button>'}
           ${next ? `<a href="${pageUrl(next)}" class="flow-btn flow-btn-next" id="flow-next-btn">Tiếp →</a>` : `<a href="${typeof FLOW_EXIT_URL !== 'undefined' ? FLOW_EXIT_URL : '../prototype/index.html'}" class="flow-btn flow-btn-next">Vào App →</a>`}
         </div>
@@ -41,7 +54,10 @@
   }
 
   function wirePrimaryActions() {
-    const nextUrl = next ? pageUrl(next) : (typeof FLOW_EXIT_URL !== 'undefined' ? FLOW_EXIT_URL : '../prototype/index.html');
+    if (AUTH_GATE_STEPS.includes(window.FLOW_STEP_ID)) return;
+
+    const exitUrl = typeof FLOW_EXIT_URL !== 'undefined' ? FLOW_EXIT_URL : (inPagesDir ? '../../prototype/index.html' : '../prototype/index.html');
+    const nextUrl = next ? pageUrl(next) : exitUrl;
 
     document.querySelectorAll('form').forEach((form) => {
       form.addEventListener('submit', (e) => {
@@ -65,19 +81,35 @@
 
       if (isPrimary && btn.tagName === 'BUTTON') {
         btn.addEventListener('click', (e) => {
-          if (btn.type === 'submit') return;
           e.preventDefault();
+          e.stopPropagation();
           window.location.href = nextUrl;
+        });
+      }
+    });
+
+    document.querySelectorAll('button').forEach((btn) => {
+      if (btn.closest('#as-flow-nav')) return;
+      const text = (btn.textContent || '').trim().toLowerCase();
+      if (text.includes('hủy bỏ') || text === 'hủy') {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          window.location.href = landingUrl();
         });
       }
     });
 
     document.querySelectorAll('a[href="#"]').forEach((a) => {
       const t = (a.textContent || '').trim().toLowerCase();
-      if (t.includes('đăng ký')) {
+      if (t.includes('đăng ký') && typeof AutoSphereAuth !== 'undefined') {
+        a.href = AutoSphereAuth.registerUrl();
+      } else if (t.includes('đăng ký')) {
         a.href = pageUrl(ACCOUNT_FLOW.find((s) => s.id === '01-dang-ky') || ACCOUNT_FLOW[0]);
       }
-      if (t.includes('đăng nhập')) {
+      if (t.includes('đăng nhập') && typeof AutoSphereAuth !== 'undefined') {
+        a.href = AutoSphereAuth.loginUrl();
+      } else if (t.includes('đăng nhập')) {
         a.href = pageUrl(ACCOUNT_FLOW.find((s) => s.id === '02-dang-nhap') || ACCOUNT_FLOW[1]);
       }
     });

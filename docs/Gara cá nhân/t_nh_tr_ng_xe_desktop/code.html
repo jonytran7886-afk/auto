@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#943700",
+                        "on-secondary": "#ffffff",
+                        "outline": "#737686",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-error": "#ffffff",
+                        "primary": "#004ac6",
+                        "secondary": "#00687a",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "error": "#ba1a1a",
+                        "on-background": "#0b1c30",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary-fixed": "#00174b",
+                        "secondary-container": "#57dffe",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#006172",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary-container": "#eeefff",
+                        "surface": "#f8f9ff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-tertiary-container": "#ffede6",
+                        "on-secondary-fixed": "#001f26",
+                        "surface-dim": "#cbdbf5",
+                        "primary-fixed": "#dbe1ff",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "surface-container": "#e5eeff",
+                        "outline-variant": "#c3c6d7",
+                        "inverse-on-surface": "#eaf1ff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-surface-variant": "#434655",
+                        "surface-tint": "#0053db",
+                        "tertiary-container": "#bc4800",
+                        "inverse-surface": "#213145",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-surface": "#0b1c30",
+                        "surface-variant": "#d3e4fe",
+                        "background": "#f8f9ff",
+                        "secondary-fixed": "#acedff",
+                        "surface-container-high": "#dce9ff",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#ffdbcd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack_gap": "12px",
+                        "sidebar_width": "260px",
+                        "gutter": "24px",
+                        "margin_mobile": "16px",
+                        "section_gap": "32px",
+                        "container_max_width": "1200px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+        .gauge-ring {
+            transition: stroke-dashoffset 0.5s ease;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #d3e4fe; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Top AppBar (Desktop) -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-gutter h-16 bg-surface shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl">garage</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Gara cá nhân</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity p-2">search</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity p-2">notifications</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional close-up studio portrait of a Vietnamese man in his late 30s with short black hair and a welcoming smile. He is wearing a minimalist navy blue polo shirt against a clean, light blue-grey studio background. The lighting is soft and high-key, reflecting a modern, premium light-mode UI aesthetic for a professional user profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe6xfKDo0-MJVqS6FW0YqNPlukwD6DacCjqZgF2sg-0sLESmRC6R4hcolrAcn6X5k2LGdjuT-tQEvH3svtXDin4e5QwKyZKz9fHZUd6e6K44J5h4qQr2bMsxzvGfCaufW1vMx0sha0ekgtX-gG-dO6o1ff58UVKx-aUeb1TR2_CIbuHMtE6t0aXrV8tkeules0ZJwwOSqWw0xMc6KmQNNJ51zmECx30Y1BvvnK1oZGO-gR99PHcEdRB9E9YKY1ZYYJuV1iSDKl8A"/>
+</div>
+</div>
+</header>
+<div class="flex pt-16 min-h-screen">
+<!-- Side Navigation Drawer -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-sidebar_width hidden lg:flex flex-col p-4 gap-stack_gap bg-surface border-r border-outline-variant">
+<!-- Profile Info Header -->
+<div class="flex flex-col items-center gap-2 py-4 mb-2">
+<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-primary-container p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="A profile avatar showing a modern user, high quality photography, soft studio lighting, focused on professional identity, clean background matching the soft functionalism style of the application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMQEa55qVDDNXPnE6fGtI4wGjiN65ymxm71rsbJcEIhe-i44egfBF5LXatGC2O3WPMco-qHWsiElANt8g9pnKoNd9jAD1t4R2iiucAFabbdCSKVH4AeJ38og-ai0Tttyb5Vh6L-Z0RU9wiX2zQIpMGqhILlp7RTMD1bLQ64AyHknq91eXNfbx7bpmknqJLsfI5H-H-2upP5eerqhhxRZ17qZuAxteGESFByzsbxXvHkkOfvzAzHPaiTPk3ZbOmXVwu39piUAsc4w"/>
+</div>
+<div class="text-center">
+<p class="font-headline-md text-label-md font-bold text-on-surface">Nguyễn Văn A</p>
+<span class="text-xs text-primary font-semibold px-2 py-0.5 bg-primary-fixed rounded-full">Thành viên Premium</span>
+</div>
+</div>
+<!-- Nav Links -->
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">directions_car</span>
+<span class="font-body-md text-body-md">Danh sách phương tiện</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">description</span>
+<span class="font-body-md text-body-md">Giấy tờ xe</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">manage_history</span>
+<span class="font-body-md text-body-md">Lịch sử sở hữu</span>
+</a>
+<!-- Active Tab -->
+<a class="flex items-center gap-3 px-4 py-3 bg-surface-container-highest text-primary font-semibold rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">speed</span>
+<span class="font-body-md text-body-md">Tình trạng xe</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">payments</span>
+<span class="font-body-md text-body-md">Giá trị xe</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">account_balance_wallet</span>
+<span class="font-body-md text-body-md">Hồ sơ kinh tế số</span>
+</a>
+</nav>
+<div class="mt-auto p-4 bg-surface-container-low rounded-xl">
+<p class="text-[10px] text-outline font-bold uppercase tracking-wider mb-2">Hệ thống</p>
+<div class="flex items-center justify-between text-xs text-on-surface-variant">
+<span>Trạng thái kết nối</span>
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-0 lg:ml-sidebar_width flex-1 p-gutter max-w-container_max_width mx-auto w-full">
+<header class="mb-section_gap flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Chi tiết tình trạng xe</h2>
+<p class="text-on-surface-variant">Porsche Taycan Turbo S - <span class="font-mono text-primary">30K - 888.88</span></p>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-2 px-4 py-2 border border-outline-variant rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-sm">refresh</span>
+<span class="font-label-md text-label-md">Làm mới dữ liệu</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-on-primary rounded-lg shadow-sm hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm">print</span>
+<span class="font-label-md text-label-md">Xuất báo cáo</span>
+</button>
+</div>
+</header>
+<!-- Status Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-stack_gap mb-section_gap">
+<!-- ODO Gauge Card -->
+<div class="col-span-1 md:col-span-2 row-span-2 bg-surface p-6 rounded-xl shadow-sm border border-outline-variant relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4">
+<span class="material-symbols-outlined text-surface-container-highest text-6xl">distance</span>
+</div>
+<div class="relative z-10 flex flex-col h-full justify-between">
+<div>
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Khoảng cách di chuyển</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mt-1">Đồng hồ ODO</h3>
+</div>
+<div class="flex flex-col items-center py-8">
+<div class="relative w-48 h-48">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-high" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-primary gauge-ring" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-dasharray="552.92" stroke-dashoffset="138.23" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-4xl font-extrabold text-on-surface">12,450</span>
+<span class="text-sm font-medium text-outline">KM</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-outline-variant">
+<div>
+<p class="text-xs text-outline">Trung bình tháng</p>
+<p class="font-bold text-on-surface">850 km</p>
+</div>
+<div>
+<p class="text-xs text-outline">Dự kiến bảo trì</p>
+<p class="font-bold text-primary">+2,550 km</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Battery Status (For EV focus) -->
+<div class="bg-surface p-6 rounded-xl shadow-sm border border-outline-variant">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-secondary-container rounded-lg">
+<span class="material-symbols-outlined text-on-secondary-container">battery_charging_full</span>
+</div>
+<span class="text-[10px] px-2 py-0.5 bg-green-100 text-green-700 rounded-full font-bold">TỐT</span>
+</div>
+<p class="text-xs font-bold text-outline uppercase">Mức pin hiện tại</p>
+<p class="text-3xl font-extrabold text-on-surface mt-1">88%</p>
+<div class="mt-4 w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[88%] rounded-full"></div>
+</div>
+<p class="text-xs text-on-surface-variant mt-2">Dự kiến đi được: 420 km</p>
+</div>
+<!-- Tire Pressure -->
+<div class="bg-surface p-6 rounded-xl shadow-sm border border-outline-variant">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-surface-container-highest rounded-lg">
+<span class="material-symbols-outlined text-primary">tire_repair</span>
+</div>
+<span class="text-[10px] px-2 py-0.5 bg-green-100 text-green-700 rounded-full font-bold">ỔN ĐỊNH</span>
+</div>
+<p class="text-xs font-bold text-outline uppercase">Áp suất lốp TB</p>
+<p class="text-3xl font-extrabold text-on-surface mt-1">2.4 <span class="text-sm font-normal text-outline">bar</span></p>
+<div class="flex gap-1 mt-4">
+<div class="h-1 flex-1 bg-primary rounded-full"></div>
+<div class="h-1 flex-1 bg-primary rounded-full"></div>
+<div class="h-1 flex-1 bg-primary rounded-full"></div>
+<div class="h-1 flex-1 bg-primary rounded-full"></div>
+</div>
+<p class="text-xs text-on-surface-variant mt-2">Đồng đều 4 bánh</p>
+</div>
+<!-- Temperature -->
+<div class="bg-surface p-6 rounded-xl shadow-sm border border-outline-variant">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-tertiary-fixed rounded-lg">
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant">device_thermostat</span>
+</div>
+</div>
+<p class="text-xs font-bold text-outline uppercase">Nhiệt độ Pin/Động cơ</p>
+<p class="text-3xl font-extrabold text-on-surface mt-1">32°C</p>
+<p class="text-xs text-green-600 mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">check_circle</span> Mức nhiệt an toàn
+                    </p>
+</div>
+<!-- Brake Pad Status -->
+<div class="bg-surface p-6 rounded-xl shadow-sm border border-outline-variant">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-error-container rounded-lg">
+<span class="material-symbols-outlined text-on-error-container">settings_backup_restore</span>
+</div>
+<span class="text-[10px] px-2 py-0.5 bg-orange-100 text-orange-700 rounded-full font-bold">65%</span>
+</div>
+<p class="text-xs font-bold text-outline uppercase">Độ mòn má phanh</p>
+<p class="text-3xl font-extrabold text-on-surface mt-1">Còn 8mm</p>
+<p class="text-xs text-on-surface-variant mt-2">Đề xuất kiểm tra sau 5000km</p>
+</div>
+</div>
+<!-- Maintenance Progress & Logs -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-stack_gap">
+<!-- Maintenance Section -->
+<section class="lg:col-span-2 bg-surface p-6 rounded-xl shadow-sm border border-outline-variant">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface">Lịch bảo dưỡng định kỳ</h3>
+<button class="text-primary font-label-md text-label-md hover:underline">Xem tất cả</button>
+</div>
+<div class="space-y-6">
+<!-- Major Service -->
+<div class="p-4 bg-surface-container-low rounded-xl border border-outline-variant/30">
+<div class="flex items-start justify-between mb-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">build</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Bảo dưỡng cấp III (15,000 km)</h4>
+<p class="text-xs text-on-surface-variant">Còn 2,550 km hoặc 45 ngày</p>
+</div>
+</div>
+<span class="text-xs font-bold text-primary px-3 py-1 bg-primary-fixed rounded-full">QUAN TRỌNG</span>
+</div>
+<div class="w-full bg-surface-container-high h-3 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[82%] rounded-full transition-all duration-1000" style="width: 82.5%"></div>
+</div>
+<div class="flex justify-between mt-2 text-[11px] text-outline">
+<span>12,450 km hiện tại</span>
+<span>Mốc 15,000 km</span>
+</div>
+</div>
+<!-- Itemized Maintenance -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="flex items-center gap-3 p-3 rounded-lg border border-outline-variant/20">
+<span class="material-symbols-outlined text-on-surface-variant">opacity</span>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface">Thay dầu phanh</p>
+<div class="w-full bg-surface-container-high h-1 rounded-full mt-1">
+<div class="bg-green-500 h-full w-3/4"></div>
+</div>
+</div>
+<span class="text-[10px] font-mono">75%</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-lg border border-outline-variant/20">
+<span class="material-symbols-outlined text-on-surface-variant">filter_alt</span>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface">Lọc gió điều hòa</p>
+<div class="w-full bg-surface-container-high h-1 rounded-full mt-1">
+<div class="bg-orange-500 h-full w-1/4"></div>
+</div>
+</div>
+<span class="text-[10px] font-mono">25%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- System Logs -->
+<section class="bg-surface-container-low p-6 rounded-xl border border-outline-variant">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-on-surface-variant">terminal</span>
+<h3 class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant">Nhật ký hệ thống</h3>
+</div>
+<div class="space-y-4 max-h-[320px] overflow-y-auto pr-2">
+<!-- Log Item -->
+<div class="flex gap-3">
+<div class="min-w-[4px] bg-green-500 rounded-full h-auto"></div>
+<div>
+<p class="text-[10px] text-outline font-mono">2024-05-20 14:32:11</p>
+<p class="text-xs font-medium text-on-surface">Hệ thống phanh tự động đã kiểm tra xong. Không có lỗi.</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="min-w-[4px] bg-blue-500 rounded-full h-auto"></div>
+<div>
+<p class="text-[10px] text-outline font-mono">2024-05-20 12:05:44</p>
+<p class="text-xs font-medium text-on-surface">Cập nhật phần mềm ECU v2.4.1 thành công.</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="min-w-[4px] bg-orange-500 rounded-full h-auto"></div>
+<div>
+<p class="text-[10px] text-outline font-mono">2024-05-19 09:15:22</p>
+<p class="text-xs font-medium text-on-surface">Cảnh báo: Áp suất lốp sau bên trái giảm 0.2 bar.</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="min-w-[4px] bg-green-500 rounded-full h-auto"></div>
+<div>
+<p class="text-[10px] text-outline font-mono">2024-05-18 18:40:05</p>
+<p class="text-xs font-medium text-on-surface">Kết nối đồng bộ dữ liệu đám mây hoàn tất.</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="min-w-[4px] bg-outline rounded-full h-auto"></div>
+<div>
+<p class="text-[10px] text-outline font-mono">2024-05-18 07:00:00</p>
+<p class="text-xs font-medium text-on-surface">Khởi động hệ thống tự chẩn đoán hàng ngày.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Promotion / Action Banner -->
+<div class="mt-section_gap p-8 rounded-2xl bg-primary relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
+
+<div class="relative z-10 text-center md:text-left">
+<h4 class="text-2xl font-bold text-on-primary">Ưu đãi bảo dưỡng dành riêng cho bạn</h4>
+<p class="text-primary-fixed mt-1 opacity-90">Giảm ngay 20% cho gói bảo dưỡng Cấp III tại các trung tâm ủy quyền.</p>
+</div>
+<button class="relative z-10 px-8 py-3 bg-white text-primary font-bold rounded-xl shadow-lg hover:bg-opacity-90 active:scale-95 transition-all">
+                    Đặt lịch ngay
+                </button>
+</div>
+</main>
+</div>
+<!-- Footer (Universal) -->
+<footer class="w-full py-8 px-gutter flex flex-col md:flex-row justify-between items-center gap-4 max-w-container_max_width mx-auto border-t border-outline-variant mt-section_gap">
+<div class="flex flex-col items-center md:items-start gap-1">
+<h5 class="font-headline-md text-headline-md text-primary font-bold">AutoSphere</h5>
+<p class="font-label-md text-label-md text-on-surface-variant text-center md:text-left">© 2024 AutoSphere. Bản quyền thuộc về hệ sinh thái quản lý phương tiện thông minh.</p>
+</div>
+<div class="flex gap-6">
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary underline transition-all" href="#">Điều khoản</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary underline transition-all" href="#">Bảo mật</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary underline transition-all" href="#">Hỗ trợ</a>
+</div>
+</footer>
+<script>
+        // Micro-interaction for gauges
+        document.addEventListener('DOMContentLoaded', () => {
+            const circles = document.querySelectorAll('.gauge-ring');
+            circles.forEach(circle => {
+                const radius = circle.r.baseVal.value;
+                const circumference = radius * 2 * Math.PI;
+                // Dashoffset for 75% as example if not hardcoded
+                // circle.style.strokeDasharray = `${circumference} ${circumference}`;
+            });
+        });
+    </script>
+</body></html>

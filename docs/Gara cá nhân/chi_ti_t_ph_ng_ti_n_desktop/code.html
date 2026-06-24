@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9ff;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 238, 255, 0.5);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#943700",
+                        "on-secondary": "#ffffff",
+                        "outline": "#737686",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-error": "#ffffff",
+                        "primary": "#004ac6",
+                        "secondary": "#00687a",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "error": "#ba1a1a",
+                        "on-background": "#0b1c30",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary-fixed": "#00174b",
+                        "secondary-container": "#57dffe",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#006172",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary-container": "#eeefff",
+                        "surface": "#f8f9ff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-tertiary-container": "#ffede6",
+                        "on-secondary-fixed": "#001f26",
+                        "surface-dim": "#cbdbf5",
+                        "primary-fixed": "#dbe1ff",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "surface-container": "#e5eeff",
+                        "outline-variant": "#c3c6d7",
+                        "inverse-on-surface": "#eaf1ff",
+                        "primary-container": "#2563eb",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "on-surface-variant": "#434655",
+                        "surface-tint": "#0053db",
+                        "tertiary-container": "#bc4800",
+                        "inverse-surface": "#213145",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-surface": "#0b1c30",
+                        "surface-variant": "#d3e4fe",
+                        "background": "#f8f9ff",
+                        "secondary-fixed": "#acedff",
+                        "surface-container-high": "#dce9ff",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#ffdbcd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack_gap": "12px",
+                        "sidebar_width": "260px",
+                        "gutter": "24px",
+                        "margin_mobile": "16px",
+                        "section_gap": "32px",
+                        "container_max_width": "1200px"
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-gutter h-16 bg-surface shadow-sm">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary font-bold text-headline-md" data-icon="garage">garage</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Gara cá nhân</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity p-2" data-icon="notifications">notifications</button>
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold">A</div>
+</div>
+</header>
+<div class="flex pt-16 min-h-screen">
+<!-- NavigationDrawer (Sidebar) -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-sidebar_width bg-surface border-r border-outline-variant hidden lg:flex flex-col p-4 gap-stack_gap overflow-y-auto">
+<div class="flex flex-col items-start px-4 py-6 mb-2">
+<div class="w-16 h-16 rounded-full bg-surface-container-highest mb-3 overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a modern Vietnamese tech enthusiast in a clean white office setting. The lighting is soft and natural, emphasizing a premium and trustworthy vibe. The background is a blurred minimalist interior with subtle blue accents, aligning with a high-end personal account dashboard aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeaE7yD6YhGq_Ca198wsTna6XDjZZ2ncrhHCoOhStrvMxA2H2PF1mPV3YHZk9R0cg_1We1SotQBtLM9GsGFJIGAp7Y2sLkWT65loILAVd7RRO8f_u4sEpsBnzoFLnaFlgH0atPYIhPRqCjLVs4cvuGP0J0Qi5PyvuAKAV7cRAAasfzpP2Swz0y8DmxPRK4xmh1EMS_R80et9_5w-W5_LjSnAgFd1awmXmupthg6nff0x2i7ml7yAritTxdIaNGob7YEqciL16WcQ"/>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary">Nguyễn Văn A</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Thành viên Premium</p>
+<p class="font-label-sm text-label-sm text-outline mt-1">ID: 8888</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-surface-container-highest text-primary font-semibold rounded-lg group transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="directions_car" style="font-variation-settings: 'FILL' 1;">directions_car</span>
+<span class="font-body-md text-body-md">Danh sách phương tiện</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-body-md text-body-md">Giấy tờ xe</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="manage_history">manage_history</span>
+<span class="font-body-md text-body-md">Lịch sử sở hữu</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="speed">speed</span>
+<span class="font-body-md text-body-md">Tình trạng xe</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-body-md text-body-md">Giá trị xe</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-body-md text-body-md">Hồ sơ kinh tế số</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-outline-variant pt-4 px-4">
+<a class="flex items-center gap-3 py-2 text-error font-label-md hover:underline" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Đăng xuất</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 lg:ml-sidebar_width p-gutter max-w-container_max_width mx-auto pb-32">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 mb-6 text-on-surface-variant font-label-sm">
+<a class="hover:text-primary" href="#">Phương tiện</a>
+<span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-on-surface font-bold">Chi tiết xe</span>
+</div>
+<!-- Header Card -->
+<section class="mb-section_gap bg-white rounded-xl shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col md:flex-row border border-outline-variant">
+<div class="md:w-2/5 relative h-64 md:h-auto overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A luxurious navy blue 2024 luxury sedan parked in a high-tech minimalist garage with soft cinematic lighting. The environment is clean with metallic surfaces and subtle blue neon accents. The car's sleek lines and reflective paint highlight its premium build, presented in a crisp, light-themed photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXp58_ogp1zldDgIZkoeT7JgTVYaUg8LAPQhWEhfe0sBGIIxlOIYRv9tJBW14FH5bzpDyI95ym1IXcBsw8AgV4qm7LVluvorQA9bV0ixUb7mkvRFUFnatj-DjKqlaCj81wsKnwcO02g5XNS1uk0L7jYSgLD4FjkMfjBz5lUj3ks2fnLfVG4rh5ZSz-dB3yWrG0LldqHCICFryfqy1oUzIQNlUIsfj8yUXn9yjTAU-wXCrNoFSC3b2z7xMIfwu3dAMcyg8IeJR11w"/>
+<div class="absolute bottom-4 left-4 bg-primary text-white px-3 py-1 rounded-full font-label-sm shadow-md">Biển số: 30A-888.88</div>
+</div>
+<div class="md:w-3/5 p-8 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-1">Mercedes-Benz S450</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Luxury Edition • 2024</p>
+</div>
+<div class="flex gap-2">
+<button class="p-2 border border-outline-variant rounded-lg hover:bg-surface-container transition-colors material-symbols-outlined" data-icon="share">share</button>
+<button class="p-2 border border-outline-variant rounded-lg hover:bg-surface-container transition-colors material-symbols-outlined" data-icon="favorite">favorite</button>
+</div>
+</div>
+<div class="flex gap-4 mb-6">
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-container-low rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-secondary" data-icon="verified">verified</span>
+<span class="font-label-md text-on-surface">Đã xác thực</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-container-low rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-tertiary" data-icon="shield">shield</span>
+<span class="font-label-md text-on-surface">Còn bảo hành</span>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap gap-3">
+<button class="flex items-center gap-2 px-6 py-2.5 bg-primary text-on-primary rounded-lg font-label-md hover:bg-primary-container active:scale-95 transition-all shadow-sm">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+                            Chỉnh sửa thông tin
+                        </button>
+<button class="flex items-center gap-2 px-6 py-2.5 border border-primary text-primary rounded-lg font-label-md hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+                            Lịch sử bảo dưỡng
+                        </button>
+</div>
+</div>
+</section>
+<!-- Tabs and Details Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-stack_gap items-start">
+<!-- Internal Sidebar Tabs -->
+<div class="lg:col-span-1 space-y-stack_gap">
+<div class="bg-white rounded-xl p-4 shadow-sm border border-outline-variant">
+<h3 class="font-label-md text-on-surface-variant uppercase tracking-wider mb-4 px-2">Menu Chi Tiết</h3>
+<div class="flex flex-col gap-1">
+<button class="flex items-center justify-between px-4 py-3 bg-primary-container/10 text-primary rounded-lg font-semibold border-l-4 border-primary">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+<span>Thông số kỹ thuật</span>
+</div>
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="flex items-center justify-between px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-all group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span>Hồ sơ pháp lý</span>
+</div>
+<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="flex items-center justify-between px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-all group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined" data-icon="build">build</span>
+<span>Trang bị &amp; Tiện nghi</span>
+</div>
+<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="flex items-center justify-between px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-all group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined" data-icon="photo_library">photo_library</span>
+<span>Thư viện hình ảnh</span>
+</div>
+<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Quick Status Card -->
+<div class="bg-surface-container-high rounded-xl p-6 shadow-sm border border-outline-variant">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Chỉ số hiện tại</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-center pb-3 border-b border-outline-variant">
+<span class="text-on-surface-variant font-body-md">Số ODO</span>
+<span class="font-bold text-primary">12,450 km</span>
+</div>
+<div class="flex justify-between items-center pb-3 border-b border-outline-variant">
+<span class="text-on-surface-variant font-body-md">Nhiên liệu</span>
+<span class="font-bold text-secondary">65%</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-body-md">Bảo dưỡng tiếp</span>
+<span class="font-bold text-tertiary">Sau 2,550 km</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Details Columns -->
+<div class="lg:col-span-2 bg-white rounded-xl p-8 shadow-sm border border-outline-variant">
+<div class="flex justify-between items-center mb-8">
+<h3 class="font-headline-md text-headline-md text-primary">Thông số cơ bản</h3>
+<button class="text-primary font-label-md flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-[18px]" data-icon="save">save</span>
+                            Lưu thay đổi
+                        </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+<!-- Field 1 -->
+<div class="space-y-2">
+<label class="block font-label-md text-on-surface-variant">Hãng xe</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 font-body-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" type="text" value="Mercedes-Benz"/>
+</div>
+<!-- Field 2 -->
+<div class="space-y-2">
+<label class="block font-label-md text-on-surface-variant">Dòng xe</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 font-body-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" type="text" value="S-Class"/>
+</div>
+<!-- Field 3 -->
+<div class="space-y-2">
+<label class="block font-label-md text-on-surface-variant">Phiên bản</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 font-body-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" type="text" value="S450 Luxury V1"/>
+</div>
+<!-- Field 4 -->
+<div class="space-y-2">
+<label class="block font-label-md text-on-surface-variant">Số khung (VIN)</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 font-body-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all pr-12" type="text" value="WDD2231631A123456"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline cursor-pointer hover:text-primary" data-icon="content_copy">content_copy</span>
+</div>
+</div>
+<!-- Field 5 -->
+<div class="space-y-2">
+<label class="block font-label-md text-on-surface-variant">Số máy</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 font-body-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" type="text" value="256930-30-123456"/>
+</div>
+<!-- Field 6 -->
+<div class="space-y-2">
+<label class="block font-label-md text-on-surface-variant">Năm sản xuất</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 font-body-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" type="text" value="2024"/>
+</div>
+<!-- Field 7 -->
+<div class="space-y-2">
+<label class="block font-label-md text-on-surface-variant">Màu sắc</label>
+<div class="flex gap-2">
+<div class="w-12 h-12 rounded-lg bg-[#001c3d] border border-outline-variant"></div>
+<input class="flex-1 bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 font-body-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" type="text" value="Xanh Obsidian"/>
+</div>
+</div>
+<!-- Field 8 -->
+<div class="space-y-2">
+<label class="block font-label-md text-on-surface-variant">Loại nhiên liệu</label>
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 font-body-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all">
+<option>Xăng</option>
+<option>Điện</option>
+<option>Hybrid</option>
+<option>Dầu</option>
+</select>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-outline-variant">
+<h3 class="font-headline-md text-headline-md text-primary mb-6">Đăng ký &amp; Kiểm định</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+<div class="space-y-2">
+<label class="block font-label-md text-on-surface-variant">Ngày đăng ký lần đầu</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 font-body-md" type="date" value="2024-01-15"/>
+</div>
+<div class="space-y-2">
+<label class="block font-label-md text-on-surface-variant">Hạn kiểm định</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 font-body-md" type="date" value="2026-01-15"/>
+</div>
+</div>
+</div>
+<div class="mt-12 flex justify-end gap-4">
+<button class="px-8 py-3 bg-surface-container-low text-on-surface rounded-lg font-label-md hover:bg-surface-container-highest transition-all">Hủy bỏ</button>
+<button class="px-8 py-3 bg-primary text-on-primary rounded-lg font-label-md hover:shadow-lg active:scale-95 transition-all">Lưu thông tin</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full py-8 px-gutter flex flex-col md:flex-row justify-between items-center gap-4 max-w-container_max_width mx-auto border-t border-outline-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary font-bold" data-icon="garage">garage</span>
+<span class="font-headline-md text-headline-md text-primary font-bold">AutoSphere</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant text-center md:text-left">
+            © 2024 AutoSphere. Bản quyền thuộc về hệ sinh thái quản lý phương tiện thông minh.
+        </p>
+<div class="flex gap-6">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all" href="#">Điều khoản</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all" href="#">Bảo mật</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all" href="#">Hỗ trợ</a>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface px-2 py-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] rounded-t-xl border-t border-outline-variant">
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-2xl px-3 py-1">
+<span class="material-symbols-outlined" data-icon="directions_car" style="font-variation-settings: 'FILL' 1;">directions_car</span>
+<span class="font-label-sm text-label-sm">Xe</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-sm text-label-sm">Giấy tờ</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-sm text-label-sm">Lịch sử</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-sm text-label-sm">Tình trạng</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm">Ví</span>
+</button>
+</nav>
+<script>
+        // Simple interaction for input fields
+        const inputs = document.querySelectorAll('input, select');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.querySelector('label').classList.add('text-primary');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.querySelector('label').classList.remove('text-primary');
+            });
+        });
+    </script>
+</body></html>

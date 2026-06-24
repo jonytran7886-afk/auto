@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yêu cầu báo giá - AutoSphere</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#57dffe",
+                        "surface": "#f8f9ff",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "on-secondary-fixed": "#001f26",
+                        "on-secondary-container": "#006172",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-fixed": "#ffdbcd",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#213145",
+                        "surface-bright": "#f8f9ff",
+                        "primary": "#004ac6",
+                        "surface-variant": "#d3e4fe",
+                        "primary-container": "#2563eb",
+                        "primary-fixed": "#dbe1ff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "tertiary-container": "#bc4800",
+                        "outline": "#737686",
+                        "surface-container": "#e5eeff",
+                        "background": "#f8f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "surface-container-low": "#eff4ff",
+                        "on-tertiary-container": "#ffede6",
+                        "surface-container-highest": "#d3e4fe",
+                        "tertiary": "#943700",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#eeefff",
+                        "on-surface": "#0b1c30",
+                        "secondary-fixed": "#acedff",
+                        "on-tertiary-fixed": "#360f00",
+                        "error-container": "#ffdad6",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "outline-variant": "#c3c6d7",
+                        "on-surface-variant": "#434655",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "surface-container-high": "#dce9ff",
+                        "surface-tint": "#0053db",
+                        "surface-dim": "#cbdbf5",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-primary-fixed": "#00174b",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#00687a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sidebar_width": "260px",
+                        "gutter": "24px",
+                        "container_max_width": "1200px",
+                        "section_gap": "32px",
+                        "margin_mobile": "16px",
+                        "stack_gap": "12px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9ff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- Desktop Side Navigation Shell -->
+<aside class="hidden md:flex flex-col fixed left-0 top-0 h-full w-sidebar_width bg-surface border-r border-outline-variant p-4 z-50">
+<div class="mb-8 px-2">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">AutoSphere</h1>
+<p class="text-body-md text-on-surface-variant">Premium Mobility</p>
+</div>
+<nav class="flex-1 space-y-2">
+<!-- Navigation Items Mapping from JSON -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high hover:scale-[1.02] transition-all duration-200 rounded-xl group" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-body-md text-body-md">Khám phá</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high hover:scale-[1.02] transition-all duration-200 rounded-xl group" href="#">
+<span class="material-symbols-outlined">compare_arrows</span>
+<span class="font-body-md text-body-md">So sánh</span>
+</a>
+<!-- Active State: Báo giá -->
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-xl shadow-sm scale-[1.02] transition-all duration-200" href="#">
+<span class="material-symbols-outlined">request_quote</span>
+<span class="font-body-md text-body-md">Báo giá</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high hover:scale-[1.02] transition-all duration-200 rounded-xl group" href="#">
+<span class="material-symbols-outlined">directions_car</span>
+<span class="font-body-md text-body-md">Lái thử</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high hover:scale-[1.02] transition-all duration-200 rounded-xl group" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="font-body-md text-body-md">Giữ chỗ</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high hover:scale-[1.02] transition-all duration-200 rounded-xl group" href="#">
+<span class="material-symbols-outlined">route</span>
+<span class="font-body-md text-body-md">Hành trình</span>
+</a>
+</nav>
+<div class="pt-4 border-t border-outline-variant space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Cài đặt</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md text-body-md">Đăng xuất</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-[260px] min-h-screen pb-20 md:pb-0">
+<!-- Top App Bar Desktop -->
+<header class="hidden md:flex sticky top-0 bg-surface/80 backdrop-blur-md h-16 border-b border-outline-variant items-center justify-between px-gutter z-40">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-md text-headline-md font-bold text-primary">Yêu cầu báo giá</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 w-64 focus:ring-2 focus:ring-primary text-body-md" placeholder="Tìm kiếm phiên bản..." type="text"/>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-sm">
+                    TN
+                </div>
+</div>
+</header>
+<!-- Mobile Header -->
+<header class="md:hidden flex items-center justify-between p-4 bg-surface sticky top-0 z-40 border-b border-outline-variant">
+<h2 class="font-headline-md text-headline-md font-bold text-primary">AutoSphere</h2>
+<div class="flex gap-2">
+<span class="material-symbols-outlined">notifications</span>
+<span class="material-symbols-outlined">account_circle</span>
+</div>
+</header>
+<!-- Page Content Layout -->
+<div class="max-w-container_max_width mx-auto p-4 md:p-gutter space-y-section_gap">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+<!-- Left Column: Vehicle Info (Bento Style) -->
+<section class="space-y-6">
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden group">
+<div class="relative h-64 md:h-80 w-full overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A professional high-angle studio photograph of a luxury electric SUV in a sleek metallic obsidian finish. The vehicle is positioned in a minimalist, bright light-mode gallery with polished concrete floors that reflect the soft overhead lighting. The composition is modern and premium, focusing on the aerodynamic lines and advanced LED lighting signature. The color palette is dominated by neutral greys, crisp whites, and deep blacks to emphasize sophisticated engineering." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQaYcr335IoqzNGBHcLJURAUfGZ0EurHYtSJs_-VAzRsS5QfAPPJgjB0l2eJKFzSz3DZaP0q2E42Bb2oCP5-RfpDQ9YYIvbsMOq9CPxo5YP8hSIJu46Mhqdb8ibNwnoADzfTfm0BMyFzr43dkZQ-sqZXlRKhtBNfkZa9U-0EW5TzRWefIJuacs2Y1yU0RuyaZ01HtUcN-tbweu7C6qMOWyRqtPQ7hrVo8hlOKJuj7j6k_dG1_qImlUc_T_-30HDWWJZJpmYDKXzQ"/>
+<div class="absolute top-4 left-4 bg-primary text-on-primary px-3 py-1 rounded-full text-label-sm font-bold">
+                                PHIÊN BẢN MỚI 2024
+                            </div>
+</div>
+<div class="p-6 space-y-4">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">AutoSphere Zenith Pro E4</h3>
+<p class="text-body-lg text-on-surface-variant">Dòng SUV thuần điện hạng sang</p>
+</div>
+<div class="grid grid-cols-3 gap-4 border-y border-outline-variant py-4">
+<div class="text-center">
+<span class="material-symbols-outlined text-primary mb-1">electric_car</span>
+<p class="text-label-sm text-on-surface-variant uppercase">Quãng đường</p>
+<p class="font-label-md text-label-md">650 km</p>
+</div>
+<div class="text-center border-x border-outline-variant">
+<span class="material-symbols-outlined text-primary mb-1">bolt</span>
+<p class="text-label-sm text-on-surface-variant uppercase">Công suất</p>
+<p class="font-label-md text-label-md">408 hp</p>
+</div>
+<div class="text-center">
+<span class="material-symbols-outlined text-primary mb-1">timer</span>
+<p class="text-label-sm text-on-surface-variant uppercase">0-100 km/h</p>
+<p class="font-label-md text-label-md">4.5 s</p>
+</div>
+</div>
+<div class="space-y-3">
+<h4 class="font-label-md text-label-md text-on-surface">Màu sắc ngoại thất đã chọn</h4>
+<div class="flex gap-3">
+<button class="w-8 h-8 rounded-full bg-[#1A1A1A] ring-2 ring-primary ring-offset-2"></button>
+<button class="w-8 h-8 rounded-full bg-[#D1D5DB] hover:ring-2 hover:ring-primary-fixed"></button>
+<button class="w-8 h-8 rounded-full bg-[#1E3A8A] hover:ring-2 hover:ring-primary-fixed"></button>
+<button class="w-8 h-8 rounded-full bg-[#FFFFFF] border border-outline hover:ring-2 hover:ring-primary-fixed"></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Highlight Features -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-4 rounded-xl flex items-center gap-3 shadow-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">security</span>
+</div>
+<div>
+<p class="text-label-sm font-bold text-on-surface">Bảo hành 5 năm</p>
+<p class="text-label-sm text-on-surface-variant">Không giới hạn km</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl flex items-center gap-3 shadow-sm">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed-variant">
+<span class="material-symbols-outlined">ev_station</span>
+</div>
+<div>
+<p class="text-label-sm font-bold text-on-surface">Sạc miễn phí</p>
+<p class="text-label-sm text-on-surface-variant">Tại mọi trạm 12 tháng</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Column: Quote Request Form -->
+<section class="bg-surface-container-lowest rounded-xl shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05),0_2px_4px_-2px_rgba(0,0,0,0.05)] p-6 md:p-8 space-y-8">
+<div class="space-y-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">Thông tin nhận báo giá</h3>
+<p class="text-body-md text-on-surface-variant">Vui lòng điền thông tin bên dưới, đội ngũ tư vấn của AutoSphere sẽ gửi báo giá chi tiết và ưu đãi đặc quyền trong vòng 30 phút.</p>
+</div>
+<form class="space-y-6">
+<!-- Personal Info -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="text-label-md text-on-surface px-1">Họ và tên *</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none" placeholder="Nguyễn Văn A" type="text"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-label-md text-on-surface px-1">Số điện thoại *</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none" placeholder="09xx xxx xxx" type="tel"/>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-label-md text-on-surface px-1">Email (Không bắt buộc)</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none" placeholder="example@gmail.com" type="email"/>
+</div>
+<!-- Location & Showroom -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="text-label-md text-on-surface px-1">Tỉnh / Thành phố</label>
+<select class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none">
+<option>Hà Nội</option>
+<option>TP. Hồ Chí Minh</option>
+<option>Đà Nẵng</option>
+<option>Hải Phòng</option>
+</select>
+</div>
+<div class="space-y-1.5">
+<label class="text-label-md text-on-surface px-1">Showroom gần bạn</label>
+<select class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none">
+<option>AutoSphere Hoàn Kiếm</option>
+<option>AutoSphere Long Biên</option>
+<option>AutoSphere Mỹ Đình</option>
+</select>
+</div>
+</div>
+<!-- Inquiry Details -->
+<div class="space-y-3">
+<p class="text-label-md text-on-surface">Bạn quan tâm đến hình thức nào?</p>
+<div class="flex flex-wrap gap-4">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="w-5 h-5 text-primary focus:ring-primary border-outline-variant" name="payment" type="radio"/>
+<span class="text-body-md text-on-surface group-hover:text-primary transition-colors">Mua thẳng (Trả 100%)</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="w-5 h-5 text-primary focus:ring-primary border-outline-variant" name="payment" type="radio"/>
+<span class="text-body-md text-on-surface group-hover:text-primary transition-colors">Trả góp (Vay ngân hàng)</span>
+</label>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-label-md text-on-surface px-1">Lời nhắn thêm</label>
+<textarea class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none resize-none" placeholder="Ví dụ: Tôi muốn biết thêm về chương trình đổi xe cũ lấy xe mới..." rows="3"></textarea>
+</div>
+<div class="flex items-start gap-3">
+<input class="mt-1 rounded border-outline-variant text-primary focus:ring-primary" id="consent" type="checkbox"/>
+<label class="text-label-sm text-on-surface-variant" for="consent">Tôi đồng ý cung cấp thông tin để nhận báo giá và các chương trình khuyến mãi từ AutoSphere. Chúng tôi cam kết bảo mật thông tin của bạn.</label>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 rounded-xl font-label-md text-label-md shadow-lg shadow-primary/20 hover:bg-primary-container hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 flex items-center justify-center gap-2" type="button">
+<span>Gửi yêu cầu báo giá</span>
+<span class="material-symbols-outlined">send</span>
+</button>
+</form>
+</section>
+</div>
+<!-- Trust Badge Section -->
+<div class="flex flex-wrap justify-center gap-x-12 gap-y-6 py-8 border-t border-outline-variant opacity-60">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">verified_user</span>
+<span class="text-label-sm uppercase font-bold tracking-wider">Thông tin bảo mật</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">support_agent</span>
+<span class="text-label-sm uppercase font-bold tracking-wider">Hỗ trợ 24/7</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">speed</span>
+<span class="text-label-sm uppercase font-bold tracking-wider">Phản hồi siêu tốc</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile Bottom Navigation -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface/95 backdrop-blur-lg pb-safe pt-2 px-2 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] border-t border-outline-variant rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-[10px] font-medium">Khám phá</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2" href="#">
+<span class="material-symbols-outlined">compare_arrows</span>
+<span class="text-[10px] font-medium">So sánh</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold p-2" href="#">
+<span class="material-symbols-outlined">request_quote</span>
+<span class="text-[10px]">Báo giá</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="text-[10px] font-medium">Giữ chỗ</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2" href="#">
+<span class="material-symbols-outlined">route</span>
+<span class="text-[10px] font-medium">Hành trình</span>
+</a>
+</nav>
+<script>
+        // Simple Interaction logic for color picker
+        const colorButtons = document.querySelectorAll('.space-y-3 button');
+        colorButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                colorButtons.forEach(b => b.classList.remove('ring-2', 'ring-primary', 'ring-offset-2'));
+                btn.classList.add('ring-2', 'ring-primary', 'ring-offset-2');
+            });
+        });
+
+        // Form Submission visual feedback
+        const submitBtn = document.querySelector('button[type="button"]');
+        submitBtn.addEventListener('click', function() {
+            const originalText = this.innerHTML;
+            this.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Đang gửi...';
+            this.classList.add('opacity-80', 'pointer-events-none');
+            
+            setTimeout(() => {
+                this.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Đã gửi thành công';
+                this.classList.replace('bg-primary', 'bg-green-600');
+                
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.classList.replace('bg-green-600', 'bg-primary');
+                    this.classList.remove('opacity-80', 'pointer-events-none');
+                }, 3000);
+            }, 1500);
+        });
+    </script>
+
+<link rel="stylesheet" href="../../assets/css/avatar-menu.css">
+<script>window.KHAMPHA_STEP_ID = '05-yeu-cau-bao-gia';</script>
+<script src="../../assets/js/app-center-config.js"></script>
+<script src="../../assets/js/auth.js"></script>
+<script src="../../assets/js/logo-link.js"></script>
+<script src="../../assets/js/avatar-menu.js"></script>
+<script src="../../assets/js/app-auth-header.js"></script>
+<script src="../../assets/js/auth-header.js"></script>
+<script src="../js/flow-config.js"></script>
+<script src="../js/khampha-nav.js"></script>
+</body></html>

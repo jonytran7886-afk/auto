@@ -1,0 +1,398 @@
+<!DOCTYPE html><html class="light" lang="vi"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#57dffe",
+                    "surface": "#f8f9ff",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "on-secondary-fixed": "#001f26",
+                    "on-secondary-container": "#006172",
+                    "inverse-on-surface": "#eaf1ff",
+                    "tertiary-fixed": "#ffdbcd",
+                    "on-error-container": "#93000a",
+                    "inverse-surface": "#213145",
+                    "surface-bright": "#f8f9ff",
+                    "primary": "#004ac6",
+                    "surface-variant": "#d3e4fe",
+                    "primary-container": "#2563eb",
+                    "primary-fixed": "#dbe1ff",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "tertiary-container": "#bc4800",
+                    "outline": "#737686",
+                    "surface-container": "#e5eeff",
+                    "background": "#f8f9ff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "surface-container-low": "#eff4ff",
+                    "on-tertiary-container": "#ffede6",
+                    "surface-container-highest": "#d3e4fe",
+                    "tertiary": "#943700",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#eeefff",
+                    "on-surface": "#0b1c30",
+                    "secondary-fixed": "#acedff",
+                    "on-tertiary-fixed": "#360f00",
+                    "error-container": "#ffdad6",
+                    "inverse-primary": "#b4c5ff",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "outline-variant": "#c3c6d7",
+                    "on-surface-variant": "#434655",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#0b1c30",
+                    "surface-container-high": "#dce9ff",
+                    "surface-tint": "#0053db",
+                    "surface-dim": "#cbdbf5",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-primary-fixed": "#00174b",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#00687a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sidebar_width": "260px",
+                    "gutter": "24px",
+                    "container_max_width": "1200px",
+                    "section_gap": "32px",
+                    "margin_mobile": "16px",
+                    "stack_gap": "12px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9ff; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #c3c6d7; border-radius: 10px; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-surface/80 backdrop-blur-md border-b border-outline-variant shadow-sm">
+<div class="flex items-center gap-8">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">AutoSphere</h1>
+
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-on-surface-variant">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Sidebar Navigation -->
+<aside class="hidden md:flex flex-col w-sidebar_width h-screen fixed left-0 top-0 pt-20 p-4 border-r border-outline-variant bg-surface">
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 bg-primary-container text-on-primary-container rounded-xl font-body-md text-body-md transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">explore</span>
+                Khám phá
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-on-surface-variant hover:bg-surface-container-high rounded-xl font-body-md text-body-md transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">compare_arrows</span>
+                So sánh
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-on-surface-variant hover:bg-surface-container-high rounded-xl font-body-md text-body-md transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">request_quote</span>
+                Báo giá
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-on-surface-variant hover:bg-surface-container-high rounded-xl font-body-md text-body-md transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">directions_car</span>
+                Lái thử
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-on-surface-variant hover:bg-surface-container-high rounded-xl font-body-md text-body-md transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">bookmark</span>
+                Giữ chỗ
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-on-surface-variant hover:bg-surface-container-high rounded-xl font-body-md text-body-md transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">route</span>
+                Hành trình
+            </a>
+</nav>
+<div class="mt-auto pt-4 border-t border-outline-variant space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 text-on-surface-variant hover:bg-surface-container-high rounded-xl font-body-md text-body-md transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Cài đặt
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-error hover:bg-error-container/20 rounded-xl font-body-md text-body-md transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+                Đăng xuất
+            </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-sidebar_width pt-20 pb-20 md:pb-10 px-gutter min-h-screen">
+<div class="max-w-[1200px] mx-auto">
+<!-- Hero Search & Filter Area -->
+<section class="mb-section_gap">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-1">Khám phá dòng xe</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Tìm kiếm và trải nghiệm những mẫu xe tương lai từ AutoSphere.</p>
+</div>
+<div class="relative w-full md:w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-3 bg-surface-container-lowest border border-outline-variant rounded-full focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none" placeholder="Tìm kiếm tên xe, dòng xe..." type="text">
+</div>
+</div>
+<!-- Quick Filters -->
+<div class="flex gap-3 overflow-x-auto pb-2 no-scrollbar">
+<button class="px-5 py-2 bg-primary text-on-primary rounded-full font-label-md text-label-md whitespace-nowrap shadow-md">Tất cả</button>
+<button class="px-5 py-2 bg-surface-container-lowest border border-outline-variant text-on-surface-variant rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-high transition-colors">Sedan</button>
+<button class="px-5 py-2 bg-surface-container-lowest border border-outline-variant text-on-surface-variant rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-high transition-colors">SUV / Crossover</button>
+<button class="px-5 py-2 bg-surface-container-lowest border border-outline-variant text-on-surface-variant rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-high transition-colors">Xe điện (EV)</button>
+<button class="px-5 py-2 bg-surface-container-lowest border border-outline-variant text-on-surface-variant rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-high transition-colors">Coupe</button>
+<button class="px-5 py-2 bg-surface-container-lowest border border-outline-variant text-on-surface-variant rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-high transition-colors">Hatchback</button>
+<button class="flex items-center gap-1 px-5 py-2 bg-secondary-container text-on-secondary-container rounded-full font-label-md text-label-md whitespace-nowrap shadow-sm">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                        Bộ lọc chi tiết
+                    </button>
+</div>
+</section>
+<!-- Vehicle Grid (Bento Style) -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1: Featured -->
+<div class="lg:col-span-2 group relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_6px_-1px_rgb(0_0_0/0.05),0_2px_4px_-2px_rgb(0_0_0/0.05)] border border-outline-variant/30 hover:shadow-lg transition-all duration-300">
+<div class="relative h-72 md:h-96">
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/60 to-transparent z-10"></div>
+<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="A side view of a sleek, metallic silver luxury electric sedan parked on a clean architectural plaza at twilight. The car features aerodynamic curves and glowing LED signature lighting. The scene is shot with cinematic wide-angle lighting, emphasizing a premium, high-end automotive aesthetic in a modern light-mode setting with blue and silver tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5M90A52PTqAwEekli_hiUQ9gN-hfkTkCnSHqcMIF35ObJGiIAv8as6h5nD5mUFutXrjqDgAc_F5G_BNX2uCiNZouZeCPCvXMMZy9gNkE6-4aV_0TmZibaqeIavcfDHjpQOKAl9Z93JJLtXDyFChAts_Vu50I3MzxSb8eOIRny98j0B-ypk_QTd7kvKS9fE9W6t2-6HbT8XdaJQ8T7XuAvfi5jmyuhgzdD1DDjFyEyiMFJ_aRGq3rOiFF4QN7u2H1tf0jlGjnvrw">
+<div class="absolute top-4 left-4 z-20 flex gap-2">
+<span class="bg-primary text-on-primary px-3 py-1 rounded-full text-[12px] font-bold uppercase tracking-wider">Có xe giao ngay</span>
+<span class="bg-tertiary text-on-tertiary px-3 py-1 rounded-full text-[12px] font-bold uppercase tracking-wider">Khuyến mãi 50% trước bạ</span>
+</div>
+<div class="absolute bottom-6 left-6 z-20">
+<h3 class="font-headline-lg text-headline-lg text-white mb-2">Sphere S-Vision</h3>
+<div class="flex items-center gap-4 text-white/90">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">battery_charging_full</span> 650 km</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">bolt</span> 0-100: 3.2s</span>
+</div>
+</div>
+<button class="absolute bottom-6 right-6 z-20 bg-white text-primary px-6 py-3 rounded-xl font-label-md text-label-md hover:bg-primary hover:text-white transition-all shadow-xl">
+                            Xem chi tiết
+                        </button>
+</div>
+</div>
+<!-- Card 2: SUV -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_6px_-1px_rgb(0_0_0/0.05),0_2px_4px_-2px_rgb(0_0_0/0.05)] border border-outline-variant/30 hover:shadow-lg transition-all duration-300">
+<div class="relative h-60">
+<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="A front three-quarter view of a deep sapphire blue luxury SUV driving through a minimalist mountain pass during the golden hour. The vehicle has a bold grille and sharp headlight design. The background features soft bokeh mountain peaks. The overall mood is powerful and adventurous, maintaining a premium clean aesthetic with rich blue and warm gold accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuNVmpGEoNiBWeIebOpmTnXDlj68z3Hs26UNYAidADUgjUq62RM-2ANhlJXsve0qdmEFikbEC8xGsgTZMHhQyo_B8wHTP99pUedbb1ozqfRaTOgyQabys8_2BtRoqZ27DSNRQKj9clwdJDcXSX94tAL_zCr-lTna6pdCszNXzrFa8QwKLXfHk-rmE6lThNg2IlzO4qVqRZylZjQ37M9nnJa05I-yQqRQL2Y4YSnbHVLF3LMERzEP5kHcA9R0xAxoQGaU7x4Dk_Ug">
+<div class="absolute top-4 right-4 z-20">
+<button class="w-10 h-10 rounded-full bg-white/80 backdrop-blur shadow-sm flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">Sphere X-Explorer</h3>
+<span class="bg-surface-container text-primary px-2 py-0.5 rounded font-label-sm text-label-sm">Hybrid</span>
+</div>
+<p class="text-on-surface-variant text-body-md mb-6">Mẫu SUV 7 chỗ hạng sang với nội thất bọc da cao cấp và hệ dẫn động 4 bánh toàn thời gian.</p>
+<div class="flex items-center justify-between">
+<p class="font-headline-md text-headline-md text-primary">2.490 tỷ VNĐ</p>
+<button class="p-2 border border-primary text-primary rounded-lg hover:bg-primary-container/10 transition-all">
+<span class="material-symbols-outlined">compare_arrows</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 3: Sport -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_6px_-1px_rgb(0_0_0/0.05),0_2px_4px_-2px_rgb(0_0_0/0.05)] border border-outline-variant/30 hover:shadow-lg transition-all duration-300">
+<div class="relative h-60">
+<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="A low-angle close-up of a vibrant red sports coupe at a high-speed corner on a professional race track. Motion blur emphasizes speed. The car's aerodynamic carbon fiber details are sharp and clear. The lighting is bright daylight, creating high contrast. The style is professional automotive photography, focusing on performance and dynamism within a clean, premium visual language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQgDxumgFOxUy6aOCG4k6KpIxTZ9m4xP0UC3WfUumRBfpSDctWLmRx42BQJ_jNlxaV__YGkDnh-1rEDrGmxR3vQRvr2_di7rBpWVWMHdig7_nej4t4audtSp2lbrOHHMeNvJDgJzkh99jTswexDM1yI4iF0xfvMLrsfI-eQf7AufsNVDZwn5KTAym33BR8fKVxVHgKGePV7uXvYVUnij4w6zjo5niCnSBhn4QC3418wvBxk9QIXgMzvu8xzrcMCTKsnHOwgbUkTw">
+<div class="absolute top-4 left-4 z-20">
+<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full text-[12px] font-bold">Mới nhất</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">Sphere G-Sprint</h3>
+<span class="bg-surface-container text-primary px-2 py-0.5 rounded font-label-sm text-label-sm">Petrol</span>
+</div>
+<p class="text-on-surface-variant text-body-md mb-6">Trải nghiệm tốc độ thuần túy với động cơ V8 Twin-Turbo sản sinh 550 mã lực.</p>
+<div class="flex items-center justify-between">
+<p class="font-headline-md text-headline-md text-primary">3.120 tỷ VNĐ</p>
+<button class="p-2 border border-primary text-primary rounded-lg hover:bg-primary-container/10 transition-all">
+<span class="material-symbols-outlined">compare_arrows</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 4: Executive -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_6px_-1px_rgb(0_0_0/0.05),0_2px_4px_-2px_rgb(0_0_0/0.05)] border border-outline-variant/30 hover:shadow-lg transition-all duration-300">
+<div class="relative h-60">
+<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="The luxurious interior cabin of an executive sedan, featuring white perforated leather seats, ambient lighting in soft blue, and a massive dashboard screen. Outside the window, a blurred metropolitan skyline at night is visible. The lighting is soft and internal, focusing on texture and material quality. The image conveys ultimate comfort, silence, and technological sophistication." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZybqoI3eJEO5QCPDKrevy5tIzdH5pPe0QGONHcz4yJCcAqo5UnvgC-nttXvu17GwI9Twp1b_qMeKx79mucK9HzifZDCZWcy1b057_SFcLPdISgROQ5WwabjJb_9KqB8IwopxjmagxOi5Dxno8ugF0OzD5uOx1wUeWnVSI1acDgDvAoCwWYOV-R5VZtD7llKxOpQvqx_ubncsNIm_KflC5uwX619UCyGbBbrKpPruuwPlc2VzZyI12ewJp7Lq9-WFPZYd1qeqtKw">
+<div class="absolute top-4 left-4 z-20">
+<span class="bg-primary text-on-primary px-3 py-1 rounded-full text-[12px] font-bold uppercase tracking-wider">Giao ngay</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">Sphere L-Luxury</h3>
+<span class="bg-surface-container text-primary px-2 py-0.5 rounded font-label-sm text-label-sm">PHEV</span>
+</div>
+<p class="text-on-surface-variant text-body-md mb-6">Đẳng cấp doanh nhân với khoang lái tĩnh lặng bậc nhất và công nghệ tự hành cấp độ 3.</p>
+<div class="flex items-center justify-between">
+<p class="font-headline-md text-headline-md text-primary">4.550 tỷ VNĐ</p>
+<button class="p-2 border border-primary text-primary rounded-lg hover:bg-primary-container/10 transition-all">
+<span class="material-symbols-outlined">compare_arrows</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 5: Compact EV -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_6px_-1px_rgb(0_0_0/0.05),0_2px_4px_-2px_rgb(0_0_0/0.05)] border border-outline-variant/30 hover:shadow-lg transition-all duration-300">
+<div class="relative h-60">
+<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="A compact, futuristic white electric car parked at a modern charging station in a bright, sustainable city district with lush green plants. The car has minimalist features and a large glass roof. The atmosphere is clean, sunny, and eco-friendly. The aesthetic is bright and optimistic, with a focus on urban mobility and sustainable luxury in a light-mode color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk9eEYy9J2-A57QVGt2W7yogQuCv6Iz-Y7uWdmP7dw3rqxaYi0wNp5x1LNRt8z9yDpmpW5ivTOOHgqOvLlIQll7uDgd90DysbLX5A4qNfIxZZONatHEmMgRGijfDGM-YZIojgkkgTQxL95_0RhwRv7Dg1K5znDStxBnnq_Myg1u1IgrxaLawuoUL06cSM32S-LdiTRsDbCSrAbvub48ok2lJ9gV6O8KuB6oBXCrDAejyzvWK0MgAhCwDCQmI7Ijk8bvpDAbwNJSQ">
+<div class="absolute top-4 left-4 z-20">
+<span class="bg-tertiary text-on-tertiary px-3 py-1 rounded-full text-[12px] font-bold">Ưu đãi vay 0%</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">Sphere C-City</h3>
+<span class="bg-surface-container text-primary px-2 py-0.5 rounded font-label-sm text-label-sm">Electric</span>
+</div>
+<p class="text-on-surface-variant text-body-md mb-6">Linh hoạt trong đô thị với kích thước nhỏ gọn nhưng không gian nội thất tối ưu.</p>
+<div class="flex items-center justify-between">
+<p class="font-headline-md text-headline-md text-primary">1.250 tỷ VNĐ</p>
+<button class="p-2 border border-primary text-primary rounded-lg hover:bg-primary-container/10 transition-all">
+<span class="material-symbols-outlined">compare_arrows</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom CTA Banner -->
+<section class="mt-section_gap bg-primary-container text-on-primary-container rounded-2xl p-8 md:p-12 relative overflow-hidden">
+<div class="relative z-10 max-w-xl">
+<h2 class="font-headline-lg text-headline-lg mb-4">Chưa tìm được chiếc xe ưng ý?</h2>
+<p class="font-body-lg text-body-lg mb-8 opacity-90">Hãy để các chuyên gia của AutoSphere hỗ trợ bạn cấu hình chiếc xe cá nhân hóa theo đúng phong cách riêng.</p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-white text-primary px-8 py-4 rounded-xl font-label-md text-label-md shadow-lg hover:scale-[1.02] transition-transform">Đặt lịch tư vấn ngay</button>
+<button class="border border-white/50 text-white px-8 py-4 rounded-xl font-label-md text-label-md hover:bg-white/10 transition-all">Tải bảng thông số kĩ thuật</button>
+</div>
+</div>
+<div class="absolute top-0 right-0 w-1/3 h-full hidden lg:block opacity-20 pointer-events-none">
+<span class="material-symbols-outlined text-[300px] leading-none absolute -right-10 -top-10">directions_car</span>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface/95 backdrop-blur-lg pb-safe pt-2 px-2 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-primary font-bold transition-all scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">explore</span>
+<span class="text-[10px] uppercase mt-1">Khám phá</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-all scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">compare_arrows</span>
+<span class="text-[10px] uppercase mt-1">So sánh</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-all scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">directions_car</span>
+<span class="text-[10px] uppercase mt-1">Lái thử</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-all scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="text-[10px] uppercase mt-1">Giữ chỗ</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-all scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">route</span>
+<span class="text-[10px] uppercase mt-1">Hành trình</span>
+</a>
+</nav>
+<!-- Floating Action Button (Contextual) -->
+<button class="fixed bottom-24 md:bottom-10 right-6 md:right-10 w-14 h-14 rounded-full bg-primary text-on-primary shadow-2xl flex items-center justify-center hover:scale-110 transition-transform z-40 group">
+<span class="material-symbols-outlined text-[28px]">support_agent</span>
+<span class="absolute right-full mr-4 bg-on-surface text-white px-3 py-1.5 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Hỗ trợ trực tuyến</span>
+</button>
+<script>
+        // Simple micro-interaction for active nav links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                // If it's the main nav or side nav
+                const siblings = link.parentElement.querySelectorAll('a');
+                siblings.forEach(s => {
+                    s.classList.remove('text-primary', 'border-b-2', 'border-primary', 'bg-primary-container', 'text-on-primary-container');
+                    s.classList.add('text-on-surface-variant');
+                });
+                
+                if (link.closest('aside')) {
+                    link.classList.add('bg-primary-container', 'text-on-primary-container');
+                    link.classList.remove('text-on-surface-variant');
+                } else {
+                    link.classList.add('text-primary', 'border-b-2', 'border-primary');
+                    link.classList.remove('text-on-surface-variant');
+                }
+            });
+        });
+
+        // Search focus interaction
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-2', 'ring-primary/20');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-2', 'ring-primary/20');
+        });
+    </script>
+
+
+
+<link rel="stylesheet" href="../../assets/css/avatar-menu.css">
+<script>window.KHAMPHA_STEP_ID = '01-kham-pha-xe';</script>
+<script src="../../assets/js/app-center-config.js"></script>
+<script src="../../assets/js/auth.js"></script>
+<script src="../../assets/js/logo-link.js"></script>
+<script src="../../assets/js/avatar-menu.js"></script>
+<script src="../../assets/js/app-auth-header.js"></script>
+<script src="../../assets/js/auth-header.js"></script>
+<script src="../js/flow-config.js"></script>
+<script src="../js/khampha-nav.js"></script>
+</body></html>

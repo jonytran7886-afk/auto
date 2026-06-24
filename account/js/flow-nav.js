@@ -101,12 +101,15 @@
     });
 
     document.querySelectorAll('a[href="#"]').forEach((a) => {
+      if (a.closest('aside') || a.closest('main nav')) return;
+
       const t = (a.textContent || '').trim().toLowerCase();
       if (t.includes('đăng ký') && typeof AutoSphereAuth !== 'undefined') {
         a.href = AutoSphereAuth.registerUrl();
       } else if (t.includes('đăng ký')) {
         a.href = pageUrl(ACCOUNT_FLOW.find((s) => s.id === '01-dang-ky') || ACCOUNT_FLOW[0]);
       }
+      if (t.includes('thiết bị')) return;
       if (t.includes('đăng nhập') && typeof AutoSphereAuth !== 'undefined') {
         a.href = AutoSphereAuth.loginUrl();
       } else if (t.includes('đăng nhập')) {
@@ -115,8 +118,38 @@
     });
   }
 
+  function wireLogoLinks() {
+    const href = landingUrl();
+
+    function linkBrand(el) {
+      if (!el || el.dataset.logoLinked === 'true' || el.closest('footer')) return;
+      el.dataset.logoLinked = 'true';
+      if (el.tagName === 'A') {
+        el.href = href;
+        return;
+      }
+      const a = document.createElement('a');
+      a.href = href;
+      a.className = `${el.className} no-underline hover:opacity-90 transition-opacity`.trim();
+      a.innerHTML = el.innerHTML;
+      a.setAttribute('aria-label', 'Về trang chủ AutoSphere');
+      el.replaceWith(a);
+    }
+
+    document.querySelectorAll('header').forEach((header) => {
+      header.querySelectorAll('span, h1').forEach((el) => {
+        if ((el.textContent || '').trim() === 'AutoSphere') linkBrand(el);
+      });
+      const left = header.querySelector(':scope > div:first-child');
+      if (left && /gara cá nhân/i.test(left.textContent || '') && left.querySelector('.material-symbols-outlined')) {
+        linkBrand(left);
+      }
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     injectNav();
     wirePrimaryActions();
+    wireLogoLinks();
   });
 })();

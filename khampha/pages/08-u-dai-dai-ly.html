@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutoSphere - Đề xuất từ đại lý</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#57dffe",
+                    "surface": "#f8f9ff",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "on-secondary-fixed": "#001f26",
+                    "on-secondary-container": "#006172",
+                    "inverse-on-surface": "#eaf1ff",
+                    "tertiary-fixed": "#ffdbcd",
+                    "on-error-container": "#93000a",
+                    "inverse-surface": "#213145",
+                    "surface-bright": "#f8f9ff",
+                    "primary": "#004ac6",
+                    "surface-variant": "#d3e4fe",
+                    "primary-container": "#2563eb",
+                    "primary-fixed": "#dbe1ff",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "tertiary-container": "#bc4800",
+                    "outline": "#737686",
+                    "surface-container": "#e5eeff",
+                    "background": "#f8f9ff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "surface-container-low": "#eff4ff",
+                    "on-tertiary-container": "#ffede6",
+                    "surface-container-highest": "#d3e4fe",
+                    "tertiary": "#943700",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#eeefff",
+                    "on-surface": "#0b1c30",
+                    "secondary-fixed": "#acedff",
+                    "on-tertiary-fixed": "#360f00",
+                    "error-container": "#ffdad6",
+                    "inverse-primary": "#b4c5ff",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "outline-variant": "#c3c6d7",
+                    "on-surface-variant": "#434655",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#0b1c30",
+                    "surface-container-high": "#dce9ff",
+                    "surface-tint": "#0053db",
+                    "surface-dim": "#cbdbf5",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-primary-fixed": "#00174b",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#00687a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sidebar_width": "260px",
+                    "gutter": "24px",
+                    "container_max_width": "1200px",
+                    "section_gap": "32px",
+                    "margin_mobile": "16px",
+                    "stack_gap": "12px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9ff; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .sidebar-active {
+            background-color: #2563eb;
+            color: #eeefff;
+            border-radius: 0.75rem;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 280px repeat(3, 1fr);
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Desktop SideNavBar (The Anchor) -->
+<aside class="hidden md:flex flex-col fixed left-0 top-0 h-full w-sidebar_width p-4 bg-surface border-r border-outline-variant z-40">
+<div class="mb-10 px-2">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">AutoSphere</h1>
+<p class="text-on-surface-variant font-body-md text-body-md">Premium Mobility</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-transform hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-body-md text-body-md">Khám phá</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-transform hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined" data-icon="compare_arrows">compare_arrows</span>
+<span class="font-body-md text-body-md">So sánh</span>
+</a>
+<a class="flex items-center gap-3 p-3 bg-primary-container text-on-primary-container rounded-xl transition-transform hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined" data-icon="request_quote">request_quote</span>
+<span class="font-body-md text-body-md">Báo giá</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-transform hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined" data-icon="directions_car">directions_car</span>
+<span class="font-body-md text-body-md">Lái thử</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-transform hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+<span class="font-body-md text-body-md">Giữ chỗ</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-transform hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined" data-icon="route">route</span>
+<span class="font-body-md text-body-md">Hành trình</span>
+</a>
+</nav>
+<div class="mt-auto pt-4 border-t border-outline-variant space-y-2">
+<a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-transform hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Cài đặt</span>
+</a>
+<div class="flex items-center gap-3 p-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a Vietnamese luxury car consultant, wearing a tailored charcoal suit against a soft blue-grey background. The lighting is high-end and cinematic, reflecting a premium automotive service atmosphere with a focus on trust and expertise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxvztZs4mqA9nwhZNXrexCKG23FmiGjrKbx8lsbPGAJLnxWscEr-eUK9fv0CUAoBNmNir5Gb8gDW2ydSSWptztpjZk6jjVpzVMl-CeuZrHAbidDcqVLjMEhxv3979i5w74VXH_uzDlrggMj2L6mmwhE4aQGrnKyO-sPcfLwWWC8WOD2NDI7zxDMzDicPvJUZxeKVoR5nMG86Rt3xc0-3Givwlmh1XwamNUvfFp8gV7SjOeFH2io3nmkNO3UXKaJ-HmtsqvRawk2g"/>
+</div>
+<div class="overflow-hidden">
+<p class="font-label-md text-label-md truncate">Nguyễn Minh</p>
+<p class="text-label-sm text-on-surface-variant">Thành viên Gold</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-sidebar_width min-h-screen pb-20 md:pb-10 px-4 md:px-gutter pt-8">
+<div class="max-w-container_max_width mx-auto">
+<!-- Header Section -->
+<header class="mb-section_gap flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 text-primary font-label-md mb-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_back">arrow_back</span>
+<span>Quay lại danh sách xe</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Đề xuất từ đại lý</h2>
+<p class="text-on-surface-variant font-body-lg text-body-lg max-w-2xl">So sánh các báo giá tốt nhất cho chiếc Mercedes-Benz GLC 300 4MATIC từ các đại lý ủy quyền trong khu vực của bạn.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-2.5 rounded-full border border-outline text-on-surface hover:bg-surface-container transition-all font-label-md">Xuất PDF</button>
+<button class="px-6 py-2.5 rounded-full bg-primary text-on-primary hover:bg-primary-container shadow-sm transition-all font-label-md flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+                        Chia sẻ
+                    </button>
+</div>
+</header>
+<!-- Comparison Matrix -->
+<div class="bg-surface-container-lowest rounded-3xl shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] overflow-hidden border border-outline-variant">
+<div class="comparison-grid overflow-x-auto">
+<!-- Row Header Labels -->
+<div class="flex flex-col border-r border-outline-variant">
+<div class="h-64 flex items-center p-6 border-b border-outline-variant bg-surface-container-low/30">
+<p class="font-headline-md text-headline-md">Thông tin đại lý</p>
+</div>
+<div class="p-6 border-b border-outline-variant bg-surface-container-low/20">
+<p class="font-label-md text-label-md uppercase text-on-surface-variant">Giá niêm yết</p>
+</div>
+<div class="p-6 border-b border-outline-variant bg-surface-container-low/20">
+<p class="font-label-md text-label-md uppercase text-on-surface-variant">Ưu đãi tiền mặt</p>
+</div>
+<div class="p-6 border-b border-outline-variant bg-surface-container-low/20">
+<p class="font-label-md text-label-md uppercase text-on-surface-variant">Giá lăn bánh tạm tính</p>
+</div>
+<div class="p-6 border-b border-outline-variant bg-surface-container-low/20">
+<p class="font-label-md text-label-md uppercase text-on-surface-variant">Quà tặng &amp; Phụ kiện</p>
+</div>
+<div class="p-6 border-b border-outline-variant bg-surface-container-low/20">
+<p class="font-label-md text-label-md uppercase text-on-surface-variant">Thời gian giao xe</p>
+</div>
+<div class="p-6 bg-surface-container-low/20">
+<p class="font-label-md text-label-md uppercase text-on-surface-variant">Hỗ trợ trả góp</p>
+</div>
+</div>
+<!-- Dealer 1 -->
+<div class="flex flex-col border-r border-outline-variant hover:bg-primary/5 transition-colors group">
+<div class="h-64 p-6 border-b border-outline-variant flex flex-col justify-between">
+<div>
+<div class="bg-secondary-fixed text-on-secondary-fixed text-[10px] px-2 py-0.5 rounded-full inline-block font-bold mb-2">ĐỀ XUẤT TỐT NHẤT</div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Haxaco Võ Văn Kiệt</h4>
+<p class="text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+                                    Quận 6, TP. HCM
+                                </p>
+</div>
+<div class="flex items-center gap-1 text-tertiary font-label-md">
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                                4.9 (120 đánh giá)
+                            </div>
+</div>
+<div class="p-6 border-b border-outline-variant">
+<p class="font-body-md text-body-md text-on-surface-variant line-through">2.799.000.000đ</p>
+<p class="font-headline-md text-headline-md font-bold text-on-surface">2.799.000.000đ</p>
+</div>
+<div class="p-6 border-b border-outline-variant">
+<p class="font-headline-md text-headline-md text-primary font-bold">- 150.000.000đ</p>
+<p class="text-label-sm text-on-surface-variant">Giảm trực tiếp vào giá</p>
+</div>
+<div class="p-6 border-b border-outline-variant bg-primary/5">
+<p class="font-headline-md text-headline-md font-bold text-on-surface">2.980.000.000đ</p>
+<p class="text-label-sm text-on-surface-variant">Khu vực TP. HCM</p>
+</div>
+<div class="p-6 border-b border-outline-variant flex-1">
+<ul class="space-y-2 text-body-md text-on-surface">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="check_circle">check_circle</span>
+                                    Gói bảo dưỡng 2 năm
+                                </li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="check_circle">check_circle</span>
+                                    Phim cách nhiệt 3M
+                                </li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="check_circle">check_circle</span>
+                                    Thảm sàn cao cấp
+                                </li>
+</ul>
+</div>
+<div class="p-6 border-b border-outline-variant">
+<p class="font-label-md text-label-md text-on-surface">Giao ngay trong tháng</p>
+<p class="text-label-sm text-on-surface-variant">Sẵn xe màu Đen/Trắng</p>
+</div>
+<div class="p-6 mb-4">
+<p class="font-label-md text-label-md text-on-surface">Lãi suất 6.5%/năm</p>
+<p class="text-label-sm text-on-surface-variant">Cố định 2 năm đầu</p>
+</div>
+<div class="p-6 pt-0">
+<button class="w-full py-3 bg-primary text-on-primary rounded-xl font-label-md group-hover:shadow-md transition-all">Chọn báo giá này</button>
+</div>
+</div>
+<!-- Dealer 2 -->
+<div class="flex flex-col border-r border-outline-variant hover:bg-surface-container-high transition-colors group">
+<div class="h-64 p-6 border-b border-outline-variant flex flex-col justify-between">
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Vietnam Star Nam Sài Gòn</h4>
+<p class="text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+                                    Quận 7, TP. HCM
+                                </p>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-md">
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                                4.7 (95 đánh giá)
+                            </div>
+</div>
+<div class="p-6 border-b border-outline-variant">
+<p class="font-body-md text-body-md text-on-surface-variant line-through">2.799.000.000đ</p>
+<p class="font-headline-md text-headline-md font-bold text-on-surface">2.799.000.000đ</p>
+</div>
+<div class="p-6 border-b border-outline-variant">
+<p class="font-headline-md text-headline-md text-on-surface font-bold">- 135.000.000đ</p>
+<p class="text-label-sm text-on-surface-variant">Ưu đãi đặc biệt tháng này</p>
+</div>
+<div class="p-6 border-b border-outline-variant">
+<p class="font-headline-md text-headline-md font-bold text-on-surface">3.010.000.000đ</p>
+<p class="text-label-sm text-on-surface-variant">Khu vực TP. HCM</p>
+</div>
+<div class="p-6 border-b border-outline-variant flex-1">
+<ul class="space-y-2 text-body-md text-on-surface">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="check_circle">check_circle</span>
+                                    1 năm bảo hiểm vật chất
+                                </li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="check_circle">check_circle</span>
+                                    Gói phủ Ceramic
+                                </li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="check_circle">check_circle</span>
+                                    Camera hành trình
+                                </li>
+</ul>
+</div>
+<div class="p-6 border-b border-outline-variant">
+<p class="font-label-md text-label-md text-on-surface">Giao xe sau 15 ngày</p>
+<p class="text-label-sm text-on-surface-variant">Đặt cọc giữ xe ngay</p>
+</div>
+<div class="p-6 mb-4">
+<p class="font-label-md text-label-md text-on-surface">Lãi suất 7.2%/năm</p>
+<p class="text-label-sm text-on-surface-variant">Hỗ trợ 80% giá trị xe</p>
+</div>
+<div class="p-6 pt-0">
+<button class="w-full py-3 bg-surface-container-highest text-on-surface-variant rounded-xl font-label-md hover:bg-surface-variant transition-all">Liên hệ đại lý</button>
+</div>
+</div>
+<!-- Dealer 3 -->
+<div class="flex flex-col hover:bg-surface-container-high transition-colors group">
+<div class="h-64 p-6 border-b border-outline-variant flex flex-col justify-between">
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Vinamotor Mercedes-Benz</h4>
+<p class="text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+                                    Long Biên, Hà Nội
+                                </p>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-md">
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                                4.8 (82 đánh giá)
+                            </div>
+</div>
+<div class="p-6 border-b border-outline-variant">
+<p class="font-body-md text-body-md text-on-surface-variant line-through">2.799.000.000đ</p>
+<p class="font-headline-md text-headline-md font-bold text-on-surface">2.799.000.000đ</p>
+</div>
+<div class="p-6 border-b border-outline-variant">
+<p class="font-headline-md text-headline-md text-on-surface font-bold">- 160.000.000đ</p>
+<p class="text-label-sm text-on-surface-variant">Ưu đãi tiền mặt tối đa</p>
+</div>
+<div class="p-6 border-b border-outline-variant">
+<p class="font-headline-md text-headline-md font-bold text-on-surface">2.940.000.000đ</p>
+<p class="text-label-sm text-on-surface-variant">Khu vực Hà Nội</p>
+</div>
+<div class="p-6 border-b border-outline-variant flex-1">
+<ul class="space-y-2 text-body-md text-on-surface">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="check_circle">check_circle</span>
+                                    Phiếu nhiên liệu 20 triệu
+                                </li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="check_circle">check_circle</span>
+                                    Gói cứu hộ 24/7 (3 năm)
+                                </li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="cancel">cancel</span>
+<span class="text-on-surface-variant">Không bao gồm phụ kiện</span>
+</li>
+</ul>
+</div>
+<div class="p-6 border-b border-outline-variant">
+<p class="font-label-md text-label-md text-on-surface">Giao xe ngay</p>
+<p class="text-label-sm text-on-surface-variant">Xe có sẵn tại showroom</p>
+</div>
+<div class="p-6 mb-4">
+<p class="font-label-md text-label-md text-on-surface">Theo biểu phí ngân hàng</p>
+<p class="text-label-sm text-on-surface-variant">Liên kết đa ngân hàng</p>
+</div>
+<div class="p-6 pt-0">
+<button class="w-full py-3 bg-surface-container-highest text-on-surface-variant rounded-xl font-label-md hover:bg-surface-variant transition-all">Liên hệ đại lý</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Promotion Details & Banner Section -->
+<div class="mt-section_gap grid grid-cols-1 lg:grid-cols-3 gap-stack_gap">
+<div class="lg:col-span-2 glass-card rounded-3xl p-8 flex flex-col md:flex-row items-center gap-8 shadow-sm">
+<div class="w-full md:w-1/2 aspect-video rounded-2xl overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A side-profile high-resolution photograph of a white Mercedes-Benz GLC 300 4MATIC 2024 driving through a modern urban landscape at twilight. The city lights are blurred in the background, creating a soft bokeh effect. The car's LED headlights are glowing, emphasizing its premium design and sleek aerodynamics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIXop-t9L8hQzxV_Zf4-TGDr-ViYNBmMY5voTLhaWRykaY_wtbHLVtS_5J4GaUKHpP4_0_vBA6pnV_rPrS6HNH1BTkYsij1sKjdoEbKIuORbQbO-d8vLRchTg9-ycbf3Uzmv8S7-CbSO8vMfI7rhPeRLkDcooOneYxBk2646bsosFnrGUHPo2YVU12K7zKC1dMCCyaKpkcpvn_8cBdcxmhu3OzDOllM4SYc1V4VFMT9FsgsFiHS91jOtVjn2ut-c47GgZD0uC3cA"/>
+</div>
+<div class="flex-1 text-center md:text-left">
+<span class="px-3 py-1 bg-tertiary-container text-on-tertiary-container rounded-full text-label-sm font-bold">ƯU ĐÃI RIÊNG BẠN</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mt-2 mb-4">Quà tặng đặc biệt từ AutoSphere</h3>
+<p class="text-on-surface-variant font-body-md text-body-md mb-6">Khi lựa chọn báo giá qua hệ thống AutoSphere, bạn sẽ nhận được thêm Voucher nghỉ dưỡng 2 ngày 1 đêm tại InterContinental Danang và bảo hiểm thân vỏ năm đầu tiên.</p>
+<div class="flex flex-wrap gap-4 justify-center md:justify-start">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary" data-icon="card_giftcard">card_giftcard</span>
+<span class="font-label-md text-label-md">Nghỉ dưỡng 5 sao</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary" data-icon="verified_user">verified_user</span>
+<span class="font-label-md text-label-md">Bảo hiểm 12 tháng</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-primary text-on-primary rounded-3xl p-8 flex flex-col justify-between shadow-lg relative overflow-hidden">
+<div class="absolute -right-10 -bottom-10 opacity-10">
+<span class="material-symbols-outlined text-[200px]" data-icon="support_agent">support_agent</span>
+</div>
+<div class="relative z-10">
+<h3 class="font-headline-md text-headline-md mb-2">Cần tư vấn thêm?</h3>
+<p class="opacity-80 font-body-md text-body-md mb-8">Chuyên viên AutoSphere sẽ giúp bạn thương thảo giá tốt nhất và xử lý các thủ tục giấy tờ nhanh gọn.</p>
+</div>
+<div class="relative z-10 space-y-3">
+<button class="w-full py-3 bg-white text-primary rounded-xl font-label-md hover:bg-secondary-fixed transition-all">Kết nối với chuyên gia</button>
+<button class="w-full py-3 border border-white/30 text-white rounded-xl font-label-md hover:bg-white/10 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="call">call</span>
+                             Hotline: 1800 6688
+                        </button>
+</div>
+</div>
+</div>
+<!-- Note Footer -->
+<footer class="mt-12 text-center text-on-surface-variant font-body-md text-body-md max-w-2xl mx-auto">
+<p>* Lưu ý: Các báo giá trên mang tính chất tham khảo và có hiệu lực trong vòng 07 ngày. Giá lăn bánh có thể thay đổi tùy thuộc vào thời điểm đăng ký và quy định của cơ quan nhà nước.</p>
+</footer>
+</div>
+</main>
+<!-- Mobile BottomNavBar (Responsive Pivot) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface/95 backdrop-blur-lg pb-safe pt-2 px-2 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="text-[10px] font-medium mt-1">Khám phá</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="compare_arrows">compare_arrows</span>
+<span class="text-[10px] font-medium mt-1">So sánh</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="request_quote" style="font-variation-settings: 'FILL' 1;">request_quote</span>
+<span class="text-[10px] font-bold mt-1">Báo giá</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+<span class="text-[10px] font-medium mt-1">Giữ chỗ</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="text-[10px] font-medium mt-1">Tài khoản</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for comparison cards
+        document.querySelectorAll('.comparison-grid > div:not(:first-child)').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.classList.add('shadow-xl', 'z-10');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('shadow-xl', 'z-10');
+            });
+        });
+    </script>
+
+<link rel="stylesheet" href="../../assets/css/avatar-menu.css">
+<script>window.KHAMPHA_STEP_ID = '08-u-dai-dai-ly';</script>
+<script src="../../assets/js/app-center-config.js"></script>
+<script src="../../assets/js/auth.js"></script>
+<script src="../../assets/js/logo-link.js"></script>
+<script src="../../assets/js/avatar-menu.js"></script>
+<script src="../../assets/js/app-auth-header.js"></script>
+<script src="../../assets/js/auth-header.js"></script>
+<script src="../js/flow-config.js"></script>
+<script src="../js/khampha-nav.js"></script>
+</body></html>

@@ -23,7 +23,10 @@ $steps = @(
 $baseInjection = @"
 
 <link rel="stylesheet" href="../css/flow-nav.css">
-<script>window.FLOW_STEP_ID = '__STEP_ID__';</script>
+"@
+
+$profileLayoutInjection = @"
+<link rel="stylesheet" href="../css/profile-layout.css">
 "@
 
 $authInjection = @"
@@ -37,6 +40,7 @@ $otpInjection = @"
 "@
 
 $flowScripts = @"
+<script src="../../assets/js/logo-link.js"></script>
 <script src="../js/flow-config.js"></script>
 <script src="../js/flow-nav.js"></script>
 "@
@@ -45,6 +49,12 @@ $authSteps = @('01-dang-ky', '02-dang-nhap')
 $otpSteps = @('03-xac-thuc-otp')
 
 $profileInjection = @"
+<link rel="stylesheet" href="../../assets/css/avatar-menu.css">
+<script src="../../assets/js/app-center-config.js"></script>
+<script src="../../assets/js/auth.js"></script>
+<script src="../../assets/js/avatar-menu.js"></script>
+<script src="../../assets/js/app-auth-header.js"></script>
+<script src="../../assets/js/auth-header.js"></script>
 <script src="../js/profile-nav.js"></script>
 "@
 
@@ -64,7 +74,11 @@ foreach ($step in $steps) {
   }
 
   $html = Get-Content -Path $srcPath -Raw -Encoding UTF8
-  $inject = $baseInjection.Replace('__STEP_ID__', $step.id)
+  $inject = $baseInjection
+  $inject += "<script>window.FLOW_STEP_ID = '$($step.id)';</script>`n"
+  if ($profileSteps -contains $step.id) {
+    $inject += $profileLayoutInjection
+  }
   if ($authSteps -contains $step.id) {
     $inject += $authInjection
   } elseif ($otpSteps -contains $step.id) {

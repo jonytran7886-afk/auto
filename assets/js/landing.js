@@ -189,6 +189,7 @@
 
   // ── Mobile menu ──
   function initMobileMenu() {
+    if (document.getElementById('as-mobile-drawer')) return;
     const toggle = document.getElementById('mobile-menu-toggle');
     const menu = document.getElementById('mobile-menu');
     if (!toggle || !menu) return;
@@ -235,7 +236,9 @@
         if (target) {
           e.preventDefault();
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          document.getElementById('as-mobile-drawer')?.classList.remove('is-open');
           document.getElementById('mobile-menu')?.classList.add('hidden');
+          document.body.style.overflow = '';
         }
       });
     });

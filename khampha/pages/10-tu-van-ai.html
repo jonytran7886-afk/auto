@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutoSphere AI Advisor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#57dffe",
+                    "surface": "#f8f9ff",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "on-secondary-fixed": "#001f26",
+                    "on-secondary-container": "#006172",
+                    "inverse-on-surface": "#eaf1ff",
+                    "tertiary-fixed": "#ffdbcd",
+                    "on-error-container": "#93000a",
+                    "inverse-surface": "#213145",
+                    "surface-bright": "#f8f9ff",
+                    "primary": "#004ac6",
+                    "surface-variant": "#d3e4fe",
+                    "primary-container": "#2563eb",
+                    "primary-fixed": "#dbe1ff",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "tertiary-container": "#bc4800",
+                    "outline": "#737686",
+                    "surface-container": "#e5eeff",
+                    "background": "#f8f9ff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "surface-container-low": "#eff4ff",
+                    "on-tertiary-container": "#ffede6",
+                    "surface-container-highest": "#d3e4fe",
+                    "tertiary": "#943700",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#eeefff",
+                    "on-surface": "#0b1c30",
+                    "secondary-fixed": "#acedff",
+                    "on-tertiary-fixed": "#360f00",
+                    "error-container": "#ffdad6",
+                    "inverse-primary": "#b4c5ff",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "outline-variant": "#c3c6d7",
+                    "on-surface-variant": "#434655",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#0b1c30",
+                    "surface-container-high": "#dce9ff",
+                    "surface-tint": "#0053db",
+                    "surface-dim": "#cbdbf5",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-primary-fixed": "#00174b",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#00687a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sidebar_width": "260px",
+                    "gutter": "24px",
+                    "container_max_width": "1200px",
+                    "section_gap": "32px",
+                    "margin_mobile": "16px",
+                    "stack_gap": "12px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9ff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-effect { backdrop-filter: blur(8px); background-color: rgba(255, 255, 255, 0.8); }
+        .message-bubble { position: relative; max-width: 80%; border-radius: 1.25rem; padding: 1rem 1.25rem; }
+        .message-ai { background-color: #ffffff; border: 1px solid #e5eeff; color: #0b1c30; border-bottom-left-radius: 0.25rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05); }
+        .message-user { background-color: #004ac6; color: #ffffff; border-bottom-right-radius: 0.25rem; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface overflow-hidden">
+<!-- Desktop Layout Container -->
+<div class="flex h-screen w-full">
+<!-- SideNavBar (Authority: JSON) -->
+<aside class="hidden md:flex flex-col w-sidebar_width h-screen p-4 bg-surface dark:bg-on-surface border-r border-outline-variant dark:border-outline fixed left-0 top-0 z-50">
+<div class="flex items-center gap-3 mb-8 px-2">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">AutoSphere</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Premium Mobility</p>
+</div>
+</div>
+<nav class="flex-1 space-y-2">
+<!-- Nav Item: Khám phá -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high hover:scale-[1.02] transition-all duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-body-md text-body-md">Khám phá</span>
+</a>
+<!-- Nav Item: So sánh -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high hover:scale-[1.02] transition-all duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined">compare_arrows</span>
+<span class="font-body-md text-body-md">So sánh</span>
+</a>
+<!-- Nav Item: Báo giá -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high hover:scale-[1.02] transition-all duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined">request_quote</span>
+<span class="font-body-md text-body-md">Báo giá</span>
+</a>
+<!-- Nav Item: Lái thử -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high hover:scale-[1.02] transition-all duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined">directions_car</span>
+<span class="font-body-md text-body-md">Lái thử</span>
+</a>
+<!-- Nav Item: Giữ chỗ -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high hover:scale-[1.02] transition-all duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="font-body-md text-body-md">Giữ chỗ</span>
+</a>
+<!-- Nav Item: Hành trình (Active) -->
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">route</span>
+<span class="font-body-md text-body-md">Hành trình</span>
+</a>
+</nav>
+<div class="mt-auto pt-4 border-t border-outline-variant space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Cài đặt</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container/10 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md text-body-md">Đăng xuất</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col ml-0 md:ml-[260px] relative h-screen bg-surface">
+<!-- TopAppBar (Authority: JSON) -->
+<header class="fixed top-0 right-0 left-0 md:left-[260px] h-16 glass-effect border-b border-outline-variant/30 z-40 px-gutter flex justify-between items-center">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined md:hidden">menu</span>
+<div class="hidden md:flex flex-col">
+<span class="font-label-md text-label-md text-primary font-bold">AI Advisor</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-wider">Hỗ trợ trực tuyến 24/7</span>
+</div>
+</div>
+<div class="flex-1 max-w-xl mx-8 hidden lg:block">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 focus:ring-2 focus:ring-primary/20 font-body-md text-body-md" placeholder="Tìm kiếm tư vấn, xe hoặc tài liệu..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center border-2 border-white shadow-sm cursor-pointer overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a premium car consultant, looking friendly and approachable. The style is bright and airy with high-end photographic lighting, consistent with a modern light-mode luxury brand. The background is a soft-focus architectural interior with subtle blue and white tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7ql5XouYpNTYj48dCcqOsRre-YHGGDcIIi-y22JqSBev3OrjoakFGitXcm84EKpMJyfBBd7SuQmrOdrItjxfslkBirUQUymaMlbw06hixi6p6Ij0XWZPVnMSKzwEfAUeEbrlul2VzIJc_cOiR10bE2rDe6XqoOzskhZHoPZma_Heux4tRFt3CcI-1EGtf0MAHeXR_VwSj6AmH6dJIID_-1DykXa98EVxkSzskZtzl7Ck4607069auqUmL2-BRdBzhRtMaG5JKQw"/>
+</div>
+</div>
+</header>
+<!-- Chat Interface Container -->
+<div class="flex flex-1 pt-16 h-full overflow-hidden">
+<!-- Chat Window (Bento Style Layout) -->
+<div class="flex-1 flex flex-col h-full bg-surface-container-lowest/50">
+<!-- Messages Area -->
+<div class="flex-1 overflow-y-auto p-gutter space-y-6 scrollbar-hide" id="chat-messages">
+<!-- AI Greeting -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 mb-1">
+<div class="w-6 h-6 rounded-md bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary">AutoSphere AI</span>
+<span class="text-[10px] text-outline">10:24 AM</span>
+</div>
+<div class="message-bubble message-ai font-body-md text-body-md">
+                                Chào Anh/Chị! Tôi là cố vấn ảo của AutoSphere. Tôi có thể giúp gì cho hành trình lựa chọn chiếc xe sang tiếp theo của bạn? 
+                                <br/><br/>
+                                Hiện tại tôi đang có các thông tin mới nhất về <b>Luxury SUV Series 2024</b> và các chính sách ưu đãi đặc quyền cho thành viên.
+                            </div>
+</div>
+<!-- User Message -->
+<div class="flex flex-col items-end gap-2">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-[10px] text-outline">10:25 AM</span>
+<span class="font-label-sm text-label-sm text-on-surface">Bạn</span>
+</div>
+<div class="message-bubble message-user font-body-md text-body-md">
+                                Tôi muốn so sánh chi phí vận hành giữa dòng Hybrid và dòng chạy điện hoàn toàn trong 3 năm đầu. Bạn có dữ liệu về chi phí bảo dưỡng không?
+                            </div>
+</div>
+<!-- AI Response with Data Table -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 mb-1">
+<div class="w-6 h-6 rounded-md bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary">AutoSphere AI</span>
+<span class="text-[10px] text-outline">10:26 AM</span>
+</div>
+<div class="message-bubble message-ai shadow-sm font-body-md text-body-md space-y-4">
+<p>Dưới đây là bảng so sánh ước tính chi phí dựa trên dữ liệu vận hành thực tế tại thị trường Việt Nam (tính cho quãng đường 20.000km/năm):</p>
+<div class="overflow-x-auto rounded-lg border border-outline-variant">
+<table class="w-full text-left text-sm border-collapse">
+<thead class="bg-surface-container-low text-on-surface-variant">
+<tr>
+<th class="p-3 font-semibold">Hạng mục</th>
+<th class="p-3 font-semibold">Plug-in Hybrid</th>
+<th class="p-3 font-semibold">Thuần điện (EV)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr>
+<td class="p-3">Bảo dưỡng định kỳ</td>
+<td class="p-3">15.000.000đ</td>
+<td class="p-3">6.000.000đ</td>
+</tr>
+<tr>
+<td class="p-3">Năng lượng (Ước tính)</td>
+<td class="p-3">45.000.000đ</td>
+<td class="p-3">12.000.000đ</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Dòng EV giúp tiết kiệm khoảng <b>65%</b> chi phí vận hành hàng năm. Tôi đã đính kèm bảng chi tiết (PDF) ở cột bên phải để bạn tham khảo sâu hơn.</p>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="p-6 bg-surface-container-lowest border-t border-outline-variant/30 glass-effect">
+<div class="max-w-4xl mx-auto relative">
+<div class="flex items-end gap-3 bg-white rounded-2xl p-2 shadow-lg border border-primary/10 focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+<button class="p-3 text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+<textarea class="flex-1 border-none focus:ring-0 py-3 font-body-md text-body-md scrollbar-hide resize-none max-h-32" placeholder="Hỏi AI Advisor bất cứ điều gì..." rows="1"></textarea>
+<button class="bg-primary text-white p-3 rounded-xl hover:bg-primary-container transition-all flex items-center justify-center">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+<div class="flex gap-4 mt-3 px-2">
+<button class="text-[11px] font-label-sm text-on-surface-variant/70 border border-outline-variant/50 px-3 py-1 rounded-full hover:bg-primary/5 hover:text-primary transition-all">
+                                    So sánh Mercedes-Benz EQS &amp; BMW i7
+                                </button>
+<button class="text-[11px] font-label-sm text-on-surface-variant/70 border border-outline-variant/50 px-3 py-1 rounded-full hover:bg-primary/5 hover:text-primary transition-all">
+                                    Ưu đãi tài chính 0% lãi suất
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Sidebar: Documents & Context (Asymmetric Layout) -->
+<aside class="hidden xl:flex flex-col w-80 border-l border-outline-variant/30 bg-surface p-6 space-y-8 overflow-y-auto scrollbar-hide">
+<!-- Section: Documents -->
+<div>
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-4">Tài liệu đính kèm</h3>
+<div class="space-y-3">
+<!-- Doc 1 -->
+<div class="group flex items-start gap-3 p-3 bg-surface-container-lowest rounded-xl border border-outline-variant/30 hover:border-primary/30 hover:shadow-md transition-all cursor-pointer">
+<div class="w-10 h-10 rounded-lg bg-error/10 flex items-center justify-center text-error">
+<span class="material-symbols-outlined">picture_as_pdf</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-on-surface line-clamp-1">Chi_phi_vận_hành_EV_2024.pdf</p>
+<p class="text-[10px] text-outline">PDF • 2.4 MB</p>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary text-[18px]">download</span>
+</div>
+<!-- Doc 2 -->
+<div class="group flex items-start gap-3 p-3 bg-surface-container-lowest rounded-xl border border-outline-variant/30 hover:border-primary/30 hover:shadow-md transition-all cursor-pointer">
+<div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">table_view</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-on-surface line-clamp-1">Thông_số_kỹ_thuật_SUV_Hybrid.xlsx</p>
+<p class="text-[10px] text-outline">XLSX • 1.1 MB</p>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary text-[18px]">download</span>
+</div>
+</div>
+</div>
+<!-- Section: Suggested Actions (Bento Card Style) -->
+<div>
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-4">Gợi ý hành động</h3>
+<div class="grid gap-4">
+<div class="p-4 bg-primary-container/10 border border-primary/20 rounded-2xl hover:bg-primary-container/20 transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+<span class="material-symbols-outlined text-primary/40 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+<p class="font-label-md text-label-md text-primary">Đặt lịch lái thử</p>
+<p class="text-[12px] text-on-surface-variant/70 mt-1">Trải nghiệm SUV thuần điện ngay tại nhà bạn.</p>
+</div>
+<div class="p-4 bg-surface-container-highest rounded-2xl hover:bg-surface-container-high transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-on-surface-variant mb-2">calculate</span>
+<p class="font-label-md text-label-md text-on-surface">Tính toán trả góp</p>
+<p class="text-[12px] text-on-surface-variant/70 mt-1">Lập kế hoạch tài chính tối ưu cho dòng xe sang.</p>
+</div>
+</div>
+</div>
+<!-- Section: Recent Models (Visual Grid) -->
+<div>
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-4">Xe đang xem</h3>
+<div class="relative h-40 rounded-2xl overflow-hidden shadow-lg group">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A sleek, metallic silver electric luxury SUV parked on a modern glass-fronted showroom floor. The lighting is cinematic with deep shadows and brilliant highlights, emphasizing the vehicle's aerodynamic curves. The overall aesthetic is premium, futuristic, and clean, fitting the AutoSphere brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWJQM3aY2qPTkSwGv_GLvmRi2TaVEQCs2XKfDf6FhBRVIdDgF327TFNeVT9mdYlRivmXGiIEpfK5A_OTrb3dr1sewiFvpoxI1_j-mouResazi_OQohmB2v-bbYADvN0thuEWJ9YUtClf_hVS4JCFXBfbWxzs4YerFvPMYSh4UCPSSzYNh6CiO0pNh-6eWi89shVhHWsmZzKg4F2Y_iXlca2oMMLKW_7QF7bXzgy97EW3PHCNmQ2s155CiS3IsKmGlvouOLWRn6gw"/>
+<div class="absolute bottom-3 left-3 z-20">
+<p class="text-white font-label-md text-label-md">Sphere E-Tron 2024</p>
+<p class="text-white/70 text-[10px]">Cơ bản • 3.200.000.000đ</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<!-- Floating Action Button (FAB - Suppression Check: Home/Dashboard Only, but fits Advisor context) -->
+<button class="fixed bottom-24 right-8 lg:bottom-8 lg:right-[340px] w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform z-50">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">support_agent</span>
+</button>
+</main>
+</div>
+<!-- BottomNavBar (Mobile - Hidden on Desktop as per JSON logic) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface/95 backdrop-blur-lg pb-safe pt-2 px-2 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-variant/20 transition-all p-2" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-[10px] font-medium">Khám phá</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-variant/20 transition-all p-2" href="#">
+<span class="material-symbols-outlined">compare_arrows</span>
+<span class="text-[10px] font-medium">So sánh</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold active:bg-surface-variant/20 transition-all p-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-[10px]">AI Advisor</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-variant/20 transition-all p-2" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="text-[10px] font-medium">Giữ chỗ</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-surface-variant/20 transition-all p-2" href="#">
+<span class="material-symbols-outlined">route</span>
+<span class="text-[10px] font-medium">Hành trình</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction: Auto-scroll to bottom of chat
+        const chatMessages = document.getElementById('chat-messages');
+        const scrollToBottom = () => {
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        };
+        window.onload = scrollToBottom;
+
+        // Micro-interaction: Textarea auto-resize
+        const tx = document.getElementsByTagName("textarea");
+        for (let i = 0; i < tx.length; i++) {
+            tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;");
+            tx[i].addEventListener("input", OnInput, false);
+        }
+        function OnInput() {
+            this.style.height = "auto";
+            this.style.height = (this.scrollHeight) + "px";
+        }
+    </script>
+
+<link rel="stylesheet" href="../../assets/css/avatar-menu.css">
+<script>window.KHAMPHA_STEP_ID = '10-tu-van-ai';</script>
+<script src="../../assets/js/app-center-config.js"></script>
+<script src="../../assets/js/auth.js"></script>
+<script src="../../assets/js/logo-link.js"></script>
+<script src="../../assets/js/avatar-menu.js"></script>
+<script src="../../assets/js/app-auth-header.js"></script>
+<script src="../../assets/js/auth-header.js"></script>
+<script src="../js/flow-config.js"></script>
+<script src="../js/khampha-nav.js"></script>
+</body></html>

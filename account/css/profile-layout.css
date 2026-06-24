@@ -1,0 +1,138 @@
+/* Profile pages — canonical layout (05-ho-so-ca-nhan) */
+
+.as-profile-shell {
+  display: flex;
+  flex: 1 1 auto;
+  padding-top: 4rem;
+  min-height: 0;
+}
+
+.as-profile-sidebar {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  top: 4rem;
+  width: 260px;
+  height: calc(100vh - 4rem);
+  padding: 1.5rem;
+  border-right: 1px solid #c3c6d7;
+  background-color: #f8f9ff;
+  overflow-y: auto;
+  z-index: 40;
+}
+
+@media (min-width: 768px) {
+  .as-profile-sidebar {
+    display: flex;
+  }
+}
+
+.as-profile-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-left: 0;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .as-profile-main {
+    margin-left: 260px;
+    padding-bottom: 2rem;
+  }
+}
+
+.as-profile-main-inner {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 16px;
+}
+
+@media (min-width: 768px) {
+  .as-profile-main-inner {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+.as-profile-footer {
+  width: 100%;
+  margin-left: 0;
+  margin-top: auto;
+}
+
+@media (min-width: 768px) {
+  .as-profile-footer {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+  }
+}
+
+.as-profile-sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.as-profile-sidebar nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 16px;
+  color: #434655;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.as-profile-sidebar nav a:hover {
+  background-color: #eff4ff;
+}
+
+.as-profile-sidebar nav a.as-nav-active {
+  background-color: rgba(37, 99, 235, 0.1);
+  color: #004ac6;
+  font-weight: 600;
+}
+
+.as-profile-sidebar nav a.as-nav-danger {
+  color: #ba1a1a;
+}
+
+.as-profile-sidebar nav a.as-nav-danger:hover {
+  background-color: rgba(255, 218, 214, 0.1);
+}
+
+.as-profile-sidebar nav a.as-nav-danger.as-nav-active {
+  background-color: rgba(255, 218, 214, 0.1);
+  font-weight: 600;
+}
+
+.as-profile-sidebar .as-nav-divider {
+  margin: 1rem 0;
+  border-top: 1px solid #c3c6d7;
+}
+
+.as-profile-mobile-tabs {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  margin-left: -16px;
+  margin-right: -16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.as-profile-mobile-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .as-profile-mobile-tabs {
+    display: none;
+  }
+}

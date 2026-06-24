@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutoSphere - Giữ chỗ xe</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9ff;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .step-active {
+            @apply border-primary text-primary;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-container": "#57dffe",
+                      "surface": "#f8f9ff",
+                      "on-secondary-fixed-variant": "#004e5c",
+                      "on-secondary-fixed": "#001f26",
+                      "on-secondary-container": "#006172",
+                      "inverse-on-surface": "#eaf1ff",
+                      "tertiary-fixed": "#ffdbcd",
+                      "on-error-container": "#93000a",
+                      "inverse-surface": "#213145",
+                      "surface-bright": "#f8f9ff",
+                      "primary": "#004ac6",
+                      "surface-variant": "#d3e4fe",
+                      "primary-container": "#2563eb",
+                      "primary-fixed": "#dbe1ff",
+                      "error": "#ba1a1a",
+                      "on-tertiary-fixed-variant": "#7d2d00",
+                      "tertiary-container": "#bc4800",
+                      "outline": "#737686",
+                      "surface-container": "#e5eeff",
+                      "background": "#f8f9ff",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-fixed-dim": "#4cd7f6",
+                      "surface-container-low": "#eff4ff",
+                      "on-tertiary-container": "#ffede6",
+                      "surface-container-highest": "#d3e4fe",
+                      "tertiary": "#943700",
+                      "on-error": "#ffffff",
+                      "on-primary-container": "#eeefff",
+                      "on-surface": "#0b1c30",
+                      "secondary-fixed": "#acedff",
+                      "on-tertiary-fixed": "#360f00",
+                      "error-container": "#ffdad6",
+                      "inverse-primary": "#b4c5ff",
+                      "on-primary": "#ffffff",
+                      "tertiary-fixed-dim": "#ffb596",
+                      "outline-variant": "#c3c6d7",
+                      "on-surface-variant": "#434655",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "on-tertiary": "#ffffff",
+                      "on-background": "#0b1c30",
+                      "surface-container-high": "#dce9ff",
+                      "surface-tint": "#0053db",
+                      "surface-dim": "#cbdbf5",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "on-primary-fixed": "#00174b",
+                      "on-secondary": "#ffffff",
+                      "secondary": "#00687a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sidebar_width": "260px",
+                      "gutter": "24px",
+                      "container_max_width": "1200px",
+                      "section_gap": "32px",
+                      "margin_mobile": "16px",
+                      "stack_gap": "12px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                      "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- Desktop Side Navigation -->
+<aside class="hidden md:flex flex-col fixed left-0 top-0 h-full w-[260px] p-4 bg-surface border-r border-outline-variant z-50">
+<div class="mb-10 px-4">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">AutoSphere</h1>
+<p class="text-body-md text-on-surface-variant">Premium Mobility</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-body-md">Khám phá</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="compare_arrows">compare_arrows</span>
+<span class="font-body-md">So sánh</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="request_quote">request_quote</span>
+<span class="font-body-md">Báo giá</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="directions_car">directions_car</span>
+<span class="font-body-md">Lái thử</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+<span class="font-body-md">Giữ chỗ</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="route">route</span>
+<span class="font-body-md">Hành trình</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md">Cài đặt</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-body-md">Đăng xuất</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-[260px] min-h-screen p-gutter pb-32 md:pb-gutter">
+<div class="max-w-[1200px] mx-auto">
+<!-- Header Section -->
+<header class="mb-section_gap flex justify-between items-end">
+<div>
+<nav class="flex items-center gap-2 text-label-md text-on-surface-variant mb-2">
+<span>Trang chủ</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-primary">Giữ chỗ xe</span>
+</nav>
+<h2 class="font-headline-lg text-headline-lg">Xác nhận giữ chỗ</h2>
+</div>
+<div class="hidden md:flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-container-high rounded-full">
+<span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+<span class="text-label-sm">Đang bảo mật bởi SSL 256-bit</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Checkout Details -->
+<div class="lg:col-span-8 space-y-section_gap">
+<!-- Progress Tracker -->
+<div class="flex items-center justify-between px-8 py-6 bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant">
+<div class="flex flex-col items-center gap-2 group">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold">1</div>
+<span class="text-label-md text-primary">Thông tin</span>
+</div>
+<div class="flex-1 h-[2px] bg-primary mx-4"></div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold">2</div>
+<span class="text-label-md text-primary">Thanh toán</span>
+</div>
+<div class="flex-1 h-[2px] bg-outline-variant mx-4"></div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant font-bold">3</div>
+<span class="text-label-md text-on-surface-variant">Hoàn tất</span>
+</div>
+</div>
+<!-- Selected Vehicle Card -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden border border-outline-variant">
+<div class="p-6 border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<h3 class="font-headline-md text-headline-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">directions_car</span>
+                                Chi tiết xe giữ chỗ
+                            </h3>
+<button class="text-primary font-label-md hover:underline">Thay đổi</button>
+</div>
+<div class="p-6 flex flex-col md:flex-row gap-6">
+<div class="w-full md:w-48 h-32 rounded-lg bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A sleek, modern electric luxury sedan in metallic silver parked in a high-tech showroom with soft blue ambient lighting and polished concrete floors. The car's futuristic design is emphasized by slim LED headlights and aero-wheels. The atmosphere is sophisticated and premium, reflecting a high-end automotive brand aesthetic with clean lines and soft shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDc9-NW4FIt0nZfkeTpr6qOYEiMqws__J7RKZ-4Bl36txr8Z6eSz1813NdtmcBP-IzmEd7tkryW-7QefFullWMcx1vKTy6XwkTQ4hDqXmRD66abhiOftiBwn_9hcq_oHvvVBEeY3iro4pw5eCwCyeJSOlsHrWGPG3Q0u7I9pPuHEj2-DcF5BUtjZCkOgnuIiQLPuq1ss8ZC7IK27_uabRndulqnWu-6S8kD4XdOE_Oo3MIPngjQ4mcRfFGDaN5HgKkF4oeEqpM7aQ"/>
+</div>
+<div class="flex-1 grid grid-cols-2 md:grid-cols-3 gap-y-4">
+<div>
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider">Mẫu xe</p>
+<p class="font-label-md text-headline-md">Sphere GT 2024</p>
+</div>
+<div>
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider">Màu sắc</p>
+<div class="flex items-center gap-2">
+<div class="w-4 h-4 rounded-full border border-outline bg-slate-200"></div>
+<p class="font-label-md">Celestial Silver</p>
+</div>
+</div>
+<div>
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider">Nội thất</p>
+<p class="font-label-md">Ebony Nappa Leather</p>
+</div>
+<div>
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider">Địa điểm nhận</p>
+<p class="font-label-md">Showroom TP.HCM</p>
+</div>
+<div>
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider">Giao xe dự kiến</p>
+<p class="font-label-md">Tháng 12, 2024</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Payment Methods -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant overflow-hidden">
+<div class="p-6 border-b border-outline-variant bg-surface-container-low">
+<h3 class="font-headline-md text-headline-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">payments</span>
+                                Phương thức thanh toán
+                            </h3>
+</div>
+<div class="p-6 space-y-4">
+<!-- Option 1 -->
+<label class="flex items-center p-4 border-2 border-primary bg-primary/5 rounded-xl cursor-pointer transition-all">
+<input checked="" class="w-5 h-5 text-primary border-outline-variant" name="payment" type="radio"/>
+<div class="ml-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">credit_card</span>
+<div>
+<p class="font-label-md">Thẻ quốc tế (Visa, Mastercard, JCB)</p>
+<p class="text-body-md text-on-surface-variant">Thanh toán nhanh qua cổng Stripe bảo mật</p>
+</div>
+</div>
+</label>
+<!-- Option 2 -->
+<label class="flex items-center p-4 border border-outline-variant hover:border-primary/50 rounded-xl cursor-pointer transition-all">
+<input class="w-5 h-5 text-primary border-outline-variant" name="payment" type="radio"/>
+<div class="ml-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">account_balance</span>
+<div>
+<p class="font-label-md">Chuyển khoản ngân hàng</p>
+<p class="text-body-md text-on-surface-variant">Xác nhận trong vòng 24h làm việc</p>
+</div>
+</div>
+</label>
+<!-- Option 3 -->
+<label class="flex items-center p-4 border border-outline-variant hover:border-primary/50 rounded-xl cursor-pointer transition-all">
+<input class="w-5 h-5 text-primary border-outline-variant" name="payment" type="radio"/>
+<div class="ml-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">account_balance_wallet</span>
+<div>
+<p class="font-label-md">Ví điện tử (MoMo, ZaloPay)</p>
+<p class="text-body-md text-on-surface-variant">Thanh toán tức thì, nhận quà tặng voucher</p>
+</div>
+</div>
+</label>
+</div>
+</section>
+<!-- Policy & Agreement -->
+<section class="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant space-y-4">
+<h3 class="font-label-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">gavel</span>
+                            Chính sách giữ chỗ &amp; Hoàn tiền
+                        </h3>
+<div class="grid md:grid-cols-2 gap-4">
+<div class="flex gap-3 p-3 bg-surface-container rounded-lg">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<p class="text-body-md"><b>Thời hạn giữ xe:</b> Hiệu lực trong 07 ngày kể từ khi thanh toán thành công.</p>
+</div>
+<div class="flex gap-3 p-3 bg-surface-container rounded-lg">
+<span class="material-symbols-outlined text-primary">undo</span>
+<p class="text-body-md"><b>Hoàn cọc:</b> Hoàn 100% nếu khách hàng thay đổi ý định trong vòng 48h.</p>
+</div>
+</div>
+<label class="flex items-start gap-3 mt-4 cursor-pointer group">
+<input class="mt-1 w-5 h-5 rounded text-primary border-outline-variant focus:ring-primary" type="checkbox"/>
+<span class="text-body-md text-on-surface-variant group-hover:text-on-surface transition-colors">
+                                Tôi đã đọc và đồng ý với <a class="text-primary underline" href="#">Điều khoản dịch vụ</a> và <a class="text-primary underline" href="#">Chính sách bảo mật</a> của AutoSphere.
+                            </span>
+</label>
+</section>
+</div>
+<!-- Right Column: Price Summary -->
+<aside class="lg:col-span-4">
+<div class="sticky top-24 space-y-6">
+<!-- Summary Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-lg border border-outline-variant overflow-hidden">
+<div class="p-6 bg-primary text-white">
+<h3 class="font-headline-md text-headline-md">Tổng thanh toán</h3>
+<p class="text-sm opacity-80">Phí giữ chỗ (Tạm tính)</p>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex justify-between text-body-md">
+<span>Giá xe niêm yết</span>
+<span>2,490,000,000đ</span>
+</div>
+<div class="flex justify-between text-body-md">
+<span>Lệ phí trước bạ (tạm tính)</span>
+<span>249,000,000đ</span>
+</div>
+<div class="flex justify-between text-body-md text-green-600 font-medium">
+<span>Ưu đãi đặt chỗ sớm</span>
+<span>-20,000,000đ</span>
+</div>
+<div class="pt-4 border-t border-outline-variant space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-label-md">Phí giữ chỗ hiện tại</span>
+<span class="font-headline-md text-primary">50,000,000đ</span>
+</div>
+<p class="text-[12px] text-on-surface-variant italic text-right">
+                                        * Phí này sẽ được khấu trừ vào giá xe khi thanh toán chính thức.
+                                    </p>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container py-4 rounded-xl font-bold text-lg hover:scale-[1.02] active:scale-95 transition-all shadow-md mt-4">
+                                    Xác nhận &amp; Thanh toán
+                                </button>
+<div class="flex items-center justify-center gap-2 pt-2">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">lock</span>
+<span class="text-[12px] text-on-surface-variant">Thanh toán được bảo mật bởi AutoSphere Pay</span>
+</div>
+</div>
+</div>
+<!-- Support Card -->
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant">
+<h4 class="font-label-md mb-3">Cần hỗ trợ?</h4>
+<div class="space-y-3">
+<a class="flex items-center gap-3 text-body-md text-on-surface-variant hover:text-primary transition-colors" href="tel:18001234">
+<span class="material-symbols-outlined">call</span>
+                                    Hotline: 1800 1234
+                                </a>
+<a class="flex items-center gap-3 text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+                                    Chat với tư vấn viên
+                                </a>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<!-- Mobile Navigation -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface/95 backdrop-blur-lg pb-safe pt-2 px-2 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="text-label-sm">Khám phá</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="compare_arrows">compare_arrows</span>
+<span class="text-label-sm">So sánh</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+<span class="text-label-sm">Giữ chỗ</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="directions_car">directions_car</span>
+<span class="text-label-sm">Lái thử</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="route">route</span>
+<span class="text-label-sm">Hành trình</span>
+</a>
+</nav>
+<!-- Success Toast (Hidden by default) -->
+<div class="fixed bottom-24 right-8 transform translate-y-full opacity-0 bg-inverse-surface text-inverse-on-surface px-6 py-4 rounded-xl flex items-center gap-4 shadow-xl transition-all duration-300 z-50" id="successToast">
+<span class="material-symbols-outlined text-green-400">check_circle</span>
+<div>
+<p class="font-bold">Đã lưu thông tin!</p>
+<p class="text-sm opacity-80">Thông tin đặt chỗ của bạn đã được cập nhật.</p>
+</div>
+</div>
+<script>
+        // Micro-interactions
+        const mainAction = document.querySelector('button.bg-primary-container');
+        const toast = document.getElementById('successToast');
+
+        mainAction.addEventListener('click', () => {
+            // Simulated loading
+            mainAction.innerHTML = '<span class="animate-spin material-symbols-outlined">progress_activity</span> Đang xử lý...';
+            
+            setTimeout(() => {
+                mainAction.innerHTML = 'Xác nhận & Thanh toán';
+                toast.style.transform = 'translateY(0)';
+                toast.style.opacity = '1';
+                
+                setTimeout(() => {
+                    toast.style.transform = 'translateY(100%)';
+                    toast.style.opacity = '0';
+                }, 3000);
+            }, 1500);
+        });
+
+        // Hover animations for payment methods
+        document.querySelectorAll('input[name="payment"]').forEach(input => {
+            input.addEventListener('change', (e) => {
+                document.querySelectorAll('label').forEach(l => {
+                    l.classList.remove('border-primary', 'bg-primary/5');
+                    l.classList.add('border-outline-variant');
+                });
+                if(e.target.checked) {
+                    const label = e.target.closest('label');
+                    label.classList.add('border-primary', 'bg-primary/5');
+                    label.classList.remove('border-outline-variant');
+                }
+            });
+        });
+    </script>
+
+<link rel="stylesheet" href="../../assets/css/avatar-menu.css">
+<script>window.KHAMPHA_STEP_ID = '07-giu-cho-xe';</script>
+<script src="../../assets/js/app-center-config.js"></script>
+<script src="../../assets/js/auth.js"></script>
+<script src="../../assets/js/logo-link.js"></script>
+<script src="../../assets/js/avatar-menu.js"></script>
+<script src="../../assets/js/app-auth-header.js"></script>
+<script src="../../assets/js/auth-header.js"></script>
+<script src="../js/flow-config.js"></script>
+<script src="../js/khampha-nav.js"></script>
+</body></html>

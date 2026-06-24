@@ -1,0 +1,179 @@
+/* AutoSphere App Shell — Garage & Marketplace */
+.as-app-shell {
+  min-height: 100vh;
+  background: #f8f9ff;
+  color: #0b1c30;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.as-app-topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  background: rgba(248, 249, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #c3c6d7;
+}
+
+.as-app-topbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.as-app-topbar__logo {
+  font-size: 18px;
+  font-weight: 800;
+  color: #004ac6;
+  text-decoration: none;
+}
+
+.as-app-topbar__app {
+  font-size: 14px;
+  font-weight: 600;
+  color: #434655;
+  padding-left: 12px;
+  border-left: 1px solid #c3c6d7;
+}
+
+.as-app-topbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.as-app-topbar__actions a,
+.as-app-topbar__actions button {
+  padding: 8px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: #434655;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.as-app-topbar__actions a:hover,
+.as-app-topbar__actions button:hover {
+  background: #eff4ff;
+  color: #004ac6;
+}
+
+.as-app-layout {
+  display: flex;
+  padding-top: 64px;
+  min-height: 100vh;
+}
+
+.as-app-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  position: fixed;
+  top: 64px;
+  left: 0;
+  bottom: 0;
+  overflow-y: auto;
+  padding: 20px 16px;
+  border-right: 1px solid #c3c6d7;
+  background: #fff;
+}
+
+.as-app-sidebar__section {
+  margin-bottom: 24px;
+}
+
+.as-app-sidebar__title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #737686;
+  padding: 0 12px 10px;
+}
+
+.as-app-sidebar__link {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #434655;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.as-app-sidebar__link:hover {
+  background: #eff4ff;
+  color: #004ac6;
+}
+
+.as-app-sidebar__link.is-active {
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+}
+
+.as-app-main {
+  flex: 1;
+  margin-left: 260px;
+  padding: 32px 24px 48px;
+  max-width: 960px;
+}
+
+.as-app-welcome {
+  background: #fff;
+  border: 1px solid #c3c6d7;
+  border-radius: 20px;
+  padding: 32px;
+}
+
+.as-app-welcome h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.as-app-welcome p {
+  color: #434655;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.as-app-quick-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.as-app-quick-links a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid #e5eeff;
+  background: #eff4ff;
+  color: #004ac6;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.as-app-quick-links a:hover {
+  border-color: #004ac6;
+}
+
+@media (max-width: 768px) {
+  .as-app-sidebar {
+    display: none;
+  }
+  .as-app-main {
+    margin-left: 0;
+  }
+}

@@ -109,34 +109,70 @@
             backdrop-filter: blur(8px);
         }
     </style>
+<link rel="stylesheet" href="../css/profile-layout.css">
 </head>
-<body class="bg-surface text-on-surface min-h-screen pb-32">
+<body class="bg-background text-on-background min-h-screen flex flex-col">
 <!-- TopAppBar -->
-<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin_mobile h-16 bg-surface border-b border-outline-variant">
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin_mobile md:px-gutter h-16 bg-surface border-b border-outline-variant">
 <div class="flex items-center gap-4">
-<button class="p-2 -ml-2 rounded-full hover:bg-surface-container transition-colors active:scale-90 duration-200">
-<span class="material-symbols-outlined text-primary">arrow_back</span>
-</button>
-<div class="h-8 flex items-center">
-<span class="text-primary font-headline-md tracking-tight">AutoSphere</span>
-</div>
+<span class="font-headline-md text-headline-md text-primary tracking-tight">AutoSphere</span>
+<div class="hidden md:block h-6 w-[1px] bg-outline-variant mx-2"></div>
+<span class="hidden md:block font-headline-md text-headline-md text-on-surface">Bảo mật</span>
 </div>
 <div class="flex items-center gap-3">
-<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container rounded-full transition-colors">notifications</button>
-<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed shadow-sm">
-<img class="w-full h-full object-cover" data-alt="A sophisticated professional headshot of a Vietnamese user in a bright, modern light-mode setting. The lighting is soft and high-key, emphasizing a clean and premium look with the person wearing professional attire. The background is a blurred, high-end office environment in shades of soft blue and white, perfectly matching the AutoSphere brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkHG2QT7mP-9yn5cYRAtu2OxuIsEbYZiHHbI1UezuhnX-IEK-jSI48Cu3fhfdmPPFiGzcuQCM2j8GF_RN-f7paJLsF5-ciN0Ck7ifMbFgQpWMGplZ8nCrysDt-5i9KKOyxP7CWxvXasHGCEBFzWrTwHY2d09r2UuqDQ_bTPJpZi4YChelksjmVwtJ9DZvRCTT7mrolpSmlmGi-cFZHWzKRHttZr67SeIf_Qko1GqfF-uplz-6jnVbNBVfZDV31n_QSprkXwelCXA"/>
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkHG2QT7mP-9yn5cYRAtu2OxuIsEbYZiHHbI1UezuhnX-IEK-jSI48Cu3fhfdmPPFiGzcuQCM2j8GF_RN-f7paJLsF5-ciN0Ck7ifMbFgQpWMGplZ8nCrysDt-5i9KKOyxP7CWxvXasHGCEBFzWrTwHY2d09r2UuqDQ_bTPJpZi4YChelksjmVwtJ9DZvRCTT7mrolpSmlmGi-cFZHWzKRHttZr67SeIf_Qko1GqfF-uplz-6jnVbNBVfZDV31n_QSprkXwelCXA"/>
 </div>
 </div>
 </header>
-<main class="mt-16 px-margin_mobile">
-<!-- Navigation Tab (Horizontal Scroll) -->
-<nav class="flex overflow-x-auto no-scrollbar gap-2 py-4 border-b border-outline-variant sticky top-16 bg-surface z-40">
-<a class="whitespace-nowrap px-4 py-2 rounded-full font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors" href="#">Thông tin</a>
-<a class="whitespace-nowrap px-4 py-2 rounded-full font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors" href="#">Giấy tờ</a>
-<a class="whitespace-nowrap px-4 py-2 rounded-full font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors" href="#">Địa chỉ</a>
-<a class="whitespace-nowrap px-4 py-2 rounded-full font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors" href="#">Thiết bị</a>
-<a class="whitespace-nowrap px-4 py-2 rounded-full font-label-md text-label-md bg-primary-container text-on-primary-container font-bold shadow-sm" href="#">Bảo mật</a>
+<div class="as-profile-shell flex flex-1 pt-16">
+<aside class="as-profile-sidebar hidden md:flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] w-sidebar_width p-6 border-r border-outline-variant bg-surface overflow-y-auto">
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-xxl transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-body-md text-body-md">Thông tin cơ bản</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-xxl transition-all" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-body-md text-body-md">Giấy tờ cá nhân</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-xxl transition-all" href="#">
+<span class="material-symbols-outlined">location_on</span>
+<span class="font-body-md text-body-md">Địa chỉ</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-xxl transition-all" href="#">
+<span class="material-symbols-outlined">devices</span>
+<span class="font-body-md text-body-md">Thiết bị đăng nhập</span>
+</a>
+<a class="as-nav-active flex items-center gap-3 px-4 py-3 bg-primary-container/10 text-primary font-semibold rounded-xxl transition-all" href="#">
+<span class="material-symbols-outlined">shield</span>
+<span class="font-body-md text-body-md">Bảo mật</span>
+</a>
+<div class="as-nav-divider my-4 border-t border-outline-variant"></div>
+<a class="as-nav-danger flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container/10 rounded-xxl transition-all" href="#">
+<span class="material-symbols-outlined">lock</span>
+<span class="font-body-md text-body-md">Khóa tài khoản</span>
+</a>
+<a class="as-nav-danger flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container/10 rounded-xxl transition-all" href="#">
+<span class="material-symbols-outlined">delete</span>
+<span class="font-body-md text-body-md">Xóa tài khoản</span>
+</a>
 </nav>
+</aside>
+<main class="as-profile-main flex-1 md:ml-sidebar_width pb-20 md:pb-8">
+<div class="as-profile-main-inner max-w-container_max_width mx-auto px-margin_mobile md:px-gutter py-8">
+<div class="md:hidden mb-6 overflow-x-auto no-scrollbar -mx-margin_mobile px-margin_mobile as-profile-mobile-tabs">
+<div class="flex gap-2 min-w-max pb-2">
+<button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md">Thông tin</button>
+<button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md">Giấy tờ</button>
+<button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md">Địa chỉ</button>
+<button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md">Thiết bị</button>
+<button class="px-4 py-2 rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md">Bảo mật</button>
+</div>
+</div>
 <div class="flex flex-col gap-6 py-6">
 <!-- Phần Đổi mật khẩu -->
 <section class="flex flex-col gap-3">
@@ -239,19 +275,17 @@
 </div>
 </section>
 </div>
-<!-- Footer -->
-<footer class="w-full py-8 flex flex-col items-center gap-4 border-t border-outline-variant mb-4">
-<div class="h-10 flex items-center justify-center">
-<span class="text-primary font-headline-lg tracking-tight">AutoSphere</span>
 </div>
+</main>
+</div>
+<footer class="as-profile-footer w-full py-8 px-margin_mobile md:px-gutter md:ml-sidebar_width md:w-[calc(100%-260px)] flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container-lowest border-t border-outline-variant mt-auto">
 <p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 AutoSphere. Bảo lưu mọi quyền.</p>
-<div class="flex gap-4">
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary" href="#">Điều khoản</a>
-<a class="font-label-sm text-label-sm text-primary underline" href="#">Bảo mật</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary" href="#">Liên hệ</a>
+<div class="flex gap-8">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Điều khoản dịch vụ</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Chính sách bảo mật</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Liên hệ hỗ trợ</a>
 </div>
 </footer>
-</main>
 <!-- BottomNavBar -->
 <nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-surface shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] rounded-t-xl border-t border-outline-variant/30 backdrop-blur-md">
 <button class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95 duration-200">
@@ -288,5 +322,11 @@
 <script>window.FLOW_STEP_ID = '10-bao-mat';</script>
 <script src="../js/flow-config.js"></script>
 <script src="../js/flow-nav.js"></script>
+<link rel="stylesheet" href="../../assets/css/avatar-menu.css">
+<script src="../../assets/js/app-center-config.js"></script>
+<script src="../../assets/js/auth.js"></script>
+<script src="../../assets/js/avatar-menu.js"></script>
+<script src="../../assets/js/app-auth-header.js"></script>
+<script src="../../assets/js/auth-header.js"></script>
 <script src="../js/profile-nav.js"></script>
 </body></html>

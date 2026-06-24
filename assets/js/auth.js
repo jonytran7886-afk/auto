@@ -170,6 +170,36 @@ const AutoSphereAuth = (function () {
     try { return JSON.parse(raw); } catch (_) { return null; }
   }
 
+  const LS_ROLE = 'autosphere_role';
+  const COOKIE_ROLE = 'autosphere_role';
+
+  function getCurrentRole() {
+    const id = getStorage(LS_ROLE) || getCookie(COOKIE_ROLE) || 'consumer';
+    if (typeof APP_ROLES !== 'undefined') {
+      return APP_ROLES.find((r) => r.id === id) || APP_ROLES.find((r) => r.default) || { id: 'consumer', label: 'Người sử dụng dịch vụ' };
+    }
+    return { id, label: 'Người sử dụng dịch vụ' };
+  }
+
+  function setCurrentRole(roleId) {
+    setStorage(LS_ROLE, roleId);
+    setCookie(COOKIE_ROLE, roleId, SESSION_DAYS);
+  }
+
+  function appUrl(page) {
+    const path = window.location.pathname.replace(/\\/g, '/');
+    if (path.includes('/apps/')) return page;
+    return `${rootPrefix()}apps/${page}`;
+  }
+
+  function settingsUrl() {
+    return appUrl('settings.html');
+  }
+
+  function notificationsUrl() {
+    return appUrl('notifications.html');
+  }
+
   function login(user, remember) {
     const days = remember ? REMEMBER_DAYS : SESSION_DAYS;
     const token = generateToken();
@@ -196,18 +226,41 @@ const AutoSphereAuth = (function () {
   }
 
   function landingUrl() {
-    const path = window.location.pathname.replace(/\\/g, '/');
-    if (path.includes('/account/pages/')) return '../../index.html';
-    if (path.includes('/account/')) return '../index.html';
-    return 'index.html';
+    return `${rootPrefix()}index.html`;
   }
 
-  function loginUrl() {
+  function loginUrl(redirect) {
     const path = window.location.pathname.replace(/\\/g, '/');
+    let base;
     if (path.includes('/account/')) {
-      return path.includes('/pages/') ? '02-dang-nhap.html' : 'pages/02-dang-nhap.html';
+      base = path.includes('/pages/') ? '02-dang-nhap.html' : 'pages/02-dang-nhap.html';
+    } else {
+      base = `${rootPrefix()}account/pages/02-dang-nhap.html`;
     }
-    return 'account/pages/02-dang-nhap.html';
+    if (redirect) {
+      const rel = String(redirect).replace(/^\.\.\//g, '').replace(/^\.\//, '');
+      return `${base}?redirect=${encodeURIComponent(rel)}`;
+    }
+    return base;
+  }
+
+  function resolveRedirect() {
+    const q = new URLSearchParams(window.location.search).get('redirect');
+    if (!q) return null;
+    if (/^https?:\/\//i.test(q) || q.startsWith('//')) return null;
+    const clean = q.replace(/^\.\.\//g, '').replace(/^\.\//, '');
+    if (clean.includes('..')) return null;
+    return clean;
+  }
+
+  function redirectAfterLogin() {
+    const target = resolveRedirect();
+    if (target) {
+      const path = window.location.pathname.replace(/\\/g, '/');
+      const prefix = path.includes('/account/pages/') ? '../../' : path.includes('/account/') ? '../' : '';
+      return prefix + target;
+    }
+    return landingUrl();
   }
 
   function registerUrl() {
@@ -215,7 +268,30 @@ const AutoSphereAuth = (function () {
     if (path.includes('/account/')) {
       return path.includes('/pages/') ? '01-dang-ky.html' : 'pages/01-dang-ky.html';
     }
-    return 'account/pages/01-dang-ky.html';
+    return `${rootPrefix()}account/pages/01-dang-ky.html`;
+  }
+
+  function rootPrefix() {
+    const path = window.location.pathname.replace(/\\/g, '/');
+    if (path.includes('/garage/pages/') || path.includes('/account/pages/') || path.includes('/khampha/pages/')) return '../../';
+    if (path.includes('/garage/') || path.includes('/account/') || path.includes('/khampha/') || path.includes('/apps/')) return '../';
+    return '';
+  }
+
+  function profileUrl() {
+    return `${rootPrefix()}account/pages/05-ho-so-ca-nhan.html`;
+  }
+
+  function garageUrl() {
+    return `${rootPrefix()}garage/pages/01-danh-sach-phuong-tien.html`;
+  }
+
+  function digitalAssetsUrl() {
+    return `${rootPrefix()}garage/pages/09-ho-so-kinh-te-so.html`;
+  }
+
+  function transactionHistoryUrl() {
+    return `${rootPrefix()}garage/pages/10-lich-su-giao-dich.html`;
   }
 
   return {
@@ -225,7 +301,18 @@ const AutoSphereAuth = (function () {
     getUser,
     landingUrl,
     loginUrl,
+    resolveRedirect,
+    redirectAfterLogin,
+    rootPrefix,
     registerUrl,
+    profileUrl,
+    garageUrl,
+    digitalAssetsUrl,
+    transactionHistoryUrl,
+    getCurrentRole,
+    setCurrentRole,
+    settingsUrl,
+    notificationsUrl,
     accountPageUrl,
     otpPageUrl,
     resolveOtpContext,

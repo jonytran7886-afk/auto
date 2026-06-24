@@ -61,8 +61,8 @@
     const stepId = window.FLOW_STEP_ID;
     if (!stepId || !PROFILE_PAGES.includes(stepId)) return;
 
-    document.querySelectorAll('aside a[href="#"]').forEach(wireLink);
-    document.querySelectorAll('main nav a[href="#"]').forEach(wireLink);
+    document.querySelectorAll('aside a').forEach(wireLink);
+    document.querySelectorAll('main nav a').forEach(wireLink);
     document.querySelectorAll('.md\\:hidden .flex.gap-2 button, .md\\:hidden .flex.gap-3 button').forEach(wireLink);
   }
 

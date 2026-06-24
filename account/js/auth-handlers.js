@@ -21,7 +21,7 @@
       const name = identity.includes('@') ? identity.split('@')[0] : identity;
 
       AutoSphereAuth.login({ name, email: identity, phone: identity }, remember);
-      window.location.assign(AutoSphereAuth.landingUrl());
+      window.location.assign(AutoSphereAuth.redirectAfterLogin());
     };
 
     form.addEventListener('submit', doLogin, true);

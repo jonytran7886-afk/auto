@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketplace — AutoSphere</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/app-shell.css">
+</head>
+<body class="as-app-shell">
+  <header class="as-app-topbar">
+    <div class="as-app-topbar__brand">
+      <a href="index.html" class="as-app-topbar__logo">AutoSphere</a>
+      <span class="as-app-topbar__app">Marketplace</span>
+    </div>
+    <div class="as-app-topbar__actions">
+      <a href="index.html" aria-label="Trung tâm ứng dụng" title="Trung tâm ứng dụng">
+        <span class="material-symbols-outlined">apps</span>
+      </a>
+    </div>
+  </header>
+  <div class="as-app-layout">
+    <aside class="as-app-sidebar" id="app-sidebar"></aside>
+    <main class="as-app-main">
+      <div class="as-app-welcome">
+        <h1>Marketplace</h1>
+        <p>Mua, bán và theo dõi giao dịch xe trên hạ tầng đa kênh AutoSphere — từ tìm kiếm đến giữ chỗ và hành trình mua xe.</p>
+        <div class="as-app-quick-links" id="app-quick-links"></div>
+      </div>
+    </main>
+  </div>
+  <script>window.APP_SHELL = 'marketplace';</script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/app-center-config.js"></script>
+  <script src="assets/js/app-shell.js"></script>
+</body>
+</html>

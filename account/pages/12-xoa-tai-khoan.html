@@ -116,16 +116,17 @@
       min-height: max(884px, 100dvh);
     }
   </style>
+<link rel="stylesheet" href="../css/profile-layout.css">
 </head>
-<body class="bg-surface font-body-md text-on-surface">
+<body class="bg-background text-on-background min-h-screen flex flex-col">
 <!-- TopAppBar -->
 <header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin_mobile md:px-gutter h-16 bg-surface border-b border-outline-variant"><div class="flex items-center gap-4"><span class="font-headline-md text-headline-md font-bold text-primary">AutoSphere</span><div class="hidden md:block h-6 w-[1px] bg-outline-variant mx-2"></div><span class="hidden md:block font-headline-md text-headline-md text-on-surface">Xóa tài khoản</span></div><div class="flex items-center gap-3"><button class="p-2 rounded-full hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-on-surface-variant">notifications</span></button><div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant"><img class="w-full h-full object-cover" data-alt="User Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDmXZs84E__5_ADuCKoiLfzjEcJkq6eqrbROL8ex_Xgr99X3JDbso1lM-9XVhVOnG5GiZIP1Ri_qmFCP3bjrRuWXNFvps94dNsSpP5OIE-pDav4lHQftxsZVVxo_02HxjGZ45igWAf-EKYNjCKlCY090WfEy4zeYzX_tkgGg68P-SVRCTaTJ82xakEqbuH6BNjT99A925M_rjv636PzcfBljX6dpEH3Q-Gz-Suf2_qyTUCi4jwTqX4-a82JXYwX_JspopUdHa9Dg"/></div></div></header>
-<div class="flex min-h-screen pt-16">
+<div class="as-profile-shell flex min-h-screen pt-16">
 <!-- NavigationDrawer (Sidebar) -->
-<aside class="hidden md:flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] w-sidebar_width p-6 border-r border-outline-variant bg-surface overflow-y-auto"><nav class="flex flex-col gap-1"><a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-xxl transition-all" href="#"><span class="material-symbols-outlined">person</span><span class="font-body-md text-body-md">Thông tin cơ bản</span></a><a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-xxl transition-all" href="#"><span class="material-symbols-outlined">description</span><span class="font-body-md text-body-md">Giấy tờ cá nhân</span></a><a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-xxl transition-all" href="#"><span class="material-symbols-outlined">location_on</span><span class="font-body-md text-body-md">Địa chỉ</span></a><a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-xxl transition-all" href="#"><span class="material-symbols-outlined">devices</span><span class="font-body-md text-body-md">Thiết bị đăng nhập</span></a><a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-xxl transition-all" href="#"><span class="material-symbols-outlined">shield</span><span class="font-body-md text-body-md">Bảo mật</span></a><div class="my-4 border-t border-outline-variant"></div><a class="flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container/10 rounded-xxl transition-all" href="#"><span class="material-symbols-outlined">lock</span><span class="font-body-md text-body-md">Khóa tài khoản</span></a><a class="flex items-center gap-3 px-4 py-3 bg-error-container/10 text-error font-semibold rounded-xxl transition-all" href="#"><span class="material-symbols-outlined">delete</span><span class="font-body-md text-body-md">Xóa tài khoản</span></a></nav></aside>
+<aside class="as-profile-sidebar hidden md:flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] w-sidebar_width p-6 border-r border-outline-variant bg-surface overflow-y-auto"><nav class="flex flex-col gap-1"><a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-xxl transition-all" href="#"><span class="material-symbols-outlined">person</span><span class="font-body-md text-body-md">Thông tin cơ bản</span></a><a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-xxl transition-all" href="#"><span class="material-symbols-outlined">description</span><span class="font-body-md text-body-md">Giấy tờ cá nhân</span></a><a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-xxl transition-all" href="#"><span class="material-symbols-outlined">location_on</span><span class="font-body-md text-body-md">Địa chỉ</span></a><a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-xxl transition-all" href="#"><span class="material-symbols-outlined">devices</span><span class="font-body-md text-body-md">Thiết bị đăng nhập</span></a><a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-xxl transition-all" href="#"><span class="material-symbols-outlined">shield</span><span class="font-body-md text-body-md">Bảo mật</span></a><div class="as-nav-divider my-4 border-t border-outline-variant"></div><a class="as-nav-danger flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container/10 rounded-xxl transition-all" href="#"><span class="material-symbols-outlined">lock</span><span class="font-body-md text-body-md">Khóa tài khoản</span></a><a class="as-nav-active as-nav-danger flex items-center gap-3 px-4 py-3 bg-error-container/10 text-error font-semibold rounded-xxl transition-all" href="#"><span class="material-symbols-outlined">delete</span><span class="font-body-md text-body-md">Xóa tài khoản</span></a></nav></aside>
 <!-- Main Content Area -->
-<main class="flex-1 md:ml-sidebar_width pb-20 md:pb-8">
-<div class="max-w-[800px] mx-auto px-margin_mobile md:px-gutter py-8">
+<main class="as-profile-main flex-1 md:ml-sidebar_width pb-20 md:pb-8">
+<div class="as-profile-main-inner max-w-[800px] mx-auto px-margin_mobile md:px-gutter py-8">
 <!-- Screen Title -->
 <div class="mb-section_gap text-center md:text-left">
 <h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Xóa tài khoản</h1>
@@ -176,6 +177,7 @@
 </div>
 </div>
 </div>
+</div>
 </main>
 </div>
 <!-- BottomNavBar (Mobile Only) -->
@@ -217,7 +219,7 @@
 </div>
 </div>
 <!-- Footer -->
-<footer class="w-full py-8 px-margin_mobile md:px-gutter md:ml-sidebar_width md:w-[calc(100%-260px)] flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container-lowest border-t border-outline-variant mt-auto"><p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 AutoSphere. Bảo lưu mọi quyền.</p><div class="flex gap-8"><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Điều khoản dịch vụ</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Chính sách bảo mật</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Liên hệ hỗ trợ</a></div></footer>
+<footer class="as-profile-footer w-full py-8 px-margin_mobile md:px-gutter md:ml-sidebar_width md:w-[calc(100%-260px)] flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container-lowest border-t border-outline-variant mt-auto"><p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 AutoSphere. Bảo lưu mọi quyền.</p><div class="flex gap-8"><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Điều khoản dịch vụ</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Chính sách bảo mật</a><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Liên hệ hỗ trợ</a></div></footer>
 <script>
         const checkbox = document.getElementById('understandCheckbox');
         const input = document.getElementById('confirmText');
@@ -270,5 +272,11 @@
 <script>window.FLOW_STEP_ID = '12-xoa-tai-khoan';</script>
 <script src="../js/flow-config.js"></script>
 <script src="../js/flow-nav.js"></script>
+<link rel="stylesheet" href="../../assets/css/avatar-menu.css">
+<script src="../../assets/js/app-center-config.js"></script>
+<script src="../../assets/js/auth.js"></script>
+<script src="../../assets/js/avatar-menu.js"></script>
+<script src="../../assets/js/app-auth-header.js"></script>
+<script src="../../assets/js/auth-header.js"></script>
 <script src="../js/profile-nav.js"></script>
 </body></html>

@@ -104,6 +104,7 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
+<link rel="stylesheet" href="../css/profile-layout.css">
 </head>
 <body class="bg-background text-on-background min-h-screen flex flex-col">
 <!-- TopAppBar -->
@@ -122,11 +123,11 @@
 </div>
 </div>
 </header>
-<div class="flex flex-1 pt-16">
+<div class="as-profile-shell flex flex-1 pt-16">
 <!-- Local Navigation Drawer (Desktop) -->
-<aside class="hidden md:flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] w-sidebar_width p-6 border-r border-outline-variant bg-surface overflow-y-auto">
+<aside class="as-profile-sidebar hidden md:flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] w-sidebar_width p-6 border-r border-outline-variant bg-surface overflow-y-auto">
 <nav class="flex flex-col gap-1">
-<a class="flex items-center gap-3 px-4 py-3 bg-primary-container/10 text-primary font-semibold rounded-xxl transition-all" href="#">
+<a class="as-nav-active flex items-center gap-3 px-4 py-3 bg-primary-container/10 text-primary font-semibold rounded-xxl transition-all" href="#">
 <span class="material-symbols-outlined">person</span>
 <span class="font-body-md text-body-md">Thông tin cơ bản</span>
 </a>
@@ -147,19 +148,19 @@
 <span class="font-body-md text-body-md">Bảo mật</span>
 </a>
 <div class="my-4 border-t border-outline-variant"></div>
-<a class="flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container/10 rounded-xxl transition-all" href="#">
+<a class="as-nav-danger flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container/10 rounded-xxl transition-all" href="#">
 <span class="material-symbols-outlined">lock</span>
 <span class="font-body-md text-body-md">Khóa tài khoản</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container/10 rounded-xxl transition-all" href="#">
+<a class="as-nav-danger flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container/10 rounded-xxl transition-all" href="#">
 <span class="material-symbols-outlined">delete</span>
 <span class="font-body-md text-body-md">Xóa tài khoản</span>
 </a>
 </nav>
 </aside>
 <!-- Main Content Area -->
-<main class="flex-1 md:ml-sidebar_width pb-20 md:pb-8">
-<div class="max-w-container_max_width mx-auto px-margin_mobile md:px-gutter py-8">
+<main class="as-profile-main flex-1 md:ml-sidebar_width pb-20 md:pb-8">
+<div class="as-profile-main-inner max-w-container_max_width mx-auto px-margin_mobile md:px-gutter py-8">
 <!-- Mobile Navigation Tabs (Horizontal Scroll) -->
 <div class="md:hidden mb-6 overflow-x-auto no-scrollbar -mx-margin_mobile px-margin_mobile">
 <div class="flex gap-2 min-w-max pb-2">
@@ -277,7 +278,7 @@
 </main>
 </div>
 <!-- Footer -->
-<footer class="w-full py-8 px-margin_mobile md:px-gutter md:ml-sidebar_width md:w-[calc(100%-260px)] flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container-lowest border-t border-outline-variant mt-auto">
+<footer class="as-profile-footer w-full py-8 px-margin_mobile md:px-gutter md:ml-sidebar_width md:w-[calc(100%-260px)] flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container-lowest border-t border-outline-variant mt-auto">
 <p class="font-label-sm text-label-sm text-on-surface-variant flex items-center">
     © 2024 <span class="font-label-md text-primary mx-1">AutoSphere</span>. Bảo lưu mọi quyền.
 </p>
@@ -340,5 +341,11 @@
 <script>window.FLOW_STEP_ID = '05-ho-so-ca-nhan';</script>
 <script src="../js/flow-config.js"></script>
 <script src="../js/flow-nav.js"></script>
+<link rel="stylesheet" href="../../assets/css/avatar-menu.css">
+<script src="../../assets/js/app-center-config.js"></script>
+<script src="../../assets/js/auth.js"></script>
+<script src="../../assets/js/avatar-menu.js"></script>
+<script src="../../assets/js/app-auth-header.js"></script>
+<script src="../../assets/js/auth-header.js"></script>
 <script src="../js/profile-nav.js"></script>
 </body></html>

@@ -32,7 +32,7 @@
   }
 
   function logoImgHtml() {
-    return `<img class="as-brand-logo__img" src="${logoSrc()}" alt="AutoSphere" width="1039" height="160" decoding="async">`;
+    return `<img class="as-brand-logo__img" src="${logoSrc()}" alt="AutoSphere" width="180" height="28" decoding="async" style="height:28px;width:auto;max-width:min(180px,42vw);object-fit:contain">`;
   }
 
   function isBrandText(el) {

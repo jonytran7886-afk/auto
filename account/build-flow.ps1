@@ -49,6 +49,7 @@ $authSteps = @('01-dang-ky', '02-dang-nhap')
 $otpSteps = @('03-xac-thuc-otp')
 
 $profileInjection = @"
+<link rel="stylesheet" href="../../assets/css/brand-logo.css">
 <link rel="stylesheet" href="../../assets/css/avatar-menu.css">
 <script src="../../assets/js/app-center-config.js"></script>
 <script src="../../assets/js/auth.js"></script>

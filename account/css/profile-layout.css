@@ -1,5 +1,23 @@
 /* Profile pages — canonical layout (05-ho-so-ca-nhan) */
 
+header.fixed .as-brand-logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  max-height: 2.5rem;
+  overflow: hidden;
+}
+
+header.fixed .as-brand-logo__img {
+  display: block;
+  height: 28px;
+  max-height: 28px;
+  width: auto;
+  max-width: min(160px, 40vw);
+  object-fit: contain;
+  object-position: left center;
+}
+
 .as-profile-shell {
   display: flex;
   flex: 1 1 auto;

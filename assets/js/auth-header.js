@@ -97,6 +97,19 @@
   document.addEventListener('DOMContentLoaded', initAuthHeader);
   document.addEventListener('vei:workspace-change', updateDealerPostCta);
 
+  function loadBrandLogoStyles() {
+    if (document.querySelector('link[data-as-brand-logo-css]')) return;
+    const path = window.location.pathname.replace(/\\/g, '/');
+    let prefix = '';
+    if (path.includes('/pages/') || path.includes('/apps/')) prefix = '../../';
+    else if (path.includes('/garage/') || path.includes('/account/') || path.includes('/khampha/') || path.includes('/detail/')) prefix = '../';
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = `${prefix}assets/css/brand-logo.css`;
+    link.dataset.asBrandLogoCss = '1';
+    document.head.appendChild(link);
+  }
+
   function loadBrandLogoScript() {
     if (document.querySelector('script[data-as-brand-logo]')) return;
     const path = window.location.pathname.replace(/\\/g, '/');
@@ -112,5 +125,6 @@
     document.head.appendChild(s);
   }
 
+  loadBrandLogoStyles();
   loadBrandLogoScript();
 })();

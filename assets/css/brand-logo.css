@@ -5,7 +5,8 @@
   line-height: 0;
   text-decoration: none;
   flex-shrink: 0;
-  overflow: visible;
+  overflow: hidden;
+  max-height: 36px;
 }
 
 .as-brand-logo:hover {
@@ -37,6 +38,13 @@
 header .logo.as-brand-logo .as-brand-logo__img,
 a.logo.as-brand-logo .as-brand-logo__img {
   height: 28px;
+}
+
+header.fixed .as-brand-logo .as-brand-logo__img,
+header.fixed a.as-brand-logo .as-brand-logo__img {
+  height: 28px;
+  max-height: 28px;
+  max-width: min(160px, 40vw);
 }
 
 .as-mobile-drawer-panel .as-brand-logo .as-brand-logo__img {

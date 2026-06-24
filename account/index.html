@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoSphere — Luồng Tài khoản cá nhân</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #004ac6;
+      --surface: #f8f9ff;
+      --on-surface: #0b1c30;
+      --muted: #434655;
+      --border: #c3c6d7;
+      --card: #fff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Inter, system-ui, sans-serif; background: var(--surface); color: var(--on-surface); min-height: 100vh; }
+    .header {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .logo { font-weight: 800; color: var(--primary); font-size: 18px; text-decoration: none; }
+    .back { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 4px; }
+    .back:hover { color: var(--primary); }
+    .container { max-width: 900px; margin: 0 auto; padding: 32px 24px 48px; }
+    h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .subtitle { color: var(--muted); font-size: 16px; line-height: 1.5; margin-bottom: 32px; }
+    .phase { margin-bottom: 28px; }
+    .phase-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .phase-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .steps { display: flex; flex-direction: column; gap: 8px; }
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .step:hover { border-color: var(--primary); box-shadow: 0 4px 12px rgba(0,74,198,0.1); transform: translateY(-1px); }
+    .step-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: #eff4ff;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-body { flex: 1; min-width: 0; }
+    .step-title { font-weight: 600; font-size: 15px; margin-bottom: 2px; }
+    .step-meta { font-size: 12px; color: var(--muted); }
+    .step-arrow { color: var(--border); }
+    .step:hover .step-arrow { color: var(--primary); }
+    .cta-bar {
+      margin-top: 32px;
+      padding: 24px;
+      background: linear-gradient(135deg, #004ac6, #2563eb);
+      border-radius: 20px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .cta-bar p { font-size: 14px; opacity: 0.9; }
+    .cta-btn {
+      background: #fff;
+      color: var(--primary);
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .cta-btn:hover { background: #dbe1ff; }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-left: 8px;
+    }
+    .badge-onboarding { background: #dbe1ff; color: #004ac6; }
+    .badge-account { background: #acedff; color: #006172; }
+    .badge-danger { background: #ffdad6; color: #ba1a1a; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a href="../index.html" class="logo">AutoSphere</a>
+    <a href="../index.html" class="back">
+      <span class="material-symbols-outlined" style="font-size:18px">arrow_back</span>
+      Trang chủ
+    </a>
+  </header>
+
+  <div class="container">
+    <h1>Module 01 — Tài khoản cá nhân</h1>
+    <p class="subtitle">
+      Luồng prototype ráp từ <strong>stitch_autosphere_account_module_ui_ux</strong>.
+      12 màn hình theo thứ tự nghiệp vụ — dùng thanh điều hướng dưới cùng để chuyển bước.
+    </p>
+
+    <div id="flow-map"></div>
+
+    <div class="cta-bar">
+      <div>
+        <strong>Bắt đầu luồng</strong>
+        <p>Đăng ký → Đăng nhập → OTP → eKYC → Quản lý tài khoản</p>
+      </div>
+      <a href="pages/01-dang-ky.html" class="cta-btn">Bước 1 — Đăng ký →</a>
+    </div>
+  </div>
+
+  <script src="js/flow-config.js"></script>
+  <script>
+    const phaseLabels = {
+      onboarding: { label: 'Onboarding', badge: 'badge-onboarding' },
+      account: { label: 'Quản lý tài khoản', badge: 'badge-account' },
+      danger: { label: 'Khóa / Xóa tài khoản', badge: 'badge-danger' },
+    };
+
+    const groups = {};
+    ACCOUNT_FLOW.forEach((step) => {
+      if (!groups[step.phase]) groups[step.phase] = [];
+      groups[step.phase].push(step);
+    });
+
+    const order = ['onboarding', 'account', 'danger'];
+    const map = document.getElementById('flow-map');
+
+    order.forEach((phase) => {
+      if (!groups[phase]) return;
+      const meta = phaseLabels[phase];
+      const section = document.createElement('div');
+      section.className = 'phase';
+      section.innerHTML = `<div class="phase-title">${meta.label}</div><div class="steps"></div>`;
+      const stepsEl = section.querySelector('.steps');
+
+      groups[phase].forEach((step) => {
+        const a = document.createElement('a');
+        a.className = 'step';
+        a.href = `pages/${step.id}.html`;
+        a.innerHTML = `
+          <div class="step-num">${String(step.order).padStart(2, '0')}</div>
+          <div class="step-body">
+            <div class="step-title">${step.title}<span class="badge ${meta.badge}">${meta.phase}</span></div>
+            <div class="step-meta">${step.module}</div>
+          </div>
+          <span class="material-symbols-outlined step-arrow">chevron_right</span>
+        `;
+        stepsEl.appendChild(a);
+      });
+
+      map.appendChild(section);
+    });
+  </script>
+</body>
+</html>

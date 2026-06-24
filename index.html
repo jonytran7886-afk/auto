@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html class="light" lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AutoSphere — Vehicle Economy Infrastructure. Nền tảng hạ tầng số quản lý vòng đời phương tiện, kết nối người dùng, doanh nghiệp và AI.">
+  <title>AutoSphere | Vehicle Economy Infrastructure</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#004ac6",
+            "primary-container": "#2563eb",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#eeefff",
+            "primary-fixed": "#dbe1ff",
+            "primary-fixed-dim": "#b4c5ff",
+            "on-primary-fixed": "#00174b",
+            "on-primary-fixed-variant": "#003ea8",
+            "secondary": "#00687a",
+            "secondary-container": "#57dffe",
+            "on-secondary": "#ffffff",
+            "on-secondary-container": "#006172",
+            "secondary-fixed": "#acedff",
+            "secondary-fixed-dim": "#4cd7f6",
+            "tertiary": "#943700",
+            "tertiary-container": "#bc4800",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-container": "#ffede6",
+            "tertiary-fixed": "#ffdbcd",
+            "background": "#f8f9ff",
+            "on-background": "#0b1c30",
+            "surface": "#f8f9ff",
+            "on-surface": "#0b1c30",
+            "on-surface-variant": "#434655",
+            "surface-container": "#e5eeff",
+            "surface-container-low": "#eff4ff",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-high": "#dce9ff",
+            "surface-container-highest": "#d3e4fe",
+            "surface-variant": "#d3e4fe",
+            "outline": "#737686",
+            "outline-variant": "#c3c6d7",
+            "inverse-surface": "#213145",
+            "inverse-on-surface": "#eaf1ff",
+            "inverse-primary": "#b4c5ff",
+            "error": "#ba1a1a",
+            "on-error": "#ffffff",
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "gutter": "24px",
+          },
+          fontFamily: {
+            sans: ["Inter", "system-ui", "sans-serif"],
+          },
+          fontSize: {
+            "headline-lg": ["30px", { lineHeight: "38px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "headline-md": ["20px", { lineHeight: "28px", fontWeight: "600" }],
+            "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+            "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+            "label-md": ["14px", { lineHeight: "20px", fontWeight: "600" }],
+            "label-sm": ["12px", { lineHeight: "16px", fontWeight: "500" }],
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .orbit-container { position: relative; width: 100%; padding-bottom: 100%; }
+    .orbit-circle {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px dashed #c3c6d7; border-radius: 50%;
+    }
+    @keyframes rotate {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    .animate-orbit { animation: rotate 40s linear infinite; }
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    @keyframes flow {
+      0% { opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { opacity: 0; }
+    }
+    .animate-flow { animation: flow 3s linear infinite; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .hero-image { object-fit: cover; object-position: center; }
+  </style>
+  <link rel="preload" as="image" href="assets/images/hero-ecosystem.jpg">
+</head>
+<body class="bg-background text-on-background selection:bg-primary-container selection:text-on-primary-container">
+
+<!-- Header -->
+<header class="fixed top-0 left-0 w-full h-[72px] z-[100] bg-surface/80 backdrop-blur-md border-b border-outline-variant shadow-sm flex items-center px-gutter transition-all">
+  <div class="max-w-[1440px] w-full mx-auto flex items-center justify-between">
+    <div class="flex items-center gap-8">
+      <a href="/" class="font-headline-md text-headline-md font-extrabold text-primary tracking-tight">AutoSphere</a>
+      <nav class="hidden xl:flex items-center gap-8">
+        <a href="#ecosystem" class="font-label-md text-label-md text-on-surface hover:text-primary transition-colors">Khám phá</a>
+        <a href="#lifecycle" class="font-label-md text-label-md text-on-surface hover:text-primary transition-colors">Giải pháp</a>
+        <a href="#personas" class="font-label-md text-label-md text-on-surface hover:text-primary transition-colors">Hệ sinh thái</a>
+        <a href="#developer" class="font-label-md text-label-md text-on-surface hover:text-primary transition-colors">Nhà phát triển</a>
+        <a href="#investor" class="font-label-md text-label-md text-on-surface hover:text-primary transition-colors">Nhà đầu tư</a>
+      </nav>
+    </div>
+    <div class="flex items-center gap-3">
+      <button id="mobile-menu-toggle" class="xl:hidden p-2 text-on-surface-variant hover:bg-surface-variant/20 rounded-full transition-colors" aria-label="Menu">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+      <div class="hidden sm:flex items-center gap-3">
+        <button class="p-2 text-on-surface-variant hover:bg-surface-variant/20 rounded-full transition-colors" aria-label="Tìm kiếm">
+          <span class="material-symbols-outlined">search</span>
+        </button>
+        <button class="p-2 text-on-surface-variant hover:bg-surface-variant/20 rounded-full transition-colors" aria-label="Ngôn ngữ">
+          <span class="material-symbols-outlined">language</span>
+        </button>
+        <div class="h-6 w-[1px] bg-outline-variant mx-2"></div>
+        <button class="relative p-2 text-on-surface-variant hover:bg-surface-variant/20 rounded-full transition-colors" aria-label="Thông báo">
+          <span class="material-symbols-outlined">notifications</span>
+          <span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+        </button>
+        <button id="app-switcher-toggle" class="p-2 text-on-surface-variant hover:bg-surface-variant/20 rounded-full transition-colors" aria-label="Ứng dụng">
+          <span class="material-symbols-outlined">apps</span>
+        </button>
+        <a href="account/index.html" class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed-dim ring-2 ring-surface cursor-pointer shrink-0" aria-label="Tài khoản">
+          <img data-asset="profile" class="w-full h-full object-cover" src="assets/images/profile-avatar.jpg" alt="Profile portrait" width="40" height="40">
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden fixed top-[72px] left-0 right-0 z-[99] bg-white border-b border-outline-variant shadow-lg xl:hidden">
+  <nav class="flex flex-col p-4 gap-1">
+    <a href="#ecosystem" class="px-4 py-3 rounded-xl font-label-md hover:bg-surface-container-low transition-colors">Khám phá</a>
+    <a href="#lifecycle" class="px-4 py-3 rounded-xl font-label-md hover:bg-surface-container-low transition-colors">Giải pháp</a>
+    <a href="#personas" class="px-4 py-3 rounded-xl font-label-md hover:bg-surface-container-low transition-colors">Hệ sinh thái</a>
+    <a href="#developer" class="px-4 py-3 rounded-xl font-label-md hover:bg-surface-container-low transition-colors">Nhà phát triển</a>
+    <a href="#investor" class="px-4 py-3 rounded-xl font-label-md hover:bg-surface-container-low transition-colors">Nhà đầu tư</a>
+    <a href="account/index.html" class="mt-2 px-4 py-3 bg-primary text-on-primary rounded-xl font-label-md text-center">Đăng nhập</a>
+  </nav>
+</div>
+
+<!-- App Switcher -->
+<div id="app-switcher" class="hidden fixed top-20 right-gutter z-[110] w-[min(480px,calc(100vw-32px))] bg-surface-container-lowest rounded-3xl shadow-2xl border border-outline-variant p-6">
+  <h3 class="font-headline-md text-headline-md mb-6 px-2">Trung tâm Ứng dụng</h3>
+  <div class="grid grid-cols-4 gap-4">
+    <a href="prototype/index.html" class="flex flex-col items-center gap-2 p-3 hover:bg-surface-container-low rounded-2xl transition-all group">
+      <div class="w-12 h-12 rounded-xl bg-primary-fixed-dim flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+        <span class="material-symbols-outlined text-[28px]">garage</span>
+      </div>
+      <span class="font-label-sm text-label-sm text-center">Garage</span>
+    </a>
+    <a href="prototype/index.html" class="flex flex-col items-center gap-2 p-3 hover:bg-surface-container-low rounded-2xl transition-all group">
+      <div class="w-12 h-12 rounded-xl bg-secondary-fixed flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
+        <span class="material-symbols-outlined text-[28px]">storefront</span>
+      </div>
+      <span class="font-label-sm text-label-sm text-center">Marketplace</span>
+    </a>
+    <a href="prototype/index.html" class="flex flex-col items-center gap-2 p-3 hover:bg-surface-container-low rounded-2xl transition-all group">
+      <div class="w-12 h-12 rounded-xl bg-tertiary-fixed flex items-center justify-center text-tertiary group-hover:scale-110 transition-transform">
+        <span class="material-symbols-outlined text-[28px]">security</span>
+      </div>
+      <span class="font-label-sm text-label-sm text-center">Insurance</span>
+    </a>
+    <a href="prototype/index.html" class="flex flex-col items-center gap-2 p-3 hover:bg-surface-container-low rounded-2xl transition-all group">
+      <div class="w-12 h-12 rounded-xl bg-primary-container/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+        <span class="material-symbols-outlined text-[28px]">account_balance</span>
+      </div>
+      <span class="font-label-sm text-label-sm text-center">Finance</span>
+    </a>
+    <a href="prototype/index.html" class="flex flex-col items-center gap-2 p-3 hover:bg-surface-container-low rounded-2xl transition-all group">
+      <div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-on-surface-variant group-hover:scale-110 transition-transform">
+        <span class="material-symbols-outlined text-[28px]">local_shipping</span>
+      </div>
+      <span class="font-label-sm text-label-sm text-center">Fleet</span>
+    </a>
+    <a href="prototype/index.html" class="flex flex-col items-center gap-2 p-3 hover:bg-surface-container-low rounded-2xl transition-all group">
+      <div class="w-12 h-12 rounded-xl bg-primary-fixed-dim flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+        <span class="material-symbols-outlined text-[28px]">code</span>
+      </div>
+      <span class="font-label-sm text-label-sm text-center">Dev Hub</span>
+    </a>
+    <a href="prototype/index.html" class="flex flex-col items-center gap-2 p-3 hover:bg-surface-container-low rounded-2xl transition-all group">
+      <div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-on-surface-variant group-hover:scale-110 transition-transform">
+        <span class="material-symbols-outlined text-[28px]">hub</span>
+      </div>
+      <span class="font-label-sm text-label-sm text-center">Affiliate</span>
+    </a>
+    <a href="prototype/index.html" class="flex flex-col items-center gap-2 p-3 hover:bg-surface-container-low rounded-2xl transition-all group">
+      <div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-on-primary group-hover:scale-110 transition-transform">
+        <span class="material-symbols-outlined text-[28px]">psychology</span>
+      </div>
+      <span class="font-label-sm text-label-sm text-center font-bold">AI Agent</span>
+    </a>
+  </div>
+</div>
+
+<main class="pt-[72px]">
+
+<!-- Hero -->
+<section id="hero" class="min-h-[90vh] flex items-center px-gutter py-20 relative overflow-hidden">
+  <div class="absolute top-0 right-0 w-1/2 h-full bg-primary/5 -z-10 rounded-l-[100px] blur-3xl"></div>
+  <div class="max-w-[1440px] mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div class="space-y-8">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-primary-fixed text-on-primary-fixed-variant rounded-full font-label-md text-label-md">
+        <span class="material-symbols-outlined text-[18px]" style="font-variation-settings:'FILL' 1">stars</span>
+        Future of Mobility Platform
+      </div>
+      <h1 class="text-[clamp(36px,5vw,64px)] leading-[1.1] font-extrabold tracking-tight text-on-surface">
+        Vehicle Economy<br><span class="text-primary">Infrastructure</span>
+      </h1>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+        Nền tảng hạ tầng số toàn diện quản lý vòng đời phương tiện, kết nối xuyên suốt người dùng, doanh nghiệp, tổ chức tài chính và các hệ thống AI thông minh trên toàn cầu.
+      </p>
+      <div class="flex flex-wrap items-center gap-4 pt-4">
+        <a href="#ecosystem" class="btn inline-flex bg-primary text-on-primary px-8 py-4 rounded-2xl font-label-md text-label-md hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">Khám phá Giải pháp</a>
+        <a href="#developer" class="btn inline-flex bg-surface-container text-primary border border-primary/10 px-8 py-4 rounded-2xl font-label-md text-label-md hover:bg-surface-container-high transition-all">Tài liệu API</a>
+      </div>
+      <div class="grid grid-cols-3 gap-8 pt-12 border-t border-outline-variant">
+        <div>
+          <div class="font-headline-md text-headline-md font-bold text-primary">12.4M+</div>
+          <div class="font-label-sm text-label-sm text-on-surface-variant">Xe đã đăng ký</div>
+        </div>
+        <div>
+          <div class="font-headline-md text-headline-md font-bold text-primary">2.3k+</div>
+          <div class="font-label-sm text-label-sm text-on-surface-variant">Doanh nghiệp</div>
+        </div>
+        <div>
+          <div class="font-headline-md text-headline-md font-bold text-primary">$5.6B</div>
+          <div class="font-label-sm text-label-sm text-on-surface-variant">Tài sản số</div>
+        </div>
+      </div>
+    </div>
+    <div class="relative">
+      <div class="relative z-10 w-full aspect-square rounded-[40px] overflow-hidden shadow-2xl border-4 border-white">
+        <img
+          data-asset="hero"
+          class="hero-image w-full h-full"
+          src="assets/images/hero-ecosystem.jpg"
+          alt="3D isometric digital mobility ecosystem — AutoSphere Vehicle Economy"
+          width="560"
+          height="560"
+          loading="eager"
+          decoding="async"
+        >
+      </div>
+      <div class="absolute -top-10 -right-10 w-40 h-40 bg-secondary-container/30 rounded-full blur-3xl -z-10 animate-pulse"></div>
+      <div class="absolute -bottom-10 -left-10 w-60 h-60 bg-primary-container/20 rounded-full blur-3xl -z-10"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Chu kỳ phát triển mới -->
+<section id="ecosystem" class="py-24 px-gutter bg-surface">
+  <div class="max-w-[1440px] mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="font-headline-lg text-headline-lg mb-4 text-on-surface">Ngành ô tô đang bước vào một chu kỳ phát triển mới</h2>
+      <p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">Từ ngành sản xuất phương tiện sang nền kinh tế phương tiện toàn cầu.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="bg-surface-container-lowest p-8 rounded-3xl border border-outline-variant hover:shadow-xl transition-all flex flex-col gap-6">
+        <span class="material-symbols-outlined text-primary text-4xl">factory</span>
+        <h3 class="font-headline-md text-headline-md">Ngành công nghiệp truyền thống</h3>
+        <p class="text-body-md text-on-surface-variant">Giá trị kinh tế chủ yếu được ghi nhận tại thời điểm bán xe.</p>
+        <div class="mt-auto flex flex-wrap gap-2 pt-4 border-t border-outline-variant/30">
+          <span class="px-3 py-1 bg-surface-container rounded-full text-xs font-bold uppercase">Sản xuất</span>
+          <span class="px-3 py-1 bg-surface-container rounded-full text-xs font-bold uppercase">Phân phối</span>
+        </div>
+      </div>
+      <div class="bg-primary text-on-primary p-8 rounded-3xl shadow-2xl shadow-primary/20 flex flex-col gap-6 lg:scale-105 z-10">
+        <span class="material-symbols-outlined text-4xl">directions_car</span>
+        <h3 class="font-headline-md text-headline-md">Nền kinh tế phương tiện</h3>
+        <p class="text-body-md opacity-90">Một chiếc xe tiếp tục tạo ra giá trị trong suốt 10–20 năm sử dụng thông qua các dịch vụ số.</p>
+        <div class="mt-auto flex flex-wrap gap-2 pt-4 border-t border-white/20">
+          <span class="px-3 py-1 bg-white/10 rounded-full text-xs font-bold uppercase">Tài chính</span>
+          <span class="px-3 py-1 bg-white/10 rounded-full text-xs font-bold uppercase">Dịch vụ số</span>
+        </div>
+      </div>
+      <div class="bg-surface-container-lowest p-8 rounded-3xl border border-outline-variant hover:shadow-xl transition-all flex flex-col gap-6">
+        <span class="material-symbols-outlined text-secondary text-4xl">smart_toy</span>
+        <h3 class="font-headline-md text-headline-md">AI Economy</h3>
+        <p class="text-body-md text-on-surface-variant">AI đang trở thành lực lượng lao động mới, tự động hóa các quy trình vận hành và tài chính.</p>
+        <div class="mt-auto flex flex-wrap gap-2 pt-4 border-t border-outline-variant/30">
+          <span class="px-3 py-1 bg-surface-container rounded-full text-xs font-bold uppercase">AI Buyer</span>
+          <span class="px-3 py-1 bg-surface-container rounded-full text-xs font-bold uppercase">AI Garage</span>
+        </div>
+      </div>
+      <div class="bg-surface-container-lowest p-8 rounded-3xl border border-outline-variant hover:shadow-xl transition-all flex flex-col gap-6">
+        <span class="material-symbols-outlined text-tertiary text-4xl">hub</span>
+        <h3 class="font-headline-md text-headline-md">VEI Core</h3>
+        <p class="text-body-md text-on-surface-variant">Lớp hạ tầng cho phép tất cả các thực thể cùng tham gia kiến tạo giá trị minh bạch.</p>
+        <div class="mt-auto flex flex-wrap gap-2 pt-4 border-t border-outline-variant/30">
+          <span class="px-3 py-1 bg-surface-container rounded-full text-xs font-bold uppercase">Data Layer</span>
+          <span class="px-3 py-1 bg-surface-container rounded-full text-xs font-bold uppercase">Multi-Tenant</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Vòng đời kinh tế -->
+<section id="lifecycle" class="py-24 bg-surface-container-low px-gutter">
+  <div class="max-w-[1440px] mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="font-headline-lg text-headline-lg mb-4">Một chiếc xe không còn là sản phẩm</h2>
+      <p class="font-body-lg text-on-surface-variant">Mỗi phương tiện là trung tâm của một hệ sinh thái kinh tế năng động.</p>
+    </div>
+    <div class="relative py-12 mb-16">
+      <div class="absolute top-1/2 left-0 w-full h-0.5 bg-primary/10 -translate-y-1/2 hidden md:block"></div>
+      <div class="flex justify-between relative z-10 max-w-[1200px] mx-auto overflow-x-auto hide-scrollbar px-4 gap-4 md:gap-0">
+        <div class="flex flex-col items-center gap-4 min-w-[90px] group"><div class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">search</span></div><span class="font-label-md text-label-md uppercase text-center text-xs">Khám phá</span></div>
+        <div class="flex flex-col items-center gap-4 min-w-[90px] group"><div class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">directions_car</span></div><span class="font-label-md text-label-md uppercase text-center text-xs">Mua xe</span></div>
+        <div class="flex flex-col items-center gap-4 min-w-[90px] group"><div class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">account_balance</span></div><span class="font-label-md text-label-md uppercase text-center text-xs">Khoản vay</span></div>
+        <div class="flex flex-col items-center gap-4 min-w-[90px] group"><div class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">verified_user</span></div><span class="font-label-md text-label-md uppercase text-center text-xs">Bảo hiểm</span></div>
+        <div class="flex flex-col items-center gap-4 min-w-[90px] group"><div class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">handyman</span></div><span class="font-label-md text-label-md uppercase text-center text-xs">Bảo dưỡng</span></div>
+        <div class="flex flex-col items-center gap-4 min-w-[90px] group"><div class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">inventory_2</span></div><span class="font-label-md text-label-md uppercase text-center text-xs">Phụ kiện</span></div>
+        <div class="flex flex-col items-center gap-4 min-w-[90px] group"><div class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">smartphone</span></div><span class="font-label-md text-label-md uppercase text-center text-xs">Ứng dụng số</span></div>
+        <div class="flex flex-col items-center gap-4 min-w-[90px] group"><div class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">sync</span></div><span class="font-label-md text-label-md uppercase text-center text-xs">Chuyển nhượng</span></div>
+        <div class="flex flex-col items-center gap-4 min-w-[90px] group"><div class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">trending_flat</span></div><span class="font-label-md text-label-md uppercase text-center text-xs">Thay thế</span></div>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="bg-white p-6 rounded-2xl border border-outline-variant/30 shadow-sm">
+        <span class="text-label-sm text-outline uppercase font-bold tracking-widest block mb-2">Chi phí tài chính</span>
+        <div class="text-headline-md font-bold text-on-surface">Tối ưu hoá</div>
+        <p class="text-body-md text-on-surface-variant mt-2">Dựa trên điểm tín dụng thời gian thực.</p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl border border-outline-variant/30 shadow-sm">
+        <span class="text-label-sm text-outline uppercase font-bold tracking-widest block mb-2">Chi phí bảo hiểm</span>
+        <div class="text-headline-md font-bold text-on-surface">Cá nhân hoá</div>
+        <p class="text-body-md text-on-surface-variant mt-2">Tính theo km và hành vi lái xe thực tế.</p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl border border-outline-variant/30 shadow-sm">
+        <span class="text-label-sm text-outline uppercase font-bold tracking-widest block mb-2">Chi phí nhiên liệu</span>
+        <div class="text-headline-md font-bold text-on-surface">Theo dõi Real-time</div>
+        <p class="text-body-md text-on-surface-variant mt-2">Ví điện tử xe tự động thanh toán.</p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl border border-outline-variant/30 shadow-sm border-l-4 border-l-primary">
+        <span class="text-label-sm text-primary uppercase font-bold tracking-widest block mb-2">Giá trị tài sản</span>
+        <div class="text-headline-md font-bold text-primary">Cập nhật 24/7</div>
+        <p class="text-body-md text-on-surface-variant mt-2">Minh bạch hóa giá trị bán lại nhờ bản sao số.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Ba động lực -->
+<section class="py-24 px-gutter bg-surface">
+  <div class="max-w-[1440px] mx-auto">
+    <h2 class="font-headline-lg text-headline-lg text-center mb-16">Ba động lực tạo ra Vehicle Economy Infrastructure</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div class="bg-surface-container-lowest rounded-[32px] overflow-hidden border border-outline-variant shadow-sm flex flex-col">
+        <div class="aspect-video bg-primary/5 flex items-center justify-center p-12 relative">
+          <span class="material-symbols-outlined text-primary text-[80px] opacity-20">cloud</span>
+          <span class="material-symbols-outlined text-primary text-[64px] absolute">directions_car</span>
+        </div>
+        <div class="p-10 space-y-6 flex-1 flex flex-col">
+          <h3 class="font-headline-md text-headline-md">Connected Vehicle</h3>
+          <p class="text-body-lg text-on-surface-variant">Phương tiện kết nối liên tục qua GPS, OTA, IoT và API đám mây — dữ liệu vận hành thời gian thực.</p>
+          <div class="mt-auto grid grid-cols-3 gap-4 pt-8 border-t border-outline-variant/20">
+            <div><div class="font-bold text-primary text-xl">10M+</div><div class="text-[11px] text-outline uppercase font-bold">Connections</div></div>
+            <div><div class="font-bold text-primary text-xl">2.5B</div><div class="text-[11px] text-outline uppercase font-bold">API Calls</div></div>
+            <div><div class="font-bold text-primary text-xl">500M</div><div class="text-[11px] text-outline uppercase font-bold">Events/Day</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-surface-container-lowest rounded-[32px] overflow-hidden border border-outline-variant shadow-sm flex flex-col">
+        <div class="aspect-video bg-secondary/5 flex items-center justify-center p-12">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary"><span class="material-symbols-outlined text-4xl">psychology</span></div>
+            <div class="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary"><span class="material-symbols-outlined text-4xl">support_agent</span></div>
+            <div class="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary"><span class="material-symbols-outlined text-4xl">smart_toy</span></div>
+            <div class="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary"><span class="material-symbols-outlined text-4xl">hub</span></div>
+          </div>
+        </div>
+        <div class="p-10 space-y-6 flex-1 flex flex-col">
+          <h3 class="font-headline-md text-headline-md">AI Agents</h3>
+          <p class="text-body-lg text-on-surface-variant">Lực lượng lao động mới phối hợp mua bán, bảo hiểm, quản lý đội xe và ngân hàng số tự động.</p>
+          <div class="mt-auto grid grid-cols-3 gap-4 pt-8 border-t border-outline-variant/20">
+            <div><div class="font-bold text-secondary text-xl">98%</div><div class="text-[11px] text-outline uppercase font-bold">Accuracy</div></div>
+            <div><div class="font-bold text-secondary text-xl">150k+</div><div class="text-[11px] text-outline uppercase font-bold">Agents</div></div>
+            <div><div class="font-bold text-secondary text-xl">50+</div><div class="text-[11px] text-outline uppercase font-bold">Orgs</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-surface-container-lowest rounded-[32px] overflow-hidden border border-outline-variant shadow-sm flex flex-col">
+        <div class="aspect-video bg-tertiary/5 flex items-center justify-center p-12 relative">
+          <div class="w-48 h-32 border-4 border-dashed border-tertiary/30 rounded-2xl relative flex items-center justify-center">
+            <div class="absolute inset-4 bg-tertiary/10 rounded-xl flex flex-col gap-2 p-4">
+              <div class="h-2 w-full bg-tertiary/20 rounded"></div>
+              <div class="h-2 w-3/4 bg-tertiary/20 rounded"></div>
+              <div class="h-2 w-1/2 bg-tertiary/20 rounded"></div>
+            </div>
+            <div class="absolute -top-6 -right-6 w-16 h-16 bg-tertiary text-white rounded-full flex items-center justify-center shadow-lg">
+              <span class="material-symbols-outlined text-3xl">layers</span>
+            </div>
+          </div>
+        </div>
+        <div class="p-10 space-y-6 flex-1 flex flex-col">
+          <h3 class="font-headline-md text-headline-md">Vehicle Digital Twin</h3>
+          <p class="text-body-lg text-on-surface-variant">Bản sao số chứa hồ sơ tài chính, bảo hiểm, lịch sử bảo trì và Vehicle Economic Profile.</p>
+          <div class="mt-auto grid grid-cols-3 gap-4 pt-8 border-t border-outline-variant/20">
+            <div><div class="font-bold text-tertiary text-xl">5M</div><div class="text-[11px] text-outline uppercase font-bold">Twins</div></div>
+            <div><div class="font-bold text-tertiary text-xl">100%</div><div class="text-[11px] text-outline uppercase font-bold">Synced</div></div>
+            <div><div class="font-bold text-tertiary text-xl">1.2M</div><div class="text-[11px] text-outline uppercase font-bold">Predictions</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VEI Core -->
+<section class="px-gutter py-24 bg-inverse-surface overflow-hidden">
+  <div class="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+    <div class="relative max-w-md mx-auto w-full">
+      <div class="orbit-container">
+        <div class="orbit-circle w-full h-full border-white/10 animate-orbit" style="animation-duration:60s">
+          <div class="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-12 bg-surface rounded-full flex items-center justify-center text-primary shadow-xl"><span class="material-symbols-outlined">account_balance</span></div>
+          <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-12 bg-surface rounded-full flex items-center justify-center text-primary shadow-xl"><span class="material-symbols-outlined">factory</span></div>
+        </div>
+        <div class="orbit-circle w-3/4 h-3/4 border-white/20 animate-orbit" style="animation-direction:reverse;animation-duration:40s">
+          <div class="absolute top-1/2 left-0 -translate-y-1/2 w-10 h-10 bg-primary-container text-white rounded-full flex items-center justify-center shadow-xl"><span class="material-symbols-outlined text-[20px]">verified_user</span></div>
+          <div class="absolute top-1/2 right-0 -translate-y-1/2 w-10 h-10 bg-primary-container text-white rounded-full flex items-center justify-center shadow-xl"><span class="material-symbols-outlined text-[20px]">smart_toy</span></div>
+        </div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-primary rounded-full flex items-center justify-center shadow-[0_0_60px_rgba(37,99,235,0.8)] z-10">
+          <span class="text-white font-bold text-xl text-center leading-tight">VEI<br>CORE</span>
+        </div>
+      </div>
+    </div>
+    <div class="text-white space-y-8">
+      <h2 class="text-[clamp(28px,4vw,40px)] leading-tight font-bold">Kiến trúc Hạ tầng<br><span class="text-primary-fixed">VEI Core System</span></h2>
+      <p class="font-body-lg text-surface-variant opacity-80">VEI Core là hệ thần kinh trung ương của AutoSphere, kết nối các chủ thể kinh tế một cách an toàn, minh bạch và bảo mật.</p>
+      <ul class="space-y-6">
+        <li class="flex items-start gap-4">
+          <span class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary-fixed shrink-0"><span class="material-symbols-outlined text-[22px]">verified</span></span>
+          <div><h4 class="font-label-md text-label-md text-white">Identity Layer</h4><p class="text-body-md text-surface-variant opacity-70">Định danh duy nhất cho từng phương tiện &amp; chủ sở hữu toàn cầu.</p></div>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary-fixed shrink-0"><span class="material-symbols-outlined text-[22px]">lan</span></span>
+          <div><h4 class="font-label-md text-label-md text-white">Protocol Layer</h4><p class="text-body-md text-surface-variant opacity-70">Giao thức kết nối chuẩn hóa cho IoT, OEM và API doanh nghiệp.</p></div>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary-fixed shrink-0"><span class="material-symbols-outlined text-[22px]">data_usage</span></span>
+          <div><h4 class="font-label-md text-label-md text-white">Data Layer</h4><p class="text-body-md text-surface-variant opacity-70">Vehicle Data Lake minh bạch phục vụ thẩm định giá trị tài sản.</p></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 14 Personas -->
+<section id="personas" class="py-24 bg-surface-container-low px-gutter">
+  <div class="max-w-[1440px] mx-auto">
+    <h2 class="font-headline-lg text-headline-lg text-center mb-4">Các chủ thể tham gia nền kinh tế phương tiện</h2>
+    <p class="text-center text-on-surface-variant mb-16 max-w-2xl mx-auto">Mỗi đối tượng = 1 Tenant độc lập · Cấu trúc thống nhất · Multi-Tenant SaaS</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="persona-grid">
+      <!-- Generated by inline template — 14 cards -->
+    </div>
+  </div>
+</section>
+
+<!-- Giá trị từng đối tượng -->
+<section class="py-24 bg-surface px-gutter">
+  <div class="max-w-[1440px] mx-auto">
+    <h2 class="font-headline-lg text-headline-lg text-center mb-16">Giá trị dành cho từng đối tượng</h2>
+    <div id="value-tabs" class="flex flex-wrap justify-center gap-2 mb-12">
+      <button data-tab="consumer" class="px-6 py-3 bg-primary text-on-primary rounded-full font-label-md shadow-lg shadow-primary/20">Người dùng</button>
+      <button data-tab="dealer" class="px-6 py-3 bg-surface-container text-on-surface-variant rounded-full font-label-md hover:bg-primary/10 transition-colors">Đại lý</button>
+      <button data-tab="oem" class="px-6 py-3 bg-surface-container text-on-surface-variant rounded-full font-label-md hover:bg-primary/10 transition-colors">OEMs</button>
+      <button data-tab="bank" class="px-6 py-3 bg-surface-container text-on-surface-variant rounded-full font-label-md hover:bg-primary/10 transition-colors">Ngân hàng</button>
+      <button data-tab="insurance" class="px-6 py-3 bg-surface-container text-on-surface-variant rounded-full font-label-md hover:bg-primary/10 transition-colors">Bảo hiểm</button>
+      <button data-tab="fleet" class="px-6 py-3 bg-surface-container text-on-surface-variant rounded-full font-label-md hover:bg-primary/10 transition-colors">Vận tải</button>
+      <button data-tab="developer" class="px-6 py-3 bg-surface-container text-on-surface-variant rounded-full font-label-md hover:bg-primary/10 transition-colors">Developers</button>
+      <button data-tab="investor" class="px-6 py-3 bg-surface-container text-on-surface-variant rounded-full font-label-md hover:bg-primary/10 transition-colors">Investors</button>
+    </div>
+    <div id="value-cards" class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[1000px] mx-auto"></div>
+  </div>
+</section>
+
+<!-- AI Workforce -->
+<section id="ai" class="py-24 bg-surface-container-high px-gutter">
+  <div class="max-w-[1440px] mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="font-headline-lg text-headline-lg mb-4">AI Workforce</h2>
+      <p class="font-body-lg text-on-surface-variant">18 AI Agents phục vụ toàn bộ hệ sinh thái Vehicle Economy.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-white p-8 rounded-[32px] border border-outline-variant shadow-sm hover:shadow-xl transition-all flex flex-col">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary"><span class="material-symbols-outlined text-[32px]">handyman</span></div>
+          <div><h4 class="font-headline-md text-headline-md">AI Garage</h4><span class="text-xs text-secondary font-bold">99.2% Accuracy</span></div>
+        </div>
+        <div class="space-y-3 mb-8 text-sm">
+          <div class="flex justify-between"><span>Nhiệm vụ:</span><span class="font-bold">Chẩn đoán lỗi từ xa</span></div>
+          <div class="flex justify-between"><span>Yêu cầu/Ngày:</span><span class="font-bold">45,000+</span></div>
+        </div>
+        <a href="prototype/index.html" class="w-full py-4 border border-secondary text-secondary rounded-2xl font-label-md text-center hover:bg-secondary hover:text-white transition-all">Chi tiết Agent</a>
+      </div>
+      <div class="bg-white p-8 rounded-[32px] border border-outline-variant shadow-sm hover:shadow-xl transition-all flex flex-col">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[32px]">account_balance</span></div>
+          <div><h4 class="font-headline-md text-headline-md">AI Banker</h4><span class="text-xs text-primary font-bold">97.8% Accuracy</span></div>
+        </div>
+        <div class="space-y-3 mb-8 text-sm">
+          <div class="flex justify-between"><span>Nhiệm vụ:</span><span class="font-bold">Phê duyệt tín dụng xe</span></div>
+          <div class="flex justify-between"><span>Yêu cầu/Ngày:</span><span class="font-bold">12,000+</span></div>
+        </div>
+        <a href="prototype/index.html" class="w-full py-4 border border-primary text-primary rounded-2xl font-label-md text-center hover:bg-primary hover:text-white transition-all">Chi tiết Agent</a>
+      </div>
+      <div class="bg-white p-8 rounded-[32px] border border-outline-variant shadow-sm hover:shadow-xl transition-all flex flex-col">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-14 h-14 rounded-2xl bg-tertiary/10 flex items-center justify-center text-tertiary"><span class="material-symbols-outlined text-[32px]">shopping_cart</span></div>
+          <div><h4 class="font-headline-md text-headline-md">AI Buyer</h4><span class="text-xs text-tertiary font-bold">98.5% Accuracy</span></div>
+        </div>
+        <div class="space-y-3 mb-8 text-sm">
+          <div class="flex justify-between"><span>Nhiệm vụ:</span><span class="font-bold">Thẩm định &amp; Săn xe cũ</span></div>
+          <div class="flex justify-between"><span>Yêu cầu/Ngày:</span><span class="font-bold">8,500+</span></div>
+        </div>
+        <a href="prototype/index.html" class="w-full py-4 border border-tertiary text-tertiary rounded-2xl font-label-md text-center hover:bg-tertiary hover:text-white transition-all">Chi tiết Agent</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Creator Economy -->
+<section class="py-24 px-gutter bg-gradient-to-b from-surface-container-low to-surface">
+  <div class="max-w-[1440px] mx-auto text-center mb-12">
+    <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Vehicle Creator Economy</h2>
+    <p class="font-body-lg text-on-surface-variant max-w-3xl mx-auto">KOL, cộng đồng và đối tác tiếp thị cùng tham gia mở rộng nền kinh tế phương tiện — Affiliate Marketplace, KOL Portal, Commission Wallet.</p>
+  </div>
+  <div class="max-w-[1440px] mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center mb-12">
+    <div><div class="font-headline-md text-primary">32,500+</div><div class="text-[11px] font-bold text-outline uppercase">Affiliates</div></div>
+    <div><div class="font-headline-md text-primary">2,800+</div><div class="text-[11px] font-bold text-outline uppercase">KOLs</div></div>
+    <div><div class="font-headline-md text-primary">4.2M+</div><div class="text-[11px] font-bold text-outline uppercase">Followers</div></div>
+    <div><div class="font-headline-md text-primary">185,000+</div><div class="text-[11px] font-bold text-outline uppercase">Referrals</div></div>
+    <div><div class="font-headline-md text-primary">68,000+</div><div class="text-[11px] font-bold text-outline uppercase">Transactions</div></div>
+    <div><div class="font-headline-md text-primary">$12.6M</div><div class="text-[11px] font-bold text-outline uppercase">Commission Paid</div></div>
+  </div>
+  <div class="flex flex-wrap justify-center gap-4">
+    <a href="prototype/index.html" class="btn bg-primary text-on-primary px-8 py-3 rounded-2xl font-label-md hover:shadow-lg transition-all">Khám phá Affiliate Hub</a>
+    <a href="prototype/index.html" class="btn bg-white border border-primary text-primary px-8 py-3 rounded-2xl font-label-md hover:bg-primary/5 transition-all">Trở thành đối tác</a>
+  </div>
+</section>
+
+<!-- Developer Hub -->
+<section id="developer" class="px-gutter py-24 bg-surface">
+  <div class="max-w-[1440px] mx-auto bg-primary rounded-[48px] p-12 lg:p-20 text-white flex flex-col lg:flex-row items-center gap-16 overflow-hidden relative">
+    <div class="flex-1 space-y-8 relative z-10">
+      <h2 class="text-[clamp(32px,4vw,48px)] leading-tight font-extrabold">Build the future<br>of mobility.</h2>
+      <p class="font-body-lg text-primary-fixed opacity-90 max-w-lg">API mạnh mẽ cho dữ liệu phương tiện. Xây dựng ứng dụng trên nền tảng Multi-Tenant SaaS ổn định.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-primary-fixed">integration_instructions</span><span class="font-label-md">RESTful &amp; GraphQL API</span></div>
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-primary-fixed">science</span><span class="font-label-md">Dedicated Sandbox</span></div>
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-primary-fixed">history_edu</span><span class="font-label-md">SDK Documentation</span></div>
+        <div class="flex items-center gap-3"><span class="material-symbols-outlined text-primary-fixed">group_work</span><span class="font-label-md">Dev Community</span></div>
+      </div>
+      <a href="prototype/index.html" class="btn inline-flex bg-white text-primary px-10 py-4 rounded-2xl font-label-md font-bold hover:bg-primary-fixed transition-all">View API Documentation</a>
+    </div>
+    <div class="flex-1 relative z-10 w-full">
+      <div class="bg-inverse-surface rounded-3xl p-6 border border-white/10 shadow-2xl font-mono text-sm text-blue-300 overflow-x-auto">
+        <div class="flex items-center gap-2 mb-4 border-b border-white/10 pb-4">
+          <div class="w-3 h-3 rounded-full bg-error"></div>
+          <div class="w-3 h-3 rounded-full bg-secondary-container"></div>
+          <div class="w-3 h-3 rounded-full bg-green-500"></div>
+          <span class="ml-4 text-white/50">autosphere-api.js</span>
+        </div>
+        <pre class="text-sm leading-relaxed"><code><span class="text-purple-400">const</span> vehicle = <span class="text-purple-400">await</span> sphere.<span class="text-green-400">getVehicleInfo</span>(<span class="text-orange-300">'VIN_123...'</span>);
+<span class="text-purple-400">const</span> history = <span class="text-purple-400">await</span> vehicle.<span class="text-green-400">getServiceHistory</span>();
+<span class="text-white/40">// Initialize AI Diagnostic</span>
+<span class="text-purple-400">const</span> diagnostic = <span class="text-purple-400">new</span> <span class="text-yellow-200">SphereAI</span>.Scanner();
+<span class="text-purple-400">await</span> diagnostic.<span class="text-green-400">runDiagnostic</span>(vehicle.obd_stream);</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Investor -->
+<section id="investor" class="py-24 px-gutter bg-surface">
+  <div class="max-w-[1440px] mx-auto text-center">
+    <h2 class="font-headline-lg text-headline-lg mb-12">Investor Relations</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[1000px] mx-auto">
+      <div class="p-8 border border-outline-variant rounded-[32px] bg-white flex flex-col items-center gap-4">
+        <span class="text-label-sm text-outline uppercase font-bold">Annual Growth</span>
+        <span class="text-[clamp(48px,8vw,64px)] font-extrabold text-primary">+142%</span>
+      </div>
+      <div class="p-8 border border-outline-variant rounded-[32px] bg-white flex flex-col items-center gap-4">
+        <span class="text-label-sm text-outline uppercase font-bold">Market Cap Target</span>
+        <span class="text-[clamp(48px,8vw,64px)] font-extrabold text-on-surface">$2.5B</span>
+      </div>
+    </div>
+    <a href="prototype/index.html" class="btn inline-flex mt-12 px-10 py-5 bg-inverse-surface text-inverse-on-surface rounded-2xl font-label-md hover:bg-primary transition-all">View Financial Reports</a>
+  </div>
+</section>
+
+<!-- Workspace -->
+<section class="px-gutter py-24 bg-surface-container-low border-y border-outline-variant">
+  <div class="max-w-[1440px] mx-auto">
+    <div class="flex items-center justify-between mb-12 flex-wrap gap-4">
+      <h2 class="font-headline-lg text-headline-lg">Không gian Làm việc của bạn</h2>
+      <a href="prototype/index.html" class="text-primary font-label-md flex items-center gap-1 hover:underline">Tất cả Workspaces <span class="material-symbols-outlined">chevron_right</span></a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-white p-8 rounded-3xl border border-primary/20 shadow-lg relative overflow-hidden group">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="w-16 h-16 rounded-2xl bg-primary text-white flex items-center justify-center"><span class="material-symbols-outlined text-[32px]">garage</span></div>
+          <div><h3 class="font-headline-md text-headline-md">Garage Workspace</h3><p class="font-label-sm text-on-surface-variant">Trung tâm dịch vụ</p></div>
+        </div>
+        <a href="prototype/index.html" class="block w-full py-4 bg-primary text-on-primary rounded-2xl font-label-md text-center hover:shadow-lg transition-all">Vào Workspace</a>
+      </div>
+      <div class="bg-white p-8 rounded-3xl border border-outline-variant shadow-sm hover:shadow-xl transition-all">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="w-16 h-16 rounded-2xl bg-secondary-fixed text-secondary flex items-center justify-center"><span class="material-symbols-outlined text-[32px]">storefront</span></div>
+          <div><h3 class="font-headline-md text-headline-md">Dealer Portal</h3><p class="font-label-sm text-on-surface-variant">Đại lý / Showroom</p></div>
+        </div>
+        <a href="prototype/index.html" class="block w-full py-4 bg-surface-container-highest text-on-surface rounded-2xl font-label-md text-center hover:bg-primary hover:text-white transition-all">Vào Portal</a>
+      </div>
+      <div class="bg-white p-8 rounded-3xl border border-outline-variant shadow-sm hover:shadow-xl transition-all">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="w-16 h-16 rounded-2xl bg-surface-container-highest text-on-surface-variant flex items-center justify-center"><span class="material-symbols-outlined text-[32px]">settings</span></div>
+          <div><h3 class="font-headline-md text-headline-md">Admin Center</h3><p class="font-label-sm text-on-surface-variant">Quản trị Hệ sinh thái</p></div>
+        </div>
+        <a href="prototype/index.html" class="block w-full py-4 bg-surface-container-highest text-on-surface rounded-2xl font-label-md text-center hover:bg-primary hover:text-white transition-all">Vào Admin</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Vision -->
+<section class="py-24 px-gutter text-center bg-surface-container-lowest">
+  <p class="font-headline-lg font-bold text-on-surface italic max-w-4xl mx-auto leading-relaxed px-4">
+    "Trong thế kỷ XX, phương tiện là điểm kết thúc của giao dịch. Trong thế kỷ XXI, phương tiện trở thành điểm khởi đầu của một nền kinh tế."
+  </p>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-white pt-24 pb-12 px-gutter border-t border-outline-variant">
+  <div class="max-w-[1440px] mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-20">
+      <div class="lg:col-span-2">
+        <a href="/" class="font-headline-md text-headline-md font-extrabold text-primary mb-6 block">AutoSphere</a>
+        <p class="font-body-md text-on-surface-variant max-w-sm mb-8">Kiến tạo hạ tầng kinh tế xe hơi hiện đại, minh bạch và hiệu quả thông qua sức mạnh của dữ liệu và trí tuệ nhân tạo.</p>
+      </div>
+      <div>
+        <h5 class="font-label-md text-label-md text-on-surface mb-6 uppercase tracking-wider">Hệ sinh thái</h5>
+        <ul class="space-y-4 font-body-md text-on-surface-variant">
+          <li><a href="prototype/index.html" class="hover:text-primary transition-colors">Garage Enterprise</a></li>
+          <li><a href="prototype/index.html" class="hover:text-primary transition-colors">Marketplace</a></li>
+          <li><a href="prototype/index.html" class="hover:text-primary transition-colors">Finance Hub</a></li>
+          <li><a href="prototype/index.html" class="hover:text-primary transition-colors">Fleet Tracking</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-label-md text-label-md text-on-surface mb-6 uppercase tracking-wider">Tài nguyên</h5>
+        <ul class="space-y-4 font-body-md text-on-surface-variant">
+          <li><a href="#developer" class="hover:text-primary transition-colors">Tài liệu API</a></li>
+          <li><a href="#" class="hover:text-primary transition-colors">Blog Kỹ thuật</a></li>
+          <li><a href="#" class="hover:text-primary transition-colors">Sandbox Access</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-label-md text-label-md text-on-surface mb-6 uppercase tracking-wider">Công ty</h5>
+        <ul class="space-y-4 font-body-md text-on-surface-variant">
+          <li><a href="#" class="hover:text-primary transition-colors">Về chúng tôi</a></li>
+          <li><a href="#investor" class="hover:text-primary transition-colors">Quan hệ Nhà đầu tư</a></li>
+          <li><a href="#" class="hover:text-primary transition-colors">Chính sách Bảo mật</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-12 border-t border-outline-variant flex flex-col md:flex-row items-center justify-between gap-6">
+      <p class="font-label-sm text-label-sm text-on-surface-variant">© 2026 AutoSphere Global. All rights reserved.</p>
+      <div class="flex items-center gap-8 font-label-sm text-label-sm text-on-surface-variant">
+        <a href="#" class="hover:text-on-surface">Điều khoản Dịch vụ</a>
+        <a href="#" class="hover:text-on-surface">Cookie Policy</a>
+        <span>Vietnam (Tiếng Việt)</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- AI FAB -->
+<button class="fixed bottom-8 right-8 z-[110] w-16 h-16 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform group" aria-label="Hỏi AI Agent">
+  <span class="material-symbols-outlined text-[32px]">psychology</span>
+  <span class="absolute right-full mr-4 px-4 py-2 bg-inverse-surface text-white text-label-md rounded-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Hỏi AI Agent</span>
+</button>
+
+<script>
+  // 14 Persona cards
+  const PERSONAS = [
+    { icon: 'person', color: 'primary', badge: 'ACTIVE', badgeColor: 'green', name: 'Người dùng cuối', desc: 'Chủ xe / Người mua xe', receive: 'Dịch vụ cá nhân hóa', give: 'Dữ liệu vận hành', tenant: 'consumer' },
+    { icon: 'storefront', color: 'secondary', badge: 'PARTNER', badgeColor: 'blue', name: 'Đại lý / Showroom', desc: 'Bán hàng và hậu mãi', receive: 'Lead chất lượng', give: 'Chuyên môn kỹ thuật', tenant: 'dealer' },
+    { icon: 'factory', color: 'tertiary', badge: 'OEM', badgeColor: 'blue', name: 'OEM / Hãng xe', desc: 'Quản lý vòng đời từ xuất xưởng', receive: 'Dữ liệu R&D', give: 'Hồ sơ gốc phương tiện', tenant: 'oem' },
+    { icon: 'account_balance', color: 'primary', badge: 'BANK', badgeColor: 'blue', name: 'Ngân hàng', desc: 'Vay mua xe và tín dụng', receive: 'Dữ liệu thẩm định', give: 'Vốn & thanh toán', tenant: 'bank' },
+    { icon: 'verified_user', color: 'secondary', badge: 'INSURANCE', badgeColor: 'blue', name: 'Công ty Bảo hiểm', desc: 'Thẩm định rủi ro & bồi thường', receive: 'Dữ liệu hành vi', give: 'Gói bảo vệ cá nhân hóa', tenant: 'insurance' },
+    { icon: 'handyman', color: 'primary', badge: 'SERVICE', badgeColor: 'blue', name: 'Gara / Dịch vụ', desc: 'Bảo dưỡng, sửa chữa, kiểm định', receive: 'Lịch hẹn & work order', give: 'Dịch vụ kỹ thuật', tenant: 'service' },
+    { icon: 'inventory_2', color: 'tertiary', badge: 'ACCESSORY', badgeColor: 'blue', name: 'Nhà cung cấp phụ kiện', desc: 'Phụ kiện, lắp đặt, bảo hành', receive: 'Đơn hàng & affiliate', give: 'Sản phẩm tương thích', tenant: 'accessory' },
+    { icon: 'emergency', color: 'error', badge: 'RESCUE', badgeColor: 'blue', name: 'Đơn vị cứu hộ', desc: 'Điều phối cứu hộ khẩn cấp', receive: 'Yêu cầu realtime', give: 'Dịch vụ cứu hộ', tenant: 'rescue' },
+    { icon: 'local_shipping', color: 'secondary', badge: 'FLEET', badgeColor: 'blue', name: 'Doanh nghiệp đội xe', desc: 'Quản lý fleet & logistics', receive: 'Telematics & TCO', give: 'Dữ liệu vận hành', tenant: 'fleet' },
+    { icon: 'code', color: 'primary', badge: 'DEV', badgeColor: 'blue', name: 'Nhà phát triển', desc: 'API, SDK, App Marketplace', receive: 'Sandbox & docs', give: 'Ứng dụng mở rộng', tenant: 'developer' },
+    { icon: 'hub', color: 'secondary', badge: 'AFFILIATE', badgeColor: 'blue', name: 'Đối tác tiếp thị', desc: 'Affiliate & KOL marketing', receive: 'Hoa hồng & campaign', give: 'Lead & conversion', tenant: 'affiliate' },
+    { icon: 'settings', color: 'on-surface-variant', badge: 'ADMIN', badgeColor: 'blue', name: 'Quản trị AutoSphere', desc: 'Governance toàn nền tảng', receive: 'Audit & metrics', give: 'Chính sách & CMS', tenant: 'admin' },
+    { icon: 'trending_up', color: 'primary', badge: 'INVESTOR', badgeColor: 'blue', name: 'Nhà đầu tư', desc: 'Data room & báo cáo tài chính', receive: 'Minh bạch GMV', give: 'Vốn & chiến lược', tenant: 'investor' },
+    { icon: 'psychology', color: 'primary', badge: 'AI', badgeColor: 'purple', name: 'AI Agent Infrastructure', desc: '18 agents & core engines', receive: 'Training data', give: 'Tự động hóa thông minh', tenant: 'ai' },
+  ];
+
+  const badgeColors = { green: 'bg-green-100 text-green-700', blue: 'bg-blue-100 text-blue-700', purple: 'bg-purple-100 text-purple-700' };
+  const iconBg = { primary: 'bg-primary/10 text-primary', secondary: 'bg-secondary/10 text-secondary', tertiary: 'bg-tertiary/10 text-tertiary', error: 'bg-red-100 text-error', 'on-surface-variant': 'bg-surface-container-high text-on-surface-variant' };
+
+  document.getElementById('persona-grid').innerHTML = PERSONAS.map(p => `
+    <a href="prototype/index.html" class="p-6 bg-white rounded-2xl border border-outline-variant/30 flex flex-col gap-4 group hover:shadow-lg hover:border-primary/30 transition-all">
+      <div class="flex justify-between items-start">
+        <div class="w-12 h-12 rounded-xl ${iconBg[p.color] || iconBg.primary} flex items-center justify-center">
+          <span class="material-symbols-outlined">${p.icon}</span>
+        </div>
+        <span class="text-[10px] px-2 py-1 ${badgeColors[p.badgeColor]} rounded-full font-bold">${p.badge}</span>
+      </div>
+      <h4 class="font-bold text-on-surface">${p.name}</h4>
+      <p class="text-xs text-on-surface-variant">${p.desc}</p>
+      ${p.receive ? `<div class="text-[10px] pt-2 border-t border-outline-variant/20 flex flex-col gap-1">
+        <div class="flex justify-between"><span>Nhận:</span><span class="text-primary font-bold">${p.receive}</span></div>
+        <div class="flex justify-between"><span>Góp:</span><span class="text-secondary font-bold">${p.give}</span></div>
+      </div>` : ''}
+    </a>
+  `).join('');
+</script>
+<script src="assets/js/images.js"></script>
+<script src="assets/js/landing.js"></script>
+</body>
+</html>

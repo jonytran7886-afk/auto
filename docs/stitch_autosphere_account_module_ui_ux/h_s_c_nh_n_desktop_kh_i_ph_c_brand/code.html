@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hồ sơ cá nhân - AutoSphere</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#c3c6d7",
+                    "surface-container-low": "#eff4ff",
+                    "primary-container": "#2563eb",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-container": "#e5eeff",
+                    "surface-variant": "#d3e4fe",
+                    "surface-container-highest": "#d3e4fe",
+                    "inverse-primary": "#b4c5ff",
+                    "on-surface-variant": "#434655",
+                    "primary-fixed": "#dbe1ff",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "on-surface": "#0b1c30",
+                    "surface-tint": "#0053db",
+                    "tertiary-fixed": "#ffdbcd",
+                    "on-error-container": "#93000a",
+                    "on-background": "#0b1c30",
+                    "on-tertiary-fixed": "#360f00",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#57dffe",
+                    "on-secondary-container": "#006172",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-primary-container": "#eeefff",
+                    "tertiary": "#943700",
+                    "surface-bright": "#f8f9ff",
+                    "secondary": "#00687a",
+                    "on-primary-fixed": "#00174b",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#acedff",
+                    "background": "#f8f9ff",
+                    "outline": "#737686",
+                    "tertiary-container": "#bc4800",
+                    "primary": "#004ac6",
+                    "on-tertiary-container": "#ffede6",
+                    "surface-container-high": "#dce9ff",
+                    "surface-dim": "#cbdbf5",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#213145",
+                    "surface": "#f8f9ff",
+                    "on-secondary-fixed": "#001f26",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#4cd7f6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "xxl": "16px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin_mobile": "16px",
+                    "stack_gap": "12px",
+                    "sidebar_width": "260px",
+                    "gutter": "24px",
+                    "container_max_width": "1200px",
+                    "section_gap": "32px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin_mobile md:px-gutter h-16 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md text-primary tracking-tight">AutoSphere</span>
+<div class="hidden md:block h-6 w-[1px] bg-outline-variant mx-2"></div>
+<span class="hidden md:block font-headline-md text-headline-md text-on-surface">Hồ sơ cá nhân</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="User Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDmXZs84E__5_ADuCKoiLfzjEcJkq6eqrbROL8ex_Xgr99X3JDbso1lM-9XVhVOnG5GiZIP1Ri_qmFCP3bjrRuWXNFvps94dNsSpP5OIE-pDav4lHQftxsZVVxo_02HxjGZ45igWAf-EKYNjCKlCY090WfEy4zeYzX_tkgGg68P-SVRCTaTJ82xakEqbuH6BNjT99A925M_rjv636PzcfBljX6dpEH3Q-Gz-Suf2_qyTUCi4jwTqX4-a82JXYwX_JspopUdHa9Dg"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 pt-16">
+<!-- Local Navigation Drawer (Desktop) -->
+<aside class="hidden md:flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] w-sidebar_width p-6 border-r border-outline-variant bg-surface overflow-y-auto">
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container/10 text-primary font-semibold rounded-xxl transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-body-md text-body-md">Thông tin cơ bản</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-xxl transition-all" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-body-md text-body-md">Giấy tờ cá nhân</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-xxl transition-all" href="#">
+<span class="material-symbols-outlined">location_on</span>
+<span class="font-body-md text-body-md">Địa chỉ</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-xxl transition-all" href="#">
+<span class="material-symbols-outlined">devices</span>
+<span class="font-body-md text-body-md">Thiết bị đăng nhập</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-xxl transition-all" href="#">
+<span class="material-symbols-outlined">shield</span>
+<span class="font-body-md text-body-md">Bảo mật</span>
+</a>
+<div class="my-4 border-t border-outline-variant"></div>
+<a class="flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container/10 rounded-xxl transition-all" href="#">
+<span class="material-symbols-outlined">lock</span>
+<span class="font-body-md text-body-md">Khóa tài khoản</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container/10 rounded-xxl transition-all" href="#">
+<span class="material-symbols-outlined">delete</span>
+<span class="font-body-md text-body-md">Xóa tài khoản</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-sidebar_width pb-20 md:pb-8">
+<div class="max-w-container_max_width mx-auto px-margin_mobile md:px-gutter py-8">
+<!-- Mobile Navigation Tabs (Horizontal Scroll) -->
+<div class="md:hidden mb-6 overflow-x-auto no-scrollbar -mx-margin_mobile px-margin_mobile">
+<div class="flex gap-2 min-w-max pb-2">
+<button class="px-4 py-2 rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md">Thông tin</button>
+<button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md">Giấy tờ</button>
+<button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md">Địa chỉ</button>
+<button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md">Thiết bị</button>
+<button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md">Bảo mật</button>
+<button class="px-4 py-2 rounded-full bg-error-container text-on-error-container font-label-md text-label-md">Khóa/Xóa</button>
+</div>
+</div>
+<div class="flex flex-col gap-section_gap">
+<!-- Profile Header Card -->
+<section class="bg-surface-container-lowest rounded-xxl p-6 md:p-10 shadow-sm border border-outline-variant/30 flex flex-col md:flex-row items-center md:items-start gap-8">
+<div class="relative group">
+<div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-surface-container shadow-md">
+<img class="w-full h-full object-cover" data-alt="Nguyen Van A Portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgdnphMnaRYCm0mCzD8xPucyGf8xg-DuLhN_DUJV7z3Fv1DaysSzY2LzpjenN_Xyolk-wkbG1XPp9Y7kpYghRzmnyEmv3hxbWJljBBQIG9uWovUDhL9P55IcLuKJjuF2rnNB_k3lye8F8ln4ntORm4gqPM5YkycSM2CIUUJicK5Dv133MEk615SgWv9pVGKKMMlUEpqLuhSxLr2JdDQocm7mHC28iMZ1TuJOjmRiZOTPVEcP0hLzXXM-TDaMCTruxVQoQTORUhGw"/>
+</div>
+<button class="absolute bottom-2 right-2 bg-primary text-white p-2.5 rounded-full shadow-lg hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">photo_camera</span>
+</button>
+</div>
+<div class="flex-grow text-center md:text-left pt-2">
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-3">Nguyen Van A</h1>
+<div class="flex flex-wrap justify-center md:justify-start gap-3 mb-5">
+<span class="px-4 py-1 bg-primary-container/10 text-primary text-label-sm font-label-sm rounded-full border border-primary/20">Kỹ sư công nghệ</span>
+<span class="px-4 py-1 bg-secondary-container/10 text-secondary text-label-sm font-label-sm rounded-full border border-secondary/20">Thành viên Premium</span>
+</div>
+<p class="font-body-md text-body-lg text-on-surface-variant max-w-xl leading-relaxed">Cập nhật thông tin cá nhân của bạn để nhận được các ưu đãi bảo trì và dịch vụ tốt nhất từ AutoSphere.</p>
+</div>
+</section>
+<!-- Personal Information Form Grid -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<!-- Main Info Card -->
+<div class="bg-surface-container-lowest rounded-xxl p-6 md:p-8 shadow-sm border border-outline-variant/30">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-28px">badge</span>
+                                Thông tin định danh
+                            </h3>
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1">Họ và tên</label>
+<input class="w-full bg-surface-container-low border-outline-variant focus:ring-2 focus:ring-primary focus:border-primary rounded-xl px-4 py-3.5 font-body-md text-body-md text-on-surface transition-all" type="text" value="Nguyen Van A"/>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1">Ngày sinh</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-outline-variant focus:ring-2 focus:ring-primary focus:border-primary rounded-xl px-4 py-3.5 font-body-md text-body-md text-on-surface transition-all" type="text" value="01/01/1990"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">calendar_today</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1">Giới tính</label>
+<select class="w-full bg-surface-container-low border-outline-variant focus:ring-2 focus:ring-primary focus:border-primary rounded-xl px-4 py-3.5 font-body-md text-body-md text-on-surface transition-all appearance-none">
+<option selected="">Nam</option>
+<option>Nữ</option>
+<option>Khác</option>
+</select>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1">Nghề nghiệp</label>
+<input class="w-full bg-surface-container-low border-outline-variant focus:ring-2 focus:ring-primary focus:border-primary rounded-xl px-4 py-3.5 font-body-md text-body-md text-on-surface transition-all" type="text" value="Kỹ sư"/>
+</div>
+</div>
+</div>
+<!-- Contact & Preferences Card -->
+<div class="bg-surface-container-lowest rounded-xxl p-6 md:p-8 shadow-sm border border-outline-variant/30">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-28px">contact_mail</span>
+                                Liên hệ &amp; Kết nối
+                            </h3>
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1">Email</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-outline-variant focus:ring-2 focus:ring-primary focus:border-primary rounded-xl pl-12 pr-12 py-3.5 font-body-md text-body-md text-on-surface transition-all" type="email" value="a@example.com"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">mail</span>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-green-600">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1">Số điện thoại</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-outline-variant focus:ring-2 focus:ring-primary focus:border-primary rounded-xl pl-12 pr-4 py-3.5 font-body-md text-body-md text-on-surface transition-all" type="tel" value="0901234567"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">phone</span>
+</div>
+</div>
+<div class="pt-4">
+<label class="flex items-start gap-4 cursor-pointer group">
+<div class="relative mt-1">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:ring-2 peer-focus:ring-primary rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-surface leading-snug">Nhận thông báo qua Email về lịch bảo trì định kỳ và các chương trình ưu đãi đặc quyền</span>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Action Buttons -->
+<div class="flex flex-col sm:flex-row justify-end items-center gap-4 mt-2">
+<button class="w-full sm:w-auto px-10 py-3.5 rounded-xl font-label-md text-label-md border border-outline text-on-surface hover:bg-surface-container transition-all active:scale-95">
+                            Hủy bỏ
+                        </button>
+<button class="w-full sm:w-auto px-10 py-3.5 rounded-xl font-label-md text-label-md bg-primary text-white shadow-lg shadow-primary/25 hover:bg-primary/90 transition-all active:scale-95">
+                            Lưu thay đổi
+                        </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full py-8 px-margin_mobile md:px-gutter md:ml-sidebar_width md:w-[calc(100%-260px)] flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container-lowest border-t border-outline-variant mt-auto">
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center">
+    © 2024 <span class="font-label-md text-primary mx-1">AutoSphere</span>. Bảo lưu mọi quyền.
+</p>
+<div class="flex gap-8">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Điều khoản dịch vụ</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Chính sách bảo mật</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Liên hệ hỗ trợ</a>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-surface shadow-[0_-4px_12px_rgba(0,0,0,0.08)] rounded-t-2xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Trang chủ</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container/10 text-primary rounded-xl px-4 py-1 transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm">Cá nhân</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="font-label-sm text-label-sm">Bảo mật</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Cài đặt</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for input fields
+        document.querySelectorAll('input, select').forEach(element => {
+            element.addEventListener('focus', () => {
+                const label = element.parentElement.previousElementSibling;
+                if (label && label.classList.contains('text-on-surface-variant')) {
+                    label.classList.add('text-primary');
+                }
+            });
+            element.addEventListener('blur', () => {
+                const label = element.parentElement.previousElementSibling;
+                if (label && label.classList.contains('text-primary')) {
+                    label.classList.remove('text-primary');
+                }
+            });
+        });
+
+        // Simple hover effect for cards
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => {
+            section.addEventListener('mouseenter', () => {
+                section.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.05)';
+                section.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+            });
+            section.addEventListener('mouseleave', () => {
+                section.style.boxShadow = '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)';
+            });
+        });
+    </script>
+</body></html>

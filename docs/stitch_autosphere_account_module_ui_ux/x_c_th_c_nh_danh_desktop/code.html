@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutoSphere - Xác thực định danh</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#bc4800",
+                    "surface": "#f8f9ff",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#eff4ff",
+                    "surface-bright": "#f8f9ff",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "surface-variant": "#d3e4fe",
+                    "outline-variant": "#c3c6d7",
+                    "on-surface": "#0b1c30",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-surface-variant": "#434655",
+                    "on-tertiary-container": "#ffede6",
+                    "on-secondary-container": "#006172",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "surface-dim": "#cbdbf5",
+                    "secondary-container": "#57dffe",
+                    "on-primary-container": "#eeefff",
+                    "primary-fixed": "#dbe1ff",
+                    "tertiary": "#943700",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "surface-container": "#e5eeff",
+                    "secondary": "#00687a",
+                    "on-tertiary-fixed": "#360f00",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "on-secondary-fixed": "#001f26",
+                    "on-error": "#ffffff",
+                    "background": "#f8f9ff",
+                    "inverse-primary": "#b4c5ff",
+                    "surface-tint": "#0053db",
+                    "outline": "#737686",
+                    "primary": "#004ac6",
+                    "secondary-fixed": "#acedff",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#2563eb",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "on-background": "#0b1c30",
+                    "on-primary-fixed": "#00174b",
+                    "inverse-surface": "#213145",
+                    "tertiary-fixed": "#ffdbcd",
+                    "error": "#ba1a1a",
+                    "error-container": "#ffdad6",
+                    "surface-container-high": "#dce9ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sidebar_width": "260px",
+                    "gutter": "24px",
+                    "section_gap": "32px",
+                    "container_max_width": "1200px",
+                    "stack_gap": "12px",
+                    "margin_mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9ff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .elevation-1 { box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05); }
+        .elevation-2 { box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
+        .glass-panel { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); }
+        .dashed-border { background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='12' ry='12' stroke='%23C3C6D7FF' stroke-width='2' stroke-dasharray='8%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e"); }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest dark:bg-surface-dim border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none sticky top-0 z-50">
+<nav class="flex justify-between items-center w-full px-gutter max-w-container_max_width mx-auto h-16">
+<div class="flex items-center gap-8">
+<span class="text-headline-md font-headline-lg text-primary dark:text-primary-fixed-dim tracking-tight">AutoSphere</span>
+<div class="hidden md:flex gap-6">
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Tổng quan</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Dịch vụ</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Hỗ trợ</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a customer service representative with a warm smile, wearing a modern blue business casual outfit. The lighting is bright and airy, consistent with a premium light-mode UI aesthetic. The background is a clean, neutral gradient of soft blues and whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuChVfwIBPoUdbOs7NcnafdxAMGemNhe42lpgYdwUCsrTZN-vNumgiT-7_ICnjysHov2dqWB7uG7D2qvzLLdZiVZUtrFNMVcSxuml9Ewgjf9MrHlHKx1Kux8C4aKeDWMp5HoJlY9pabtKwgScWHeZOM73HGjUOAhXgWPNIkbOHbpi-9cN1yFz3RYP7dm2EHOZQwz0QT0tMGjvhCrFLNU99IDHtcaz_IQaYoXNg3l20evxoMH_nqeqGeY7vqZ2NDvXftLOLCtau6b1g"/>
+</div>
+</div>
+</nav>
+</header>
+<main class="py-section_gap px-gutter flex flex-col items-center">
+<!-- Centered Card Container -->
+<div class="w-full max-w-[800px] bg-surface-container-lowest rounded-xl elevation-2 p-8 md:p-12 overflow-hidden">
+<!-- Progress Indicator -->
+<div class="flex justify-between items-center mb-10 max-w-[600px] mx-auto">
+<!-- Step 1 -->
+<div class="flex flex-col items-center gap-2 relative z-10">
+<div class="w-10 h-10 rounded-full bg-primary-container text-white flex items-center justify-center font-bold">1</div>
+<span class="text-label-md font-bold text-primary">CCCD</span>
+</div>
+<!-- Line -->
+<div class="flex-1 h-0.5 bg-surface-variant -mt-6 mx-2"></div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center gap-2 relative z-10">
+<div class="w-10 h-10 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold">2</div>
+<span class="text-label-md font-medium text-on-surface-variant">Khuôn mặt</span>
+</div>
+<!-- Line -->
+<div class="flex-1 h-0.5 bg-surface-variant -mt-6 mx-2"></div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center gap-2 relative z-10">
+<div class="w-10 h-10 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold">3</div>
+<span class="text-label-md font-medium text-on-surface-variant">Hoàn tất</span>
+</div>
+</div>
+<!-- Content Header -->
+<div class="text-center mb-8">
+<h1 class="text-headline-lg font-headline-lg text-on-surface mb-3">Chụp ảnh CCCD/CMND</h1>
+<p class="text-body-md text-on-surface-variant max-w-[560px] mx-auto">Vui lòng đảm bảo giấy tờ còn hạn sử dụng, không bị mất góc và hình ảnh rõ nét, không lóa sáng.</p>
+</div>
+<!-- Central Capture Area -->
+<div class="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-xl dashed-border mb-8 flex flex-col items-center justify-center bg-surface-container-low group cursor-pointer hover:bg-surface-container-high transition-all">
+<div class="absolute inset-0 p-6 flex items-center justify-center">
+<div class="w-full h-full border-2 border-primary border-dashed opacity-20 rounded-lg"></div>
+</div>
+<div class="z-10 flex flex-col items-center gap-4">
+<div class="w-20 h-20 rounded-full bg-white elevation-1 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">photo_camera</span>
+</div>
+<span class="text-label-md font-bold text-primary">Đặt mặt trước vào khung hình</span>
+</div>
+<!-- Instructional Overlay Hint (Atmospheric) -->
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-black/60 text-white px-4 py-2 rounded-full text-xs">
+<span class="material-symbols-outlined text-sm">info</span>
+<span>Tự động nhận diện khi căn chỉnh khớp khung hình</span>
+</div>
+</div>
+<!-- Upload Slots -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface">Mặt trước <span class="text-error font-bold">*</span></label>
+<div class="h-32 border border-outline-variant rounded-xl bg-surface p-4 flex items-center gap-4 cursor-pointer hover:border-primary transition-colors">
+<div class="w-12 h-12 bg-surface-variant rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">add_a_photo</span>
+</div>
+<div class="flex flex-col">
+<span class="text-body-md font-medium">Bắt buộc</span>
+<span class="text-label-sm text-on-surface-variant">Chưa có ảnh</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface">Mặt sau <span class="text-error font-bold">*</span></label>
+<div class="h-32 border border-outline-variant rounded-xl bg-surface p-4 flex items-center gap-4 cursor-pointer hover:border-primary transition-colors">
+<div class="w-12 h-12 bg-surface-variant rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">add_a_photo</span>
+</div>
+<div class="flex flex-col">
+<span class="text-body-md font-medium">Bắt buộc</span>
+<span class="text-label-sm text-on-surface-variant">Chưa có ảnh</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons for Capture/Library -->
+<div class="flex flex-col md:flex-row gap-4 mb-10 justify-center">
+<button class="flex items-center justify-center gap-2 px-8 py-3 bg-primary text-white rounded-full font-bold hover:opacity-90 transition-all elevation-1">
+<span class="material-symbols-outlined">camera</span>
+                    Chụp ảnh ngay
+                </button>
+<button class="flex items-center justify-center gap-2 px-8 py-3 bg-transparent border border-outline text-primary rounded-full font-bold hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">upload</span>
+                    Tải ảnh từ thư viện
+                </button>
+</div>
+<!-- Info Box -->
+<div class="bg-surface-container-low rounded-xl p-6 mb-10 border-l-4 border-primary">
+<div class="flex items-center gap-2 mb-3 text-primary">
+<span class="material-symbols-outlined">lightbulb</span>
+<span class="font-bold text-label-md">Lưu ý quan trọng</span>
+</div>
+<ul class="space-y-2">
+<li class="flex items-start gap-2 text-body-md text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                        Sử dụng giấy tờ gốc, còn hiệu lực.
+                    </li>
+<li class="flex items-start gap-2 text-body-md text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                        Không sử dụng bản photocopy hoặc ảnh chụp từ màn hình khác.
+                    </li>
+<li class="flex items-start gap-2 text-body-md text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+                        Đảm bảo môi trường đủ ánh sáng để camera lấy nét tốt nhất.
+                    </li>
+</ul>
+</div>
+<!-- Bottom Primary Actions -->
+<div class="flex justify-between items-center pt-8 border-t border-outline-variant">
+<button class="px-6 py-2 text-on-surface-variant font-bold hover:text-error transition-colors">Hủy bỏ</button>
+<button class="px-10 py-3 bg-primary text-white rounded-lg font-bold hover:opacity-90 transition-all shadow-md">Tiếp tục</button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-surface-container-highest border-t border-outline-variant dark:border-outline mt-12">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-gutter py-8 max-w-container_max_width mx-auto">
+<div class="mb-4 md:mb-0">
+<span class="text-label-md font-headline-md text-primary dark:text-primary-fixed-dim">AutoSphere</span>
+<p class="text-label-sm text-on-surface-variant mt-1">© 2024 AutoSphere. Bảo lưu mọi quyền.</p>
+</div>
+<div class="flex gap-6">
+<a class="text-label-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Điều khoản sử dụng</a>
+<a class="text-label-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Chính sách bảo mật</a>
+<a class="text-label-sm text-on-surface-variant hover:text-primary underline transition-all" href="#">Liên hệ</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple interactivity for demonstration
+        const captureArea = document.querySelector('.dashed-border');
+        captureArea.addEventListener('mouseenter', () => {
+            captureArea.classList.add('scale-[1.01]');
+        });
+        captureArea.addEventListener('mouseleave', () => {
+            captureArea.classList.remove('scale-[1.01]');
+        });
+    </script>
+</body></html>

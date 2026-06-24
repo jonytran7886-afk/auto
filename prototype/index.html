@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoSphere — Prototype Layout</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-brand">
+      <div class="topbar-logo">AS</div>
+      <div>
+        <div class="topbar-title">AutoSphere</div>
+        <div class="topbar-subtitle">Vehicle Economy Platform</div>
+      </div>
+    </div>
+
+    <div class="topbar-center">
+      <div class="view-switcher">
+        <button class="view-btn active" data-view="tenant">Tenant View</button>
+        <button class="view-btn" data-view="overview">Ecosystem</button>
+        <button class="view-btn" data-view="infra">Infrastructure</button>
+      </div>
+
+      <div class="tenant-select-wrap">
+        <select id="tenant-select" class="tenant-select" aria-label="Chọn tenant">
+        </select>
+      </div>
+    </div>
+
+    <div class="topbar-right">
+      <span id="tenant-badge" class="badge badge-tenant">Chủ xe</span>
+      <span class="badge badge-prototype">Prototype v0.1</span>
+    </div>
+  </header>
+
+  <div class="app-shell">
+
+    <aside id="sidebar-primary" class="sidebar-primary">
+      <div class="sidebar-header">
+        <div class="sidebar-tenant-info">
+          <div id="sidebar-tenant-icon" class="sidebar-tenant-icon">👤</div>
+          <div>
+            <div id="sidebar-tenant-name" class="sidebar-tenant-name">Người dùng dịch vụ</div>
+            <div id="sidebar-tenant-meta" class="sidebar-tenant-meta">Tenant · Chủ xe</div>
+          </div>
+        </div>
+        <div id="sidebar-module-count" class="sidebar-module-count">14 nhóm chức năng</div>
+      </div>
+      <nav id="sidebar-nav" class="sidebar-nav" aria-label="Module navigation"></nav>
+    </aside>
+
+    <aside id="sidebar-secondary" class="sidebar-secondary">
+      <div class="subnav-header">
+        <div id="subnav-title" class="subnav-title">Tài khoản cá nhân</div>
+        <div id="subnav-desc" class="subnav-desc">9 tính năng · Nhóm 01</div>
+      </div>
+      <nav id="subnav-list" class="subnav-list" aria-label="Feature navigation"></nav>
+    </aside>
+
+    <main id="main-content" class="main-content"></main>
+
+  </div>
+
+  <script src="js/navigation.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

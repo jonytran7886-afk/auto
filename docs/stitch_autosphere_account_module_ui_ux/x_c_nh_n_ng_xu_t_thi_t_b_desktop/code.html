@@ -1,0 +1,293 @@
+<!DOCTYPE html><html class="light" lang="vi" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#ffffff",
+                    "on-primary-fixed": "#00174b",
+                    "on-surface": "#0b1c30",
+                    "surface-container-low": "#eff4ff",
+                    "tertiary-fixed": "#ffdbcd",
+                    "background": "#f8f9ff",
+                    "primary-container": "#2563eb",
+                    "surface-container-high": "#dce9ff",
+                    "tertiary": "#943700",
+                    "surface-bright": "#f8f9ff",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "inverse-surface": "#213145",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "surface-container-highest": "#d3e4fe",
+                    "surface-tint": "#0053db",
+                    "inverse-primary": "#b4c5ff",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "outline-variant": "#c3c6d7",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-secondary": "#ffffff",
+                    "secondary-container": "#57dffe",
+                    "primary-fixed": "#dbe1ff",
+                    "secondary-fixed": "#acedff",
+                    "surface-container": "#e5eeff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-secondary-fixed": "#001f26",
+                    "inverse-on-surface": "#eaf1ff",
+                    "outline": "#737686",
+                    "on-surface-variant": "#434655",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "secondary": "#00687a",
+                    "on-tertiary-container": "#ffede6",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-container": "#006172",
+                    "on-background": "#0b1c30",
+                    "on-primary-container": "#eeefff",
+                    "on-error-container": "#93000a",
+                    "surface-dim": "#cbdbf5",
+                    "primary": "#004ac6",
+                    "error": "#ba1a1a",
+                    "tertiary-container": "#bc4800",
+                    "on-tertiary-fixed": "#360f00",
+                    "surface-variant": "#d3e4fe",
+                    "surface": "#f8f9ff",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section_gap": "32px",
+                    "margin_mobile": "16px",
+                    "gutter": "24px",
+                    "sidebar_width": "260px",
+                    "container_max_width": "1200px",
+                    "stack_gap": "12px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .modal-overlay {
+            background-color: rgba(11, 28, 48, 0.4);
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin_mobile md:px-gutter h-16 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<div class="h-8"><img src="https://lh3.googleusercontent.com/aida/AP1WRLup0s-r358_FXiFhX9FQZZkF3pW-YBiLnGf0VbIy2XtQLw8eCg2FP6zV6VV7CiVUskCD8g30qWAZju9wndBAyfxf7Pk7POL3cUgyNhvTSZQmXfp0sdk1WOtOmesSQboIRKSvo25owo-LUK0546RdS1jSAnX7zMYUoJ9waj8CE30UjDwwq7g-7m1A-r_6qUd6j8gP9iIl-U5vl6yKS4uYhU90U9yla9-YpqU-pGO3kYOiC2Rq_dMkOXOOw" alt="AutoSphere Logo" class="h-8 w-auto object-contain"></div>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined p-2 rounded-full hover:bg-surface-container transition-colors duration-200 text-on-surface-variant">notifications</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional high-end headshot of a modern executive in a bright, minimalist studio. The lighting is soft and flattering, creating a premium feel. The background is a clean, neutral gray that complements the light blue accents of the UI. The overall aesthetic is clean, sharp, and corporate." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN3sWhC-DgkZ53HLi82R6U42pqb6De4BCBrSBfBIr7mRd6a2mtbUna-necQx5LR1lmmq1cL9UvxI2bi-aaVroSXcFdWTD6BXyQPlKu76YIpfDre2T-YJ0th9k0_qgZ4Ey0d22eBJzeMHdH-UcGqaHUOPBxAXJ7kdcURV_pie4xphByEOa4_0aXBZxSX4rzAg-kES3V2IUoxuIwtm1WlpDprSm89JMfVZu9lpYMkhPsJa0Gor_ucag-L77fcRbVjhwQgQh5ZER3mQ">
+</div>
+</div>
+</header>
+<!-- NavigationDrawer (Desktop) -->
+<aside class="hidden md:flex flex-col fixed left-0 top-0 h-full p-4 border-r border-outline-variant bg-surface w-[260px] pt-20 z-40">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3 p-3 mb-6"><div class="h-8 mb-2"><img src="https://lh3.googleusercontent.com/aida/AP1WRLup0s-r358_FXiFhX9FQZZkF3pW-YBiLnGf0VbIy2XtQLw8eCg2FP6zV6VV7CiVUskCD8g30qWAZju9wndBAyfxf7Pk7POL3cUgyNhvTSZQmXfp0sdk1WOtOmesSQboIRKSvo25owo-LUK0546RdS1jSAnX7zMYUoJ9waj8CE30UjDwwq7g-7m1A-r_6qUd6j8gP9iIl-U5vl6yKS4uYhU90U9yla9-YpqU-pGO3kYOiC2Rq_dMkOXOOw" alt="AutoSphere Logo" class="h-8 w-auto object-contain"></div>
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-primary">Thành viên</div>
+<div class="font-headline-md text-[16px] font-bold">Nguyen Van A</div>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined text-[20px]">person</span>
+<span class="font-body-md text-body-md">Thông tin cơ bản</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined text-[20px]">description</span>
+<span class="font-body-md text-body-md">Giấy tờ cá nhân</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined text-[20px]">location_on</span>
+<span class="font-body-md text-body-md">Địa chỉ</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-surface-container text-primary font-semibold rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">devices</span>
+<span class="font-body-md text-body-md">Thiết bị đăng nhập</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined text-[20px]">shield</span>
+<span class="font-body-md text-body-md">Bảo mật</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+<span class="font-body-md text-body-md">Khóa tài khoản</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+<span class="font-body-md text-body-md">Xóa tài khoản</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-[260px] pt-24 pb-32 px-margin_mobile md:px-gutter max-w-container_max_width mx-auto">
+<header class="mb-section_gap">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Thiết bị đăng nhập</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">Quản lý các thiết bị hiện đang đăng nhập vào tài khoản của bạn.</p>
+</header>
+<!-- Devices Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Current Device Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] border border-primary/20 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2">
+<span class="bg-primary-container text-on-primary-container text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider">Thiết bị này</span>
+</div>
+<div class="flex items-start gap-4">
+<div class="p-3 bg-primary-fixed text-on-primary-fixed rounded-xl">
+<span class="material-symbols-outlined text-[32px]">desktop_windows</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md font-bold">Windows PC</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Chrome • TP. Hồ Chí Minh, VN</p>
+<p class="font-label-sm text-label-sm text-primary mt-1">Đang hoạt động</p>
+</div>
+</div>
+</div>
+<!-- Remote Device 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] border border-outline-variant group hover:border-primary/30 transition-all duration-300">
+<div class="flex items-start justify-between">
+<div class="flex items-start gap-4">
+<div class="p-3 bg-surface-container-high text-on-surface-variant rounded-xl group-hover:bg-primary-fixed group-hover:text-on-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-[32px]">smartphone</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md font-bold">iPhone 15 Pro</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Ứng dụng AutoSphere • Hà Nội, VN</p>
+<p class="font-label-sm text-label-sm text-outline mt-1">Hoạt động 2 giờ trước</p>
+</div>
+</div>
+<button class="text-error font-label-md text-label-md p-2 hover:bg-error-container rounded-lg transition-colors">Đăng xuất</button>
+</div>
+</div>
+<!-- Remote Device 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] border border-outline-variant group hover:border-primary/30 transition-all duration-300">
+<div class="flex items-start justify-between">
+<div class="flex items-start gap-4">
+<div class="p-3 bg-surface-container-high text-on-surface-variant rounded-xl group-hover:bg-primary-fixed group-hover:text-on-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-[32px]">tablet_mac</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md font-bold">iPad Air</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Safari • Đà Nẵng, VN</p>
+<p class="font-label-sm text-label-sm text-outline mt-1">Hoạt động 3 ngày trước</p>
+</div>
+</div>
+<button class="text-error font-label-md text-label-md p-2 hover:bg-error-container rounded-lg transition-colors">Đăng xuất</button>
+</div>
+</div>
+</div>
+</main>
+<!-- MODAL OVERLAY -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-4 modal-overlay opacity-100 transition-opacity duration-300" id="logoutModal">
+<!-- Modal Card -->
+<div class="bg-surface-container-lowest w-full max-w-[440px] rounded-2xl shadow-[0_20px_25px_-5px_rgb(0,0,0,0.1),0_8px_10px_-6px_rgb(0,0,0,0.1)] overflow-hidden scale-100 transition-transform duration-300 transform border border-outline-variant">
+<div class="p-8 text-center">
+<!-- Warning Icon with Animation -->
+<div class="mb-6 inline-flex items-center justify-center w-20 h-20 bg-error-container text-error rounded-full relative">
+<div class="absolute inset-0 rounded-full border-4 border-error/20 animate-ping opacity-75"></div>
+<span class="material-symbols-outlined text-[40px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-3">Đăng xuất thiết bị?</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed px-4">
+                    Bạn sẽ bị đăng xuất khỏi thiết bị này. Bạn có thể đăng nhập lại bất kỳ lúc nào.
+                </p>
+</div>
+<!-- Modal Actions -->
+<div class="flex flex-col md:flex-row gap-3 p-6 pt-0">
+<button class="flex-1 order-2 md:order-1 px-6 py-3 font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-all duration-200 rounded-xl border border-outline-variant" onclick="closeModal()">
+                    Hủy
+                </button>
+<button class="flex-1 order-1 md:order-2 px-6 py-3 font-label-md text-label-md bg-primary-container text-on-primary-container hover:bg-primary transition-all duration-200 rounded-xl shadow-md active:scale-95">
+                    Đăng xuất
+                </button>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="md:ml-[260px] w-full py-8 px-margin_mobile md:px-gutter flex flex-col md:flex-row justify-between items-center gap-4 border-t border-outline-variant bg-surface-container-lowest">
+<div class="flex items-center gap-2"><img src="https://lh3.googleusercontent.com/aida/AP1WRLup0s-r358_FXiFhX9FQZZkF3pW-YBiLnGf0VbIy2XtQLw8eCg2FP6zV6VV7CiVUskCD8g30qWAZju9wndBAyfxf7Pk7POL3cUgyNhvTSZQmXfp0sdk1WOtOmesSQboIRKSvo25owo-LUK0546RdS1jSAnX7zMYUoJ9waj8CE30UjDwwq7g-7m1A-r_6qUd6j8gP9iIl-U5vl6yKS4uYhU90U9yla9-YpqU-pGO3kYOiC2Rq_dMkOXOOw" alt="AutoSphere Logo" class="h-5 w-auto object-contain"><span class="font-label-sm text-label-sm text-on-surface-variant">© 2024 AutoSphere. Bảo lưu mọi quyền.</span></div>
+<div class="flex gap-6">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Điều khoản</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Bảo mật</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Liên hệ</a>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-surface border-t border-outline-variant rounded-t-xl shadow-lg">
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Trang chủ</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">devices</span>
+<span class="font-label-sm text-label-sm">Thiết bị</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="font-label-sm text-label-sm">Bảo mật</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Cài đặt</span>
+</div>
+</nav>
+<script>
+        function closeModal() {
+            const modal = document.getElementById('logoutModal');
+            modal.classList.add('opacity-0');
+            modal.querySelector('div').classList.add('scale-95');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
+
+        // Handle Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+
+
+</body></html>

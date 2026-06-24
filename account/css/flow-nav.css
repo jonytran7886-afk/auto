@@ -1,0 +1,135 @@
+/* Account flow — prototype navigation bar */
+#as-flow-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid #c3c6d7;
+  box-shadow: 0 -4px 24px rgba(11, 28, 48, 0.08);
+  font-family: Inter, system-ui, sans-serif;
+}
+
+#as-flow-nav .flow-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+#as-flow-nav .flow-progress {
+  flex: 1;
+  min-width: 0;
+}
+
+#as-flow-nav .flow-step-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #737686;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+
+#as-flow-nav .flow-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0b1c30;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#as-flow-nav .flow-bar {
+  height: 4px;
+  background: #e5eeff;
+  border-radius: 4px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+#as-flow-nav .flow-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #004ac6, #2563eb);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+#as-flow-nav .flow-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+#as-flow-nav .flow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  font-family: inherit;
+}
+
+#as-flow-nav .flow-btn-prev {
+  background: #eff4ff;
+  color: #0b1c30;
+  border: 1px solid #c3c6d7;
+}
+
+#as-flow-nav .flow-btn-prev:hover:not(:disabled) {
+  background: #e5eeff;
+}
+
+#as-flow-nav .flow-btn-next {
+  background: #004ac6;
+  color: #fff;
+}
+
+#as-flow-nav .flow-btn-next:hover {
+  background: #2563eb;
+}
+
+#as-flow-nav .flow-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+#as-flow-nav .flow-btn-map {
+  background: transparent;
+  color: #004ac6;
+  border: 1px solid #c3c6d7;
+}
+
+body.has-flow-nav {
+  padding-bottom: 88px !important;
+}
+
+@media (max-width: 640px) {
+  #as-flow-nav .flow-inner {
+    flex-wrap: wrap;
+    padding: 10px 16px;
+  }
+  #as-flow-nav .flow-progress {
+    order: 1;
+    width: 100%;
+  }
+  #as-flow-nav .flow-actions {
+    order: 2;
+    width: 100%;
+    justify-content: space-between;
+  }
+  #as-flow-nav .flow-btn {
+    flex: 1;
+    justify-content: center;
+  }
+}

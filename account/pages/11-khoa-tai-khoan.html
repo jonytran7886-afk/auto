@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#c3c6d7",
+                    "surface-container-low": "#eff4ff",
+                    "primary-container": "#2563eb",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-container": "#e5eeff",
+                    "surface-variant": "#d3e4fe",
+                    "surface-container-highest": "#d3e4fe",
+                    "inverse-primary": "#b4c5ff",
+                    "on-surface-variant": "#434655",
+                    "primary-fixed": "#dbe1ff",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "on-surface": "#0b1c30",
+                    "surface-tint": "#0053db",
+                    "tertiary-fixed": "#ffdbcd",
+                    "on-error-container": "#93000a",
+                    "on-background": "#0b1c30",
+                    "on-tertiary-fixed": "#360f00",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#57dffe",
+                    "on-secondary-container": "#006172",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-primary-container": "#eeefff",
+                    "tertiary": "#943700",
+                    "surface-bright": "#f8f9ff",
+                    "secondary": "#00687a",
+                    "on-primary-fixed": "#00174b",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#acedff",
+                    "background": "#f8f9ff",
+                    "outline": "#737686",
+                    "tertiary-container": "#bc4800",
+                    "primary": "#004ac6",
+                    "on-tertiary-container": "#ffede6",
+                    "surface-container-high": "#dce9ff",
+                    "surface-dim": "#cbdbf5",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#213145",
+                    "surface": "#f8f9ff",
+                    "on-secondary-fixed": "#001f26",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#4cd7f6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin_mobile": "16px",
+                    "stack_gap": "12px",
+                    "sidebar_width": "260px",
+                    "gutter": "24px",
+                    "container_max_width": "1200px",
+                    "section_gap": "32px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .modal-backdrop {
+            background-color: rgba(11, 28, 48, 0.4);
+            backdrop-filter: blur(4px);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin_mobile md:px-gutter h-16 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold text-primary">AutoSphere</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A clean professional profile avatar of a Vietnamese male executive in a smart casual outfit, soft studio lighting, minimalist background with blue tones to match the AutoSphere brand identity, 8k resolution, high quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA70FPR20GlYn2gLZggcf2XbEf7hceEd_gnqdvZBtk03_Fz5DuFSzb4xosbpDN008Co-3MaHNtBSfy4IG5J2ErBaUFhcYGOM9zj8cLwLfAlRzC4hg2yHNAIqHb-zjSQOMUFjRL7dXXaEOiM29kS463sLU7OdT-lDuHiiJwgYV3ygbIJoVkz6GkIWf3fsBw4zt1t-wiuQbCZT_maVoajqtHWB-8pL7riAVBfGkjU65h1e0egp4g_T2_4Xc4F0jW4X66bJQV3e_KQ0w"/>
+</div>
+</div>
+</header>
+<!-- NavigationDrawer (Desktop) -->
+<aside class="hidden md:flex flex-col fixed left-0 top-0 h-full p-4 border-r border-outline-variant bg-surface w-sidebar_width pt-20">
+<div class="flex items-center gap-3 px-2 mb-8">
+<div class="w-12 h-12 rounded-xl overflow-hidden bg-primary-container">
+<img class="w-full h-full object-cover" data-alt="A macro close-up of a sophisticated automotive emblem, sleek metallic chrome finish with deep blue accents, professional automotive photography style, clean reflections, 8k high-end finish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOwpEo18jWJanQ29Nn4OyQwqbkioe3gkhxnHun_npEwtVGnthXOrGC1iw5kwEbAbIIOVHc063dQOw9I_IGhCG54qq8xN7cLxqP-GqgC6lIrig0Ll9wvpPxMze4Dwz3MrqNpnTozNni_fxedt-sKUae5ex45nScJIEcqm4SKgWJPpmj5ZshGXLq5NErH6lGdSiwpja5_mRMPdz8Lwa6DbB4K-OpWKLKy8ZCbTBWsj5PpaFtJl-HYhw-e56V9rPwB6wkjRWVJrydbQ"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Nguyen Van A</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Thành viên</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-low transition-all rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">person</span> Thông tin cơ bản
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-low transition-all rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">description</span> Giấy tờ cá nhân
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-low transition-all rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">location_on</span> Địa chỉ
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-low transition-all rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">devices</span> Thiết bị đăng nhập
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-low transition-all rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">shield</span> Bảo mật
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 bg-surface-container text-primary font-semibold rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">lock</span> Khóa tài khoản
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-low transition-all rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">delete</span> Xóa tài khoản
+            </a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="pt-20 pb-24 md:pb-8 md:pl-sidebar_width min-h-screen bg-background">
+<div class="max-w-[800px] mx-auto px-margin_mobile md:px-gutter mt-8">
+<!-- Header Section -->
+<div class="mb-section_gap">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Khóa tài khoản</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Bảo vệ thông tin cá nhân của bạn bằng cách tạm ngưng hoạt động tài khoản.</p>
+</div>
+<!-- Lock Card -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] border border-outline-variant text-center">
+<div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-tertiary-fixed mb-6">
+<span class="material-symbols-outlined text-tertiary text-[48px]">warning</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-4">Xác nhận khóa tài khoản</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg mx-auto mb-8">
+                    Tạm thời khóa tài khoản. Bạn có thể mở lại bất kỳ lúc nào bằng cách đăng nhập lại và thực hiện các bước xác thực bảo mật. Mọi dữ liệu của bạn vẫn được bảo vệ an toàn.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+<button class="w-full sm:w-auto px-10 py-3 bg-primary text-on-primary rounded-full font-label-md text-label-md hover:opacity-90 transition-all active:scale-95" onclick="toggleModal(true)">
+                        Khóa tài khoản
+                    </button>
+<button class="w-full sm:w-auto px-10 py-3 border border-outline text-on-surface-variant rounded-full font-label-md text-label-md hover:bg-surface-container transition-all">
+                        Hủy bỏ
+                    </button>
+</div>
+</div>
+<!-- Info Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack_gap mt-8">
+<div class="bg-surface-container rounded-xl p-6 flex gap-4">
+<span class="material-symbols-outlined text-primary">security_update_good</span>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-1">Dữ liệu được bảo mật</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Thông tin cá nhân và lịch sử giao dịch của bạn vẫn được lưu trữ an toàn.</p>
+</div>
+</div>
+<div class="bg-surface-container rounded-xl p-6 flex gap-4">
+<span class="material-symbols-outlined text-primary">restore</span>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-1">Khôi phục dễ dàng</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Chỉ cần đăng nhập và xác minh danh tính để kích hoạt lại tài khoản.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Password Confirmation Modal (Mock Popup) -->
+<div class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4" id="password-modal">
+<div class="absolute inset-0 modal-backdrop" onclick="toggleModal(false)"></div>
+<div class="relative bg-surface-container-lowest w-full max-w-md rounded-2xl p-8 shadow-lg border border-outline-variant animate-in fade-in zoom-in duration-200">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md text-on-surface">Xác nhận mật khẩu</h3>
+<button class="p-1 rounded-full hover:bg-surface-container transition-colors" onclick="toggleModal(false)">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+                Vui lòng nhập mật khẩu hiện tại của bạn để hoàn tất quy trình khóa tài khoản.
+            </p>
+<div class="space-y-4">
+<div class="space-y-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant px-1" for="password">Mật khẩu hiện tại</label>
+<div class="relative">
+<input class="w-full bg-surface border border-outline-variant rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<button class="w-full py-3 bg-primary text-on-primary rounded-xl font-label-md text-label-md hover:bg-primary-fixed-dim transition-all active:scale-95 shadow-md">
+                    Xác nhận khóa tài khoản
+                </button>
+</div>
+</div>
+</div>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-surface rounded-t-xl shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+<button class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Trang chủ</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Cá nhân</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-label-sm text-label-sm">Khóa</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Cài đặt</span>
+</button>
+</nav>
+<!-- Footer (Desktop) -->
+<footer class="hidden md:flex w-full py-8 px-gutter flex-row justify-between items-center gap-4 bg-surface-container-lowest border-t border-outline-variant ml-sidebar_width w-[calc(100%-260px)]">
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 AutoSphere. Bảo lưu mọi quyền.</p>
+<div class="flex gap-6">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Điều khoản</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Bảo mật</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Liên hệ</a>
+</div>
+</footer>
+<script>
+        function toggleModal(show) {
+            const modal = document.getElementById('password-modal');
+            if (show) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            } else {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Micro-interaction for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => {
+                btn.style.transform = 'scale(0.98)';
+            });
+            btn.addEventListener('mouseup', () => {
+                btn.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+
+<link rel="stylesheet" href="../css/flow-nav.css">
+<script>window.FLOW_STEP_ID = '11-khoa-tai-khoan';</script>
+<script src="../js/flow-config.js"></script>
+<script src="../js/flow-nav.js"></script>
+</body></html>
